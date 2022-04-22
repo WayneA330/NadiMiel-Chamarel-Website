@@ -12,6 +12,20 @@
     color: #796342;
 }
 
+/* Contact Us */
+* {
+    margin: 0px;
+    padding: 0px;
+ }
+
+.contact{
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
 /* .container {
     display: flex;
     width: 900px;
