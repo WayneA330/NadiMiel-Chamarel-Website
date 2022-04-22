@@ -1,11 +1,29 @@
 .body {
     font-family: 'Patrick Hand', cursive;
-}
+} 
 
 .orange {
     color: #b78046;
+    text-align: center;
+    font-size: xx-large;
 }
 
 .brown {
     color: #796342;
+}
+/* .container {
+    display: flex;
+    width: 900px;
+    height: 250px;
+    border: 1px solid #796342 ;
+    
+  } */
+.minicontainer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+.myborder{
+    border: 4px solid #796342 ;
+    border-radius: 15px ;
 }
