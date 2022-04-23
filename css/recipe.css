@@ -1,0 +1,70 @@
+/* General Container */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.body {
+    font-family: 'Patrick Hand', cursive;
+} 
+
+.orange {
+    color: #b78046;
+}
+
+.brown {
+    color: #796342;
+}
+
+.title {
+    text-align: center;
+    margin: 25px;
+}
+
+/* Navbar */
+.my_navbar {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .show > .nav-link {
+    color: white
+}
+
+.nav-color {
+    font-size: 22px;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    color: black;
+}
+
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.55);
+    border-color: rgba(255,255,255,1);
+}
+
+.active_nav {
+    opacity: .75;
+}
