@@ -54,26 +54,26 @@
           </nav>
     </div>
 
-<!-- Products -->
+    <!-- Products -->
 
 
     <div class="row">
         <div class="col-sm-3 border border-warning">Categories</div>
         <div class="col-sm-9 border border-warning p-2 d-flex justify-content-start flex-wrap">
-        <%  if (productMenu.length != 0) { %>
-            <% productMenu.forEach(product => { %>
-        <div class="card m-2" style="width: 18rem;">
-           
-            <img src="small.jpeg" class="card-img-top" >
-            <div class="card-body">
-              <h5 class="card-title"><%=product.name%></h5>
-              <p class="card-text">Rs<%=product.price%></p>
-              <a href="#" class="btn btn-primary">Add to Cart</a>
+            <%  if (productMenu.length != 0) { %>
+                <% productMenu.forEach(product => { %>
+            <div class="card m-2" style="width: 15rem;">
+            
+                <img src="small.jpeg" class="card-img-top" >
+                <div class="card-body">
+                <h5 class="card-title"><%=product.name%></h5>
+                <p class="card-text">Rs<%=product.price%></p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
             </div>
-          </div>
-          <% }) %>
-          <% } %>
-      </div>
+            <% }) %>
+            <% } %>
+        </div>
      
     </div>
    
@@ -81,7 +81,7 @@
 
 
     <!-- Footer -->
-    <footer class=" text-center text-white" style="background-color: #fcbf56;">
+    <footer class=" text-center text-white" style="background-color: #fcbf56; position: absolute; bottom:0; width:100%;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->

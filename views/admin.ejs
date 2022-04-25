@@ -37,7 +37,7 @@
                         <a class="nav-link nav-color hover-underline-animation" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="product">Products</a>
+                        <a class="nav-link nav-color hover-underline-animation" href="products">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-color hover-underline-animation active_nav" href="#">Recipes</a>
@@ -54,13 +54,124 @@
           </nav>
     </div>
 
+    <!-- Admin -->
+    <div class="admin_products">
+       <!-- Add Products -->
+        <div class="add_product">
+            <div>
+                <h2 class="title orange">Add Product</h2>
+            </div>
+            <form name="add">
+                <div class="form-group form_spacing input_name_desc">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" name="name1" id="name_french_add" placeholder="French">
+                    <input type="text" class="form-control" name="name2" id="name_english_add" placeholder="English">
+                </div>
+                <div class="form-group form_spacing input_name_desc">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" name="description1" id="desc_french_add" placeholder="French">
+                    <input type="text" class="form-control" name="description2" id="desc_english_add" placeholder="English">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" class="form-control" name="quantity" id="quantity_add" placeholder="(1, 2, 3, 4, 5, etc.)">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="quantity">Price:</label>
+                    <input type="number" class="form-control" name="price" id="price_add" placeholder="Price">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="item_picture">Choose Picture:</label><br>
+                    <input type="file" class="form-control-file" id="item_picture_add">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="category">Category:</label>
+                    <select class="form-control" id="category_add">
+                        <option>Honey</option>
+                        <option>Charcuterie</option>
+                        <option>Achard & Piments / Chili</option>
+                        <option>Snacks</option>
+                        <option>Pâtisserie / Pastry</option>
+                    </select>
+                </div>
+                <div class="btn_add">
+                    <button type="reset">Reset</button>
+                    <button type="button" onclick="add_product()">Add</button>
+                </div>
 
+            </form>
+        </div>
 
+        <!-- Update Products -->
+        <div class="update_product">
+            <div>
+                <h2 class="title orange">Update Products</h2>
+            </div>
+            <form>
+                <div class="form-group form_spacing">
+                    <label for="name">Product ID:</label>
+                    <input type="number" class="form-control" name="product_id_update" id="product_id_update" placeholder="ID">
+                </div>
+                <div class="form-group form_spacing input_name_desc">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" name="name" id="name_french_update" placeholder="French">
+                    <input type="text" class="form-control" name="name" id="name_english_update" placeholder="English">
+                </div>
+                <div class="form-group form_spacing input_name_desc">
+                    <label for="description">Description:</label>
+                    <input type="text" class="form-control" name="description" id="description_french_update" placeholder="French">
+                    <input type="text" class="form-control" name="description" id="description_english_update" placeholder="English">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" class="form-control" name="quantity" id="quantity_update" placeholder="(1, 2, 3, 4, 5, etc.)">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="quantity">Price:</label>
+                    <input type="number" class="form-control" name="price" id="price_update" placeholder="Price">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="item_picture">Choose Picture:</label><br>
+                    <input type="file" class="form-control-file" id="item_picture_update">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="category">Category:</label>
+                    <select class="form-control" id="category_update">
+                        <option>Honey</option>
+                        <option>Charcuterie</option>
+                        <option>Achard & Piments / Chili</option>
+                        <option>Snacks</option>
+                        <option>Pâtisserie / Pastry</option>
+                    </select>
+                </div>
+                <div class="btn_update">
+                    <button type="reset">Reset</button>
+                    <button type="button" onclick="update_product()">Update</button>
+                </div>
+            </form>
+        </div>
 
+        <!-- Remove Products -->
+        <div class="remove_product">
+            <div>
+                <h2 class="title orange">Remove Products</h2>
+            </div>
+            <form>
+                <div class="form-group form_spacing">
+                    <label for="name">Product ID:</label>
+                    <input type="number" class="form-control" name="product_id_update" id="product_id_remove" placeholder="ID">
+                </div>
+                <div class="btn_remove">
+                    <button onclick="remove_product()" class="form_spacing" id="remove_button" type="button">Remove</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
 
 
     <!-- Footer -->
-    <footer class=" text-center text-white" style="background-color: #fcbf56;">
+    <footer class=" text-center text-white" style="background-color: #fcbf56;  bottom:0; width:100%;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->
@@ -108,5 +219,6 @@
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="admin.js"></script>
 </body>
 </html>

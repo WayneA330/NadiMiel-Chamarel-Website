@@ -12,7 +12,7 @@ let menu = [
         name: "Bianca",
         price: 13,
         ingredients: ["Ricotta", "Mozzarella", "Garlic"]
-    },
+    }, 
     {
         name: "Etna",
         price: 14,
@@ -26,15 +26,13 @@ let menu = [
 ]
 
 
-
-
 // sets EJS as the view engine for the Express application
 app.set('view engine', 'ejs');
 
 //load css and assets folder
 app.use(express.static('images'));
-app.use(express.static('css'))
-// app.use(express.static('script'))
+app.use(express.static('css'));
+app.use(express.static('js'));
 
 
 
@@ -60,7 +58,7 @@ app.get('/recipe', function(req, res){
 
 app.get('/admin', function(req, res){
     res.render('admin', {title: 'Administrator'}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/recipe')
+    console.log('Listening to the server on http://localhost:5000/Admin')
 })
 
-app.listen(5000)
+app.listen(5001)
