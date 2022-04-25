@@ -9,11 +9,19 @@
 } 
 
 .orange {
-    color: #b78046;
+    color: rgb(245, 156, 0);
 }
 
 .brown {
-    color: #796342;
+    color: rgb(168, 113, 19);
+}
+
+.dark_brown {
+    color: rgb(125, 78, 36);
+}
+
+.yellow {
+    color: rgb(255, 213, 24);
 }
 
 .title {
@@ -21,7 +29,28 @@
     margin: 25px;
 }
 
-/* Navbar */
+/* Navbar and Banner */
+.container-fluid-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.my_banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner_intro {
+    text-align: center;
+}
+
+.carousel-inner {
+    width: 100%;
+    max-height: 600px !important; 
+}
+
 .my_navbar {
     position: sticky;
     z-index: 100;
@@ -29,11 +58,17 @@
 }
 
 .navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .show > .nav-link {
-    color: white
+    color: rgb(125, 78, 36);
 }
 
 .nav-color {
     font-size: 22px;
+    color: rgb(125, 78, 36);
+}
+
+.nav-color:hover {
+    background-color: rgb(125, 78, 36);
+    color: #ffc00a;
 }
 
 .hover-underline-animation {
@@ -65,10 +100,6 @@
     border-color: rgba(255,255,255,1);
 }
 
-.active_nav {
-    opacity: .75;
-}
-
 /* Add Products */
 .admin_products {
     display: flex;
@@ -89,7 +120,7 @@ label {
 .add_product {
     width: 700px;
     height: fit-content;
-    border: 2px solid #b78046;
+    border: 2px solid rgb(168, 113, 19);
     border-radius: 15px;
     margin: 20px;
 }
@@ -116,7 +147,7 @@ label {
 /* Update Products */
 .update_product {
     width: 700px;
-    border: 2px solid #b78046;
+    border: 2px solid rgb(168, 113, 19);
     border-radius: 15px;
     margin: 20px;
     height: fit-content;
@@ -144,7 +175,7 @@ label {
 /* Remove Product */
 .remove_product {
     width: 500px;
-    border: 2px solid #b78046;
+    border: 2px solid rgb(168, 113, 19);
     border-radius: 15px;
     margin: 20px;
     height: fit-content;
