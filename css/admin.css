@@ -68,3 +68,102 @@
 .active_nav {
     opacity: .75;
 }
+
+/* Add Products */
+.admin_products {
+    display: flex;
+}
+
+label {
+    font-size: 20px;
+}
+
+.form_spacing {
+    margin: 15px;
+}
+
+.input_name_desc > input {
+    margin-bottom: 10px;
+}
+
+.add_product {
+    width: 700px;
+    height: fit-content;
+    border: 2px solid #b78046;
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.btn_add {
+    text-align: center;
+}
+
+.btn_add > button {
+    width: 80px;
+    border: 2px solid #ffc00a;
+    border-radius: 15px;
+    color: white;
+    background-color: #ffc00a;
+    font-size: large;
+    margin: 15px;
+}
+
+.btn_add > button:hover {
+    background-color: #f5c000;
+    border: 2px solid #f5c000;
+}
+
+/* Update Products */
+.update_product {
+    width: 700px;
+    border: 2px solid #b78046;
+    border-radius: 15px;
+    margin: 20px;
+    height: fit-content;
+}
+
+.btn_update {
+    text-align: center;
+}
+
+.btn_update > button {
+    width: 80px;
+    border: 2px solid #ffc00a;
+    border-radius: 15px;
+    color: white;
+    background-color: #ffc00a;
+    font-size: large;
+    margin: 15px;
+}
+
+.btn_update > button:hover {
+    background-color: #f5c000;
+    border: 2px solid #f5c000;
+}
+
+/* Remove Product */
+.remove_product {
+    width: 500px;
+    border: 2px solid #b78046;
+    border-radius: 15px;
+    margin: 20px;
+    height: fit-content;
+}
+
+.btn_remove {
+    text-align: center;
+}
+
+#remove_button {
+    width: 80px;
+    border: 2px solid red;
+    border-radius: 15px;
+    color: white;
+    background-color: red;
+    font-size: large;
+}
+
+#remove_button:hover {
+    background-color: rgb(252, 43, 43);
+    border: 2px solid rgb(252, 43, 43);
+}

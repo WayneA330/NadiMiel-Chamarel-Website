@@ -140,8 +140,10 @@
 
 /* Media Queries */
 @media only screen and (max-width: 768px) {
-  .maprouter{
-      position:relative;height:200px;width:300px;
+  iframe {
+      /* position:relative; */
+      height:400px;
+      width:700px;
   }
 
 }
