@@ -101,4 +101,25 @@
 }
 
 /* Layout */
+/* product description */
+.container_product {
+    display: flex;
+    margin: 20px;
+}
+#productImage {
+    width: 30vw;
+    border: 2px solid rgb(168, 113, 19);
+    border-radius: 10px;
+}
+.container_description {
+    margin-left: 20px;
+}
 
+.buttons {
+    width: 175px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: rgb(255, 213, 24);
+    color: rgb(125, 78, 36);
+}

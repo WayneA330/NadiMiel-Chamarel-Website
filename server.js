@@ -46,6 +46,11 @@ app.get('/orders', function(req, res){
     console.log('Listening to the server on http://localhost:5000/Orders')
 })
 
+app.get('/product_description', function(req, res){
+    res.render('product_description', {title: 'Product description'}); //Name of the file is products
+   
+})
+
 app.get('/products', function(req, res){
     res.render('products', {title: 'Products', productMenu: menu}); //Name of the file is products
     console.log('Listening to the server on http://localhost:5000/Product')
