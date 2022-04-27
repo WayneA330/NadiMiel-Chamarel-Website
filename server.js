@@ -37,6 +37,10 @@ app.get('/orders', function(req, res){
 })
 
 
+app.get('/product_description', function(req, res){
+    res.render('product_description', {title: 'Product description'}); //Name of the file is products
+   
+})
 
 app.get('/products', function(req, res){
     db
