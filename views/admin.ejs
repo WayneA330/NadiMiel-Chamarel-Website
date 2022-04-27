@@ -64,30 +64,34 @@
             </div>
             <form name="add">
                 <div class="form-group form_spacing input_name_desc">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name1" id="name_french_add" placeholder="French">
-                    <input type="text" class="form-control" name="name2" id="name_english_add" placeholder="English">
+                    <label for="name1">Name:</label>
+                    <input type="text" class="form-control" name="name1_add" id="name_french_add" placeholder="French">
+                    <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English">
                 </div>
                 <div class="form-group form_spacing input_name_desc">
-                    <label for="description">Description:</label>
-                    <input type="text" class="form-control" name="description1" id="desc_french_add" placeholder="French">
-                    <input type="text" class="form-control" name="description2" id="desc_english_add" placeholder="English">
+                    <label for="description1">Description:</label>
+                    <input type="text" class="form-control" name="description1_add" id="desc_french_add" placeholder="French">
+                    <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English">
                 </div>
                 <div class="form-group form_spacing">
                     <label for="quantity">Quantity:</label>
-                    <input type="number" class="form-control" name="quantity" id="quantity_add" placeholder="(1, 2, 3, 4, 5, etc.)">
+                    <input type="number" class="form-control" name="quantity_add" id="quantity_add" placeholder="(1, 2, 3, 4, 5, etc.)">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="unit">Unit:</label>
+                    <input type="text" class="form-control" name="unit_add" id="unit_add" placeholder="(150g, 250g, 500g, etc)">
                 </div>
                 <div class="form-group form_spacing">
                     <label for="quantity">Price:</label>
-                    <input type="number" class="form-control" name="price" id="price_add" placeholder="Price">
+                    <input type="number" class="form-control" name="price_add" id="price_add" placeholder="Price">
                 </div>
                 <div class="form-group form_spacing">
                     <label for="item_picture">Choose Picture:</label><br>
-                    <input type="file" class="form-control-file" id="item_picture_add">
+                    <input type="file" class="form-control-file" name="picture_add" id="item_picture_add">
                 </div>
                 <div class="form-group form_spacing">
                     <label for="category">Category:</label>
-                    <select class="form-control" id="category_add">
+                    <select class="form-control" id="category_add" name="category_add">
                         <option>Honey</option>
                         <option>Charcuterie</option>
                         <option>Achard & Piments / Chili</option>
@@ -115,29 +119,33 @@
                 </div>
                 <div class="form-group form_spacing input_name_desc">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name" id="name_french_update" placeholder="French">
-                    <input type="text" class="form-control" name="name" id="name_english_update" placeholder="English">
+                    <input type="text" class="form-control" name="name1_update" id="name_french_update" placeholder="French">
+                    <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English">
                 </div>
                 <div class="form-group form_spacing input_name_desc">
                     <label for="description">Description:</label>
-                    <input type="text" class="form-control" name="description" id="description_french_update" placeholder="French">
-                    <input type="text" class="form-control" name="description" id="description_english_update" placeholder="English">
+                    <input type="text" class="form-control" name="description1_update" id="description_french_update" placeholder="French">
+                    <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English">
                 </div>
                 <div class="form-group form_spacing">
                     <label for="quantity">Quantity:</label>
-                    <input type="number" class="form-control" name="quantity" id="quantity_update" placeholder="(1, 2, 3, 4, 5, etc.)">
+                    <input type="number" class="form-control" name="quantity_update" id="quantity_update" placeholder="(1, 2, 3, 4, 5, etc.)">
                 </div>
                 <div class="form-group form_spacing">
-                    <label for="quantity">Price:</label>
-                    <input type="number" class="form-control" name="price" id="price_update" placeholder="Price">
+                    <label for="unit">Unit:</label>
+                    <input type="text" class="form-control" name="unit_update" id="unit_update" placeholder="(150g, 250g, 500g, etc)">
                 </div>
                 <div class="form-group form_spacing">
-                    <label for="item_picture">Choose Picture:</label><br>
-                    <input type="file" class="form-control-file" id="item_picture_update">
+                    <label for="price">Price:</label>
+                    <input type="number" class="form-control" name="price_update" id="price_update" placeholder="Price">
                 </div>
                 <div class="form-group form_spacing">
-                    <label for="category">Category:</label>
-                    <select class="form-control" id="category_update">
+                    <label for="item_picture_update">Choose Picture:</label><br>
+                    <input type="file" class="form-control-file" name="picture_update" id="item_picture_update">
+                </div>
+                <div class="form-group form_spacing">
+                    <label for="category_update">Category:</label>
+                    <select class="form-control" id="category_update" name="category_add">
                         <option>Honey</option>
                         <option>Charcuterie</option>
                         <option>Achard & Piments / Chili</option>
