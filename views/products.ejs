@@ -46,7 +46,7 @@
                         <a class="nav-link nav-color hover-underline-animation" href="orders">Order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="#contact-us">Contact Us</a>
+                        <a class="nav-link nav-color hover-underline-animation" href="/#contact-us">Contact Us</a>
                     </li>
                     </ul>
                 </div>
@@ -104,13 +104,13 @@
         <div class="table-responsive">
             <div class=" p-2 d-flex justify-content-start flex-wrap">
                 <%  if (productMenu.length != 0) { %>
-                    <% productMenu.forEach(product => { %>
+                    <% productMenu.forEach((product,index) => { %>
                 <div class="card m-2" style="width: 18rem;">
                     <img src="small.jpeg" class="card-img-top" >
                     <div class="card-body">
                       <h5 class="card-title"><%=product.product_name_eng%></h5>
                       <p class="card-text">Rs<%=product.price%></p>
-                      <a href="#" class="btn btn-primary">Add to Cart</a>
+                      <a href="product_description/<%=index+1%>" class="btn btn-primary">Shop Now</a>
                     </div>
                   </div>
                   <% }) %>

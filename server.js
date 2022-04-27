@@ -37,9 +37,16 @@ app.get('/orders', function(req, res){
 })
 
 
-app.get('/product_description', function(req, res){
-    res.render('product_description', {title: 'Product description'}); //Name of the file is products
+app.get('/product_description/:product_id', function(req, res){
+    db
+    .select().from('product')
+    .where({'product_id': `${req.params.product_id}`})
+    .then(function(data){
+        res.render('product_description', {title: 'Product description', 'productMenu': data}); //Name of the file is products
    
+        
+    })
+    
 })
 
 app.get('/products', function(req, res){
@@ -70,7 +77,7 @@ app.get('/recipe_details/:recipe_id', function(req, res){
         res.render('recipe_details', {'title': 'Recipes', 'recipeMenu': data});
         
     })
-    
+  
 })
 
 
