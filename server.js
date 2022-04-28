@@ -34,7 +34,6 @@ app.get('/', function(req, res){
 
 
 app.get('/orders', function(req, res){
-
     res.render('checkout', {title: 'Add to Cart'}); //Name of the file is products
 })
 
