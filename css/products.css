@@ -105,6 +105,7 @@
 .container_product {
     display: flex;
     margin: 20px;
+    min-height: 65vh;
 }
 #productImage {
     width: 30vw;
