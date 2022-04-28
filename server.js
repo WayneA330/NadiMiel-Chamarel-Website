@@ -32,11 +32,11 @@ app.get('/', function(req, res){
     console.log('Listening to the server on http://localhost:5000/Home')
 })
 
-app.get('/orders', function(req, res){
-    res.render('orders', {title: 'Orders'}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/Orders')
-})
 
+app.get('/orders', function(req, res){
+
+    res.render('checkout', {title: 'Add to Cart'}); //Name of the file is products
+})
 
 app.get('/product_description/:product_id', function(req, res){
     db
