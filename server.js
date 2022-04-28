@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Database
 const db = require('knex')({
     client: 'pg',
     connection: {
@@ -21,11 +22,9 @@ app.set('db', db);
 app.set('view engine', 'ejs');
 
 // load css and assets folder
-// app.use(express.static('views'));
 app.use(express.static('images'));
 app.use(express.static('css'));
 app.use(express.static('js'));
-
 
 
 app.get('/', function(req, res){
@@ -38,14 +37,41 @@ app.get('/orders', function(req, res){
     console.log('Listening to the server on http://localhost:5000/Orders')
 })
 
+
+app.get('/product_description/:product_id', function(req, res){
+    db
+    .select().from('product')
+    .where({'product_id': `${req.params.product_id}`})
+    .then(function(data){
+        res.render('product_description', {title: 'Product description', 'productMenu': data});
+    })
+})
+
 app.get('/products', function(req, res){
-    res.render('products', {title: 'Products', productMenu: menu}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/Product')
+    db
+    .select().from('product').then(function(data){
+        res.render('products', {title: 'Products', productMenu: data});
+    })
+    
 })
 
 app.get('/recipe', function(req, res){
-    res.render('recipe', {title: 'Recipes'}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/Recipe')
+    db
+    .select().from('recipe').then(function(data){
+        res.render('recipe', {'title': 'Recipes', 'recipeMenu': data});
+    })
+})
+
+
+
+app.get('/recipe_details/:recipe_id', function(req, res){
+    db
+    .select().from('recipe')
+    .where({'recipe_id': `${req.params.recipe_id}`})
+    .then(function(data){
+        res.render('recipe_details', {'title': 'Recipes', 'recipeMenu': data});
+        
+    })
 })
 
 app.get('/admin', function(req, res){

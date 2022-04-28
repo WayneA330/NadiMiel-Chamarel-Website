@@ -1,0 +1,54 @@
+ CREATE TABLE product (
+  	product_id SERIAL PRIMARY KEY,
+  	product_name_fr VARCHAR(100) NOT NULL,
+ 		product_name_eng VARCHAR(100) NOT NULL,
+  	product_description_fr TEXT NOT NULL,
+ 		product_description_eng TEXT NOT NULL,
+  	unit_in_stock INTEGER,
+  	ordered INTEGER,
+  	picture BYTEA NOT NULL,
+  	unit VARCHAR(100),
+  	price NUMERIC NOT NULL,
+  	category TEXT NOT NULL
+ );
+ CREATE TABLE customer (
+  	customer_id SERIAL PRIMARY KEY,
+  	first_name VARCHAR(100) NOT NULL,
+  	last_name VARCHAR(100) NOT NULL,
+  	address TEXT NOT NULL,
+  	phone SMALLINT NOT NULL,
+  	created TIMESTAMP,
+  	last_logged_in TIMESTAMP
+ );
+ CREATE TABLE admin (
+  	email TEXT NOT NULL,
+  	password TEXT NOT NULL
+ );
+ CREATE TABLE orders (
+    	order_id SERIAL PRIMARY KEY,
+    	order_date TIMESTAMP NOT NULL,
+    	order_status VARCHAR(100) NOT NULL,
+    	quantity INTEGER NOT NULL,
+    	total_amount NUMERIC NOT NULL,
+    	customer_id INTEGER,
+   	FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
+ );
+ CREATE TABLE recipe (
+   	recipe_id SERIAL PRIMARY KEY,
+  	recipe_name_fr TEXT NOT NULL,
+ 		recipe_name_eng TEXT NOT NULL,
+  	recipe_description_fr TEXT NOT NULL,
+ 		recipe_description_eng TEXT NOT NULL,
+   	recipe_article_fr TEXT NOT NULL,
+ 		recipe_article_eng TEXT NOT NULL,
+   	product_id INTEGER,
+   	FOREIGN KEY (product_id) REFERENCES product(product_id)
+ );
+ CREATE TABLE sales (
+   	order_id INTEGER,
+   	FOREIGN KEY (order_id) REFERENCES orders(order_id),
+  	product_id INTEGER,
+  	FOREIGN KEY (product_id) REFERENCES product(product_id),
+   	quantity_per_product INTEGER NOT NULL
+ );
+ SELECT * FROM sales;
