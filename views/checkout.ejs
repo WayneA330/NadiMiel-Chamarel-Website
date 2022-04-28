@@ -95,54 +95,57 @@
                 </div> -->
                 <form>
                     <p>Payment Options</p> <select>
-                        <option class="text-muted">Pay On Delivery</option>
-                        <option class="text-muted">Pay With Juice</option>
+                        <option class="text-muted">Choose payment options</option>
+                        <option class="text-muted">Pay with Cash On Delivery</option>
+                        <option class="text-muted">Pay With Juice On Delivery</option>
                     </select>
                     
                 </form>
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">TOTAL PRICE</div>
                     <div class="col text-right cart-total"></div>
-                </div> <button class="btn" id="check">CHECKOUT</button>
+                </div> 
+                
             </div>
+            <form style="margin: 20px;" class="row g-3">
+                <div class="col-md-4">
+                  <label for="firstname" class="form-label">First name</label>
+                  <input type="text" class="form-control" id="firstname">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputPassword4" class="form-label">Last name</label>
+                  <input type="text" class="form-control" id="lastname">
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="inputEmail">
+                </div>
+                <div class="col-2">
+                  <label for="inputPhone" class="form-label">Phone</label>
+                  <input type="tel" class="form-control" id="inputPhone">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputAddress" class="form-label">Address</label>
+                  <input type="text" class="form-control" id="inputAddress">
+                </div>
+                
+                <!-- <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
+                  </div> -->
+                </div>
+                <div class="col-12">
+                    <button class="btn" id="check">CHECKOUT</button>
+                </div>
+              </form>
         </div>
     </div>
 
 
-    <form style="margin: 20px;" class="row g-3">
-        <div class="col-md-4">
-          <label for="firstname" class="form-label">First name</label>
-          <input type="text" class="form-control" id="firstname">
-        </div>
-        <div class="col-md-4">
-          <label for="inputPassword4" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="lastname">
-        </div>
-        <div class="col-6">
-          <label for="inputEmail" class="form-label">Email</label>
-          <input type="text" class="form-control" id="inputEmail">
-        </div>
-        <div class="col-2">
-          <label for="inputPhone" class="form-label">Phone</label>
-          <input type="tel" class="form-control" id="inputPhone">
-        </div>
-        <div class="col-md-6">
-          <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress">
-        </div>
-        
-        <!-- <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div> -->
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Check out</button>
-        </div>
-      </form>
+    
  
     <script>
         //DummyDatabase
