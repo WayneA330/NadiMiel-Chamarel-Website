@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Bootstrap -->
@@ -65,25 +65,25 @@
             <form name="add">
                 <div class="form-group form_spacing input_name_desc">
                     <label for="name1">Name:</label>
-                    <input type="text" class="form-control" name="name1_add" id="name_french_add" placeholder="French">
-                    <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English">
+                    <input type="text" class="form-control" name="name1_add" id="name_french_add" placeholder="French" required>
+                    <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English" required>
                 </div>
                 <div class="form-group form_spacing input_name_desc">
                     <label for="description1">Description:</label>
-                    <input type="text" class="form-control" name="description1_add" id="desc_french_add" placeholder="French">
-                    <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English">
+                    <input type="text" class="form-control" name="description1_add" id="desc_french_add" placeholder="French" required>
+                    <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="quantity">Quantity:</label>
-                    <input type="number" class="form-control" name="quantity_add" id="quantity_add" placeholder="(1, 2, 3, 4, 5, etc.)">
+                    <input type="number" class="form-control" name="quantity_add" id="quantity_add" placeholder="(1, 2, 3, 4, 5, etc.)" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="unit">Unit:</label>
-                    <input type="text" class="form-control" name="unit_add" id="unit_add" placeholder="(150g, 250g, 500g, etc)">
+                    <input type="text" class="form-control" name="unit_add" id="unit_add" placeholder="(150g, 250g, 500g, etc)" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="quantity">Price:</label>
-                    <input type="number" class="form-control" name="price_add" id="price_add" placeholder="Price">
+                    <input type="number" class="form-control" name="price_add" id="price_add" placeholder="Price" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="item_picture">Choose Picture:</label><br>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="form-group form_spacing">
                     <label for="category">Category:</label>
-                    <select class="form-control" id="category_add" name="category_add">
+                    <select class="form-control" id="category_add" name="category_add" required>
                         <option>Honey</option>
                         <option>Charcuterie</option>
                         <option>Achard & Piments / Chili</option>
@@ -115,29 +115,29 @@
             <form>
                 <div class="form-group form_spacing">
                     <label for="name">Product ID:</label>
-                    <input type="number" class="form-control" name="product_id_update" id="product_id_update" placeholder="ID">
+                    <input type="number" class="form-control" name="product_id_update" id="product_id_update" placeholder="ID" required>
                 </div>
                 <div class="form-group form_spacing input_name_desc">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name1_update" id="name_french_update" placeholder="French">
-                    <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English">
+                    <input type="text" class="form-control" name="name1_update" id="name_french_update" placeholder="French" required>
+                    <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English" required>
                 </div>
                 <div class="form-group form_spacing input_name_desc">
                     <label for="description">Description:</label>
-                    <input type="text" class="form-control" name="description1_update" id="description_french_update" placeholder="French">
-                    <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English">
+                    <input type="text" class="form-control" name="description1_update" id="description_french_update" placeholder="French" required>
+                    <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="quantity">Quantity:</label>
-                    <input type="number" class="form-control" name="quantity_update" id="quantity_update" placeholder="(1, 2, 3, 4, 5, etc.)">
+                    <input type="number" class="form-control" name="quantity_update" id="quantity_update" placeholder="(1, 2, 3, 4, 5, etc.)" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="unit">Unit:</label>
-                    <input type="text" class="form-control" name="unit_update" id="unit_update" placeholder="(150g, 250g, 500g, etc)">
+                    <input type="text" class="form-control" name="unit_update" id="unit_update" placeholder="(150g, 250g, 500g, etc)" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="price">Price:</label>
-                    <input type="number" class="form-control" name="price_update" id="price_update" placeholder="Price">
+                    <input type="number" class="form-control" name="price_update" id="price_update" placeholder="Price" required>
                 </div>
                 <div class="form-group form_spacing">
                     <label for="item_picture_update">Choose Picture:</label><br>
@@ -145,7 +145,7 @@
                 </div>
                 <div class="form-group form_spacing">
                     <label for="category_update">Category:</label>
-                    <select class="form-control" id="category_update" name="category_add">
+                    <select class="form-control" id="category_update" name="category_add" required>
                         <option>Honey</option>
                         <option>Charcuterie</option>
                         <option>Achard & Piments / Chili</option>
@@ -168,7 +168,7 @@
             <form>
                 <div class="form-group form_spacing">
                     <label for="name">Product ID:</label>
-                    <input type="number" class="form-control" name="product_id_update" id="product_id_remove" placeholder="ID">
+                    <input type="number" class="form-control" name="product_id_update" id="product_id_remove" placeholder="ID" required>
                 </div>
                 <div class="btn_remove">
                     <button onclick="remove_product()" class="form_spacing" id="remove_button" type="button">Remove</button>
@@ -177,6 +177,185 @@
             </form>
         </div>
     </div>
+
+    <div class="customer_table" id="table_customer">
+        <table class="table">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+                <%  if (customerLists.length != 0) { %>
+                    <% customerLists.forEach((customer,index) => { %>
+                        <tr>
+                            <th scope="row"><%=customer.customer_id%></th>
+                            <td><%=customer.first_name%></td>
+                            <td><%=customer.last_name%></td>
+                            <td><%=customer.address%></td>
+                            <td><%=customer.phone%></td>
+                            <td><%=customer.email%></td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+          </table>
+    </div>
+
+        <!-- Slider for products -->
+
+        <!-- <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed title orange" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Add Product
+                  </button>
+                </h5>
+              </div>
+          
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" >
+                <div class="card-body">
+                    <div class="add_product">
+                        <form name="add">
+                            <div class="form-group form_spacing input_name_desc">
+                                <label for="name1">Name:</label>
+                                <input type="text" class="form-control" name="name1_add" id="name_french_add" placeholder="French" required>
+                                <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English" required>
+                            </div>
+                            <div class="form-group form_spacing input_name_desc">
+                                <label for="description1">Description:</label>
+                                <input type="text" class="form-control" name="description1_add" id="desc_french_add" placeholder="French" required>
+                                <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" class="form-control" name="quantity_add" id="quantity_add" placeholder="(1, 2, 3, 4, 5, etc.)" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="unit">Unit:</label>
+                                <input type="text" class="form-control" name="unit_add" id="unit_add" placeholder="(150g, 250g, 500g, etc)" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="quantity">Price:</label>
+                                <input type="number" class="form-control" name="price_add" id="price_add" placeholder="Price" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="item_picture">Choose Picture:</label><br>
+                                <input type="file" class="form-control-file" name="picture_add" id="item_picture_add">
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="category">Category:</label>
+                                <select class="form-control" id="category_add" name="category_add" required>
+                                    <option>Honey</option>
+                                    <option>Charcuterie</option>
+                                    <option>Achard & Piments / Chili</option>
+                                    <option>Snacks</option>
+                                    <option>Pâtisserie / Pastry</option>
+                                </select>
+                            </div>
+                            <div class="btn_add">
+                                <button type="reset">Reset</button>
+                                <button type="button" onclick="add_product()">Add</button>
+                            </div>
+            
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed title orange" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Update Products
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" style="">
+                <div class="card-body">
+                    <div class="update_product">
+                        <form>
+                            <div class="form-group form_spacing">
+                                <label for="name">Product ID:</label>
+                                <input type="number" class="form-control" name="product_id_update" id="product_id_update" placeholder="ID" required>
+                            </div>
+                            <div class="form-group form_spacing input_name_desc">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" name="name1_update" id="name_french_update" placeholder="French" required>
+                                <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English" required>
+                            </div>
+                            <div class="form-group form_spacing input_name_desc">
+                                <label for="description">Description:</label>
+                                <input type="text" class="form-control" name="description1_update" id="description_french_update" placeholder="French" required>
+                                <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" class="form-control" name="quantity_update" id="quantity_update" placeholder="(1, 2, 3, 4, 5, etc.)" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="unit">Unit:</label>
+                                <input type="text" class="form-control" name="unit_update" id="unit_update" placeholder="(150g, 250g, 500g, etc)" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="price">Price:</label>
+                                <input type="number" class="form-control" name="price_update" id="price_update" placeholder="Price" required>
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="item_picture_update">Choose Picture:</label><br>
+                                <input type="file" class="form-control-file" name="picture_update" id="item_picture_update">
+                            </div>
+                            <div class="form-group form_spacing">
+                                <label for="category_update">Category:</label>
+                                <select class="form-control" id="category_update" name="category_add" required>
+                                    <option>Honey</option>
+                                    <option>Charcuterie</option>
+                                    <option>Achard & Piments / Chili</option>
+                                    <option>Snacks</option>
+                                    <option>Pâtisserie / Pastry</option>
+                                </select>
+                            </div>
+                            <div class="btn_update">
+                                <button type="reset">Reset</button>
+                                <button type="button" onclick="update_product()">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed title orange" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Remove Products
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion" style="">
+                <div class="card-body">
+                    <div class="remove_product">
+                        <form>
+                            <div class="form-group form_spacing">
+                                <label for="name">Product ID:</label>
+                                <input type="number" class="form-control" name="product_id_update" id="product_id_remove" placeholder="ID" required>
+                            </div>
+                            <div class="btn_remove">
+                                <button onclick="remove_product()" class="form_spacing" id="remove_button" type="button">Remove</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div> -->
 
 
     <footer class=" text-center text-white" style="background-color: #fcbf56;">
@@ -217,7 +396,7 @@
         <!-- Copyright -->
     </footer>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

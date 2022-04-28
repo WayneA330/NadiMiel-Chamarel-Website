@@ -17,33 +17,6 @@ const db = require('knex')({
 
 app.set('db', db);
 
-
-
-//Database
-let menu = [
-    {
-        name: "Margarita",
-        price: 10,
-        ingredients: ["Tomato Sauce", "Mozzarella", "Basil"]
-    },
-    {
-        name: "Bianca",
-        price: 13,
-        ingredients: ["Ricotta", "Mozzarella", "Garlic"]
-    }, 
-    {
-        name: "Etna",
-        price: 14,
-        ingredients: ["Tomato sauce", "Mozzarella", "Anchovies", "Capers", "Olives"]
-    },
-    {
-        name: "Etna",
-        price: 14,
-        ingredients: ["Tomato sauce", "Mozzarella", "Anchovies", "Capers", "Olives"]
-    }
-]
-
-
 // sets EJS as the view engine for the Express application
 app.set('view engine', 'ejs');
 
@@ -76,8 +49,12 @@ app.get('/recipe', function(req, res){
 })
 
 app.get('/admin', function(req, res){
-    res.render('admin', {title: 'Administrator'}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/Admin')
+    db
+    .select().from('customer')
+    .then(function(data) {
+        console.log(data);
+        res.render('admin', {title: 'Admin', customerLists: data});
+    })
 })
 
 // Add products in database
@@ -90,6 +67,40 @@ app.post('/add-product', function(req, res) {
     db('product')
         .insert({ product_name_fr : data.product_name_fr, product_name_eng : data.product_name_eng, product_description_fr : data.product_description_fr, product_description_eng : data.product_description_eng, unit_in_stock : data.unit_in_stock, picture : data.picture, unit : data.unit, category : data.category, price : data.price }, ['*'])
         .then(res.send('Product inserted in database'))
+        .catch(err => {
+            console.log('Request Failed:', err);
+        });
+})
+
+// Update products in database
+app.post('/update-product', function(req, res) {
+    console.log('Product info to be updated has been received');
+
+    let data = JSON.parse(JSON.stringify(req.body));
+    console.log(data);
+
+    console.log(data.picture);
+
+    db('product')
+        .where('product_id', data.product_id)
+        .update({ product_name_fr : data.product_name_fr, product_name_eng : data.product_name_eng, product_description_fr : data.product_description_fr, product_description_eng : data.product_description_eng, unit_in_stock : data.unit_in_stock, picture : data.picture, unit : data.unit, category : data.category, price : data.price }, ['*'])
+        .then(res.send('Product inserted in database'))
+        .catch(err => {
+            console.log('Request Failed:', err);
+        });
+})
+
+// Remove product from database
+app.post('/remove-product', function(req, res) {
+    console.log('Product ID has been received');
+
+    let data = JSON.parse(JSON.stringify(req.body));
+    console.log(data);
+
+    db('product')
+        .where('product_id', data.product_id )
+        .del(['*'])
+        .then(res.send('Product has been removed from the database'))
         .catch(err => {
             console.log('Request Failed:', err);
         });
