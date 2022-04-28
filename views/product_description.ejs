@@ -133,7 +133,7 @@
                         localStorage.setItem("carts", JSON.stringify(carts));
                     }else{
                         const localCarts = JSON.parse(localStorage.getItem("carts"));
-                        localCarts.map(data =>{
+                        localCarts.map((data) => {
                             if(cart.id == data.id){
                                 console.log(true);
                             }
