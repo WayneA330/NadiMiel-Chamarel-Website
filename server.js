@@ -39,7 +39,7 @@ app.get('/orders', function(req, res){
 })
 
 app.get('/product_description/:product_id', function(req, res){
-    console.log();
+    console.log(req.params.product_id);
     db
     .select().from('product')
     .where({product_id: req.params.product_id})
