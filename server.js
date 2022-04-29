@@ -22,9 +22,9 @@ app.set('db', db);
 app.set('view engine', 'ejs');
 
 // load css and assets folder
-app.use(express.static('images'));
-app.use(express.static('css'));
-app.use(express.static('js'));
+app.use(express.static('./images'));
+app.use(express.static('./css'));
+app.use(express.static('./js'));
 
 
 app.get('/', function(req, res){
@@ -38,10 +38,12 @@ app.get('/orders', function(req, res){
 })
 
 app.get('/product_description/:product_id', function(req, res){
+    console.log();
     db
     .select().from('product')
-    .where({'product_id': `${req.params.product_id}`})
+    .where({product_id: req.params.product_id})
     .then(function(data){
+        console.log(data);
         res.render('product_description', {title: 'Product description', 'productMenu': data});
     })
 })
@@ -77,7 +79,7 @@ app.get('/admin', function(req, res){
     db
     .select().from('customer')
     .then(function(data) {
-        console.log(data);
+        // console.log(data);
         res.render('admin', {title: 'Admin', customerLists: data});
     })
 })
@@ -104,7 +106,7 @@ app.post('/update-product', function(req, res) {
     let data = JSON.parse(JSON.stringify(req.body));
     console.log(data);
 
-    console.log(data.picture);
+    // console.log(data.picture);
 
     db('product')
         .where('product_id', data.product_id)
@@ -131,5 +133,19 @@ app.post('/remove-product', function(req, res) {
         });
 })
 
+// Add Customer to database
+app.post('/add-customer', function(req, res) {
+    console.log('Product has been received');
+
+    let data = JSON.parse(JSON.stringify(req.body));
+    console.log(data);
+
+    db('customer')
+        .insert({ first_name : data.first_name, last_name : data.last_name, email : data.email, phone : data.phone, address : data.address}, ['*'])
+        .then(res.send('Product inserted in database'))
+        .catch(err => {
+            console.log('Request Failed:', err);
+        });
+})
 
 app.listen(5001);

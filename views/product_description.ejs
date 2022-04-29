@@ -57,7 +57,7 @@
     <!-- Description -->
 
     <div class="container_product d-flex justify-content-center" >
-        <div><img id="productImage" src="/small.jpeg" alt="Product image"></div>
+        <div><img id="productImage" alt="Product image"src="<%=productMenu[0].picture%>"></div>
         <div class="container_description">
             <h3><%=productMenu[0].product_name_fr%></h3>
             <p><%=productMenu[0].product_description_fr%></p>
@@ -66,10 +66,7 @@
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="20" value="1"> <br>
             <button class="buttons mt-3 attToCart" >Add to cart</button>
-           
-            
         </div>
-
     </div>
     
 
@@ -82,24 +79,15 @@
             <!-- Section: Social media -->
             <section class="mb-4">
                 <!-- Facebook -->
-                <a
-                class="btn btn-primary btn-floating m-1"
-                style="background-color: #3b5998;"
-                href="https://www.facebook.com/NadiMiel/"
-                role="button"
-                target="_blank"
-                ><i class="fab fa-facebook-square"></i></a>
+                <a href="https://www.facebook.com/NadiMiel/" target="_blank" style="text-decoration: none; margin: 15px;">
+                  <i class="fab fa-facebook-square fa-2x dark_brown"></i>
+                </a>
         
-             
-        
+            
                 <!-- Instagram -->
-                <a
-                class="btn btn-primary btn-floating m-1"
-                style="background-color: #ac2bac;"
-                href="https://www.instagram.com/nadimiel_chamarel/?hl=en"
-                role="button"
-                target="_blank"
-                ><i class="fab fa-instagram-square"></i> </a>
+                <a href="https://www.instagram.com/nadimiel_chamarel/?hl=en" target="_blank" style="text-decoration: none; margin: 15px;">
+                  <i class="fab fa-instagram-square fa-2x dark_brown"></i>
+                </a>
         
             </section>
             <!-- Section: Social media -->
@@ -108,11 +96,13 @@
       
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: #fbaa19">
-          © 2022 Copyright:
-          <a class="text-white" href="https://developers.institute/mu/">Developers Institute</a>
+          <span class="dark_brown">
+            © 2022 Designed with <span style="color: red">❤</span> by
+            <a class="dark_brown" href="https://developers.institute/mu/" style="text-decoration: none;">Developers Institute</a>
+          </span>
         </div>
         <!-- Copyright -->
-    </footer>
+      </footer>
 
     <script>
         let carts = [];

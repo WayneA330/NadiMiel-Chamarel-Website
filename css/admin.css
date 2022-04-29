@@ -198,3 +198,35 @@ label {
     background-color: rgb(252, 43, 43);
     border: 2px solid rgb(252, 43, 43);
 }
+
+/* Customer Table */
+.customer_form {
+    border: 2px solid rgb(168, 113, 19);
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.customer_table {
+    margin: 20px;
+    border: 2px solid rgb(168, 113, 19);
+    border-radius: 15px;
+}
+
+.btn-customer {
+    text-align: center;
+}
+
+.btn-customer > button {
+    width: 100px;
+    border: 2px solid #ffc00a;
+    border-radius: 15px;
+    color: white;
+    background-color: #ffc00a;
+    font-size: large;
+    margin: 20px;
+}
+
+.btn-customer > button:hover {
+    background-color: #f5c000;
+    border: 2px solid #f5c000;
+}
