@@ -1,5 +1,6 @@
 const express = require('express'); //Link ejs to css
 const app = express();
+const localStorage = require('localStorage');
 
 //Database
 const db = require('knex')({
@@ -14,7 +15,6 @@ const db = require('knex')({
 });
 
 app.set("db", db);
-
 
 // sets EJS as the view engine for the Express application
 app.set('view engine', 'ejs');
@@ -42,10 +42,8 @@ app.get('/product_description/:product_id', function(req, res){
     .select().from('product')
     .where({'product_id': `${req.params.product_id}`})
     .then(function(data){
-        res.render('product_description', {title: 'Product description', 'productMenu': data}); //Name of the file is products
-   
-        
-    })
+         res.render('product_description', {title: 'Product description', 'productMenu': data});
+         })
     
 })
 
@@ -84,7 +82,6 @@ app.get('/recipe_details/:recipe_id', function(req, res){
 
 app.get('/admin', function(req, res){
     res.render('admin', {title: 'Administrator'}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/Admin')
 })
 
 app.listen(5001)
