@@ -40,7 +40,7 @@
                         <a class="nav-link nav-color hover-underline-animation" href="/products">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation active_nav" href="#">Recipes</a>
+                        <a class="nav-link nav-color hover-underline-animation active_nav" href="/recipe">Recipes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-color hover-underline-animation" href="/orders">Order</a>
@@ -116,20 +116,42 @@
 
     <script>
         function add_to_cart(product){
-           console.log("Adding to cart:", product);
-         
+
+            let qty = document.getElementById('quantity').value;
+            console.log(qty);
+            let obj_product = JSON.parse(product);
+            obj_product['qty'] = qty;
+                
+           console.log("Adding to cart:", obj_product);
+        
             let cart = sessionStorage.getItem("cart");
-            console.log(JSON.parse(cart));
 
             if (cart === undefined || cart === null){
-                cart = [product];
+                cart = [JSON.stringify(obj_product)];
             }
             else{
                 cart = JSON.parse(cart);
-                console.log(cart);
-                cart.push(product);
-            }
+                
+                let product_exist = false;
 
+                for (i in cart){
+                    item = JSON.parse(cart[i]);
+                    if (item.product_id == obj_product.product_id){
+                        //cart[i].qty = obj_product.qty;
+                        cart[i] = JSON.stringify(obj_product);
+                        console.log(cart);
+                        console.log("Product already in cart! Quantity updated!")
+                        product_exist = true;
+                        break;
+                    }
+                }
+
+                if (!product_exist){
+                    cart.push(JSON.stringify(obj_product));
+                }
+            }
+            
+            console.log(JSON.parse(cart));
              sessionStorage.setItem("cart", JSON.stringify(cart));
         }
     </script>
