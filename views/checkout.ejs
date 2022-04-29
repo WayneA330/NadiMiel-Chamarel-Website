@@ -183,7 +183,7 @@
         function display_products(){
             let cartItemContainer = document.getElementsByClassName('outerContainer')[0];
 
-            products = JSON.parse(sessionStorage.getItem("cart"));
+            let products = JSON.parse(sessionStorage.getItem("cart"));
 
             for (item of products){
                 item = JSON.parse(item);
@@ -206,15 +206,15 @@
                 let product_name = document.createElement('div');
                 product_name.className = "row";
                 product_name.innerText = item.product_name_fr;
-                let product_cat = document.createElement('div');
-                product_cat.className = "row text-muted";
-                product_cat.innerText = item.category;
+                let product_id = document.createElement('div');
+                product_id.className = "row text-muted product-serial";
+                product_id.innerText = create_product_serial(item.product_id);
                 product_div.appendChild(product_name);
-                product_div.appendChild(product_cat);
+                product_div.appendChild(product_id);
                 
                 let qty_div = document.createElement('div');
                 qty_div.className = "col";
-                qty_div.innerHTML = `<input type="number" value=${item.qty} class="quantity" onchange="updateTotal()">`;
+                qty_div.innerHTML = `<input type="number" value=${item.qty} class="quantity" onchange="update_cart();">`;
                 
                 let price_div = document.createElement('div');
                 price_div.className = "col cart-price";
@@ -235,15 +235,11 @@
             button.addEventListener('click', function(event){
                 let buttonClicker = event.target;
                 buttonClicker.parentElement.parentElement.parentElement.parentElement.remove();
-                updateTotal();
+                update_cart();
             })
         }
         }
 
-        
-
-       
-        
         function updateTotal(){
             let total = 0;
             let cartItemContainer = document.getElementsByClassName('outerContainer')[0]
@@ -258,6 +254,42 @@
                 
             }
             document.getElementsByClassName('cart-total')[0].innerHTML = 'Rs ' + total.toLocaleString();
+        }
+
+        function update_cart(){
+            let product_serials = document.getElementsByClassName('product-serial');
+            let product_qty = document.getElementsByClassName('quantity');
+
+            let cart = sessionStorage.getItem("cart");
+            cart = JSON.parse(cart);
+
+            for (i in product_serials){
+                if (product_serials[i].innerText != undefined){
+                    let product_id = convert_product_id_serial(product_serials[i].innerText);
+
+                    for (k in cart){
+                        item = JSON.parse(cart[k]);
+                        if (item.product_id == product_id){
+                            item.qty = product_qty[i].value;
+                            cart[k] = JSON.stringify(item);
+                            console.log(cart);
+                            break;
+                        }
+                    }
+                }
+            }
+            console.log(cart);
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            updateTotal();
+        }
+
+        function create_product_serial(product_id){
+            return ("N" + product_id.toString().padStart(4, 0));
+        }
+
+        function convert_product_id_serial(product_serial){
+            console.log(product_serial);
+            return Number(product_serial.slice(1));
         }
 
         display_products();
