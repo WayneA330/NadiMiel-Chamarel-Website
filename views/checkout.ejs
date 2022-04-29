@@ -67,53 +67,7 @@
             </div>
             
             <div class="col-md-8 cart outerContainer">
-               
-                <div class="row border-top border-bottom innerContainer">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted test_name"></div>
-                            <div class="row test_product"> </div>
-                        </div>
-                        <div class="col "> <input type="number" value="1" class="quantity" onchange="updateTotal()"> </div>
-                        <div class="col cart-price">
-                            <span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                        </div>
-                       
-                    </div>
-                </div>
-
-                <div class="row border-top border-bottom innerContainer">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted test_name"></div>
-                            <div class="row test_product"> </div>
-                        </div>
-                        <div class="col "> <input type="number" value="1" class="quantity" onchange="updateTotal()"> </div>
-                        <div class="col cart-price">
-                            <span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                        </div>
-                       
-                    </div>
-                </div>
-
-                <div class="row border-top border-bottom innerContainer">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted test_name"></div>
-                            <div class="row test_product"> </div>
-                        </div>
-                        <div class="col "> <input type="number" value="1" class="quantity" onchange="updateTotal()"> </div>
-                        <div class="col cart-price">
-                            <span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                        </div>
-                       
-                    </div>
-                </div>
-
-                
+            <!-- List products from cart here -->    
                 
             </div>
             <!-- <div class="back-to-shop"><a href="products">&leftarrow;</a><span class="text-muted">Back to shop</span></div> -->
@@ -181,39 +135,115 @@
                 product_id: "1",
                 category: "Meal",
                 price: 100,
-                product_name_fr: "Poulet"
+                product_name_fr: "Poulet",
+                qty: 2,
             },
             {
                 product_id: "2",
                 category: "Meal",
                 price: 200,
-                product_name_fr: "Briyani"
+                product_name_fr: "Briyani",
+                qty: 2,
             },
             {
                 product_id: "3",
                 category: "Snack",
                 price: 50,
-                product_name_fr: "Gateau Piment"
+                product_name_fr: "Gateau Piment",
+                qty: 2,
             },
             {
                 product_id: "4",
                 category: "Snack",
                 price: 30,
-                product_name_fr: "Boulettes"
+                product_name_fr: "Boulettes",
+                qty: 2,
             },
         ]
 
-        // let removeCartItemButtons = document.getElementsByClassName('close')
-        // for(let i =0; i< removeCartItemButtons.length; i++){
-        //     let button = removeCartItemButtons[i];
-        //     button.addEventListener('click', function(event){
-        //         let buttonClicker = event.target;
-        //         buttonClicker.parentElement.parentElement.parentElement.parentElement.remove();
-        //         updateTotal();
-        //     })
-        // }
+        // <div class="row border-top border-bottom innerContainer">
+        //     <div class="row main align-items-center">
+        //         <div class="col-2">
+        //            <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg">
+        //         </div>
+        //         <div class="col">
+        //             <div class="row text-muted test_name"></div>
+        //             <div class="row test_product"> </div>
+        //         </div>
+        //         <div class="col "> 
+        //             <input type="number" value="1" class="quantity" onchange="updateTotal()">
+        //         </div>
+        //         <div class="col cart-price">
+        //             <span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>
+        //         </div>
+                
+        //     </div>
+        // </div>
+
+        function display_products(){
+            let cartItemContainer = document.getElementsByClassName('outerContainer')[0];
+
+            products = JSON.parse(sessionStorage.getItem("cart"));
+
+            for (item of products){
+                item = JSON.parse(item);
+                
+                let innerContainer = document.createElement('div');
+                innerContainer.className = "row border-top border-bottom innerContainer";
+
+                let row = document.createElement('div');
+                row.className = "row main align-items-center";
+
+                let img_div = document.createElement('div');
+                img_div.className = "col-2"
+                let img = document.createElement('img');
+                //img.src = item.picture;
+                img.src="https://i.imgur.com/1GrakTl.jpg";
+                img_div.append(img);
+
+                let product_div = document.createElement('div');
+                product_div.className = "col";
+                let product_name = document.createElement('div');
+                product_name.className = "row";
+                product_name.innerText = item.product_name_fr;
+                let product_cat = document.createElement('div');
+                product_cat.className = "row text-muted";
+                product_cat.innerText = item.category;
+                product_div.appendChild(product_name);
+                product_div.appendChild(product_cat);
+                
+                let qty_div = document.createElement('div');
+                qty_div.className = "col";
+                qty_div.innerHTML = `<input type="number" value=${1} class="quantity" onchange="updateTotal()">`;
+                
+                let price_div = document.createElement('div');
+                price_div.className = "col cart-price";
+                price_div.innerHTML = `Rs${parseInt(item.price)}&nbsp;&nbsp;&nbsp;<span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>`
+
+                row.append(img_div);
+                row.appendChild(product_div);
+                row.appendChild(qty_div);
+                row.appendChild(price_div);
+
+                innerContainer.append(row);
+                cartItemContainer.append(innerContainer);
+            }
+
+            let removeCartItemButtons = document.getElementsByClassName('close')
+            for(let i =0; i< removeCartItemButtons.length; i++){
+            let button = removeCartItemButtons[i];
+            button.addEventListener('click', function(event){
+                let buttonClicker = event.target;
+                buttonClicker.parentElement.parentElement.parentElement.parentElement.remove();
+                updateTotal();
+            })
+        }
+        }
+
         
 
+       
+        
         function updateTotal(){
             let total = 0;
             let cartItemContainer = document.getElementsByClassName('outerContainer')[0]
@@ -228,32 +258,10 @@
                 
             }
             document.getElementsByClassName('cart-total')[0].innerHTML = 'Rs ' + total
-
-
-  
         }
-        updateTotal()
 
-            function replaceDetails(){
-                for(let i =0; i < cartMenu.length; i++){
-                let test_name = document.getElementsByClassName('test_name')[i];
-                let test_product = document.getElementsByClassName('test_product')[i];
-                let test_price = document.getElementsByClassName('cart-price')[i];
-                console.log(test_price)
-                
-                test_name.innerHTML += `${cartMenu[i].product_name_fr}`
-                test_product.innerHTML +=  `${cartMenu[i].category}`
-                //test_price.innerHTML += `${parseInt(cartMenu[i].price)}`
-                test_price.innerHTML = `Rs${parseInt(cartMenu[i].price)}  <span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>`
-                }
-            }
-            replaceDetails();
-                
-       
-        
-        
-        
-  
+        display_products();
+        updateTotal();
     </script>
 
 
