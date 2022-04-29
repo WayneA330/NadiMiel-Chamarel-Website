@@ -26,7 +26,7 @@
 
 .title {
     text-align: center;
-    margin: 25px;
+    margin: 20px;
 }
 
 /* Navbar and Banner */
@@ -272,6 +272,40 @@ a:hover {
     background-position-y: center
 }
 
-input[type='number']{
+/* input[type='number']{
     width: 50px;
-} 
+}  */
+
+/* Customer Table */
+.customer_form {
+    border: 2px solid rgb(168, 113, 19);
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.btn-customer {
+    text-align: center;
+}
+
+.btn-customer > button {
+    width: 100px;
+    border: 2px solid #ffc00a;
+    border-radius: 15px;
+    color: white;
+    background-color: #ffc00a;
+    font-size: large;
+    margin: 20px;
+}
+
+.btn-customer > button:hover {
+    background-color: #f5c000;
+    border: 2px solid #f5c000;
+}
+
+.form_spacing {
+    margin: 10px;
+}
+
+.input_name_desc > input {
+    margin-bottom: 10px;
+}

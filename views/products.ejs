@@ -64,24 +64,47 @@
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3">
           <div class="nav flex-column">
-            <div class="p-2"><div class="form-check">
+            <h3 class="title orange">Category</h3>
+            <div class="p-2">
+              <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                  Meal
+                  Honey / Miel
                 </label>
-              </div></div>
-              <div class="p-2"><div class="form-check">
+              </div>
+            </div>
+            <div class="p-2">
+              <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                  Snacks / Amuse-Bouche
+              </label>
+              </div>
+            </div>
+            <div class="p-2">
+              <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Snack
+                  Achard
                 </label>
-                </div></div>
-                <div class="p-2"><div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Honey
-                    </label>
-                  </div></div>
+              </div>
+            </div>
+            <div class="p-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Charcuterie
+                </label>
+              </div>
+            </div>
+            <div class="p-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Piment / Chili
+                </label>
+              </div>
+            </div>
          
             
         </div>
@@ -106,11 +129,11 @@
                 <%  if (productMenu.length != 0) { %>
                     <% productMenu.forEach((product,index) => { %>
                 <div class="card m-2" style="width: 18rem;">
-                    <img src="small.jpeg" class="card-img-top" >
+                    <img src="<%=product.picture%>" class="card-img-top" >
                     <div class="card-body">
-                      <h5 class="card-title"><%=product.product_name_eng%></h5>
+                      <h5 class="card-title"><%=product.product_name_fr%></h5>
                       <p class="card-text">Rs<%=product.price%></p>
-                      <a href="product_description/<%=index+1%>" class="btn btn-primary">Shop Now</a>
+                      <a href="product_description/<%=product.product_id%>" class="btn btn-primary">Shop Now</a>
                     </div>
                   </div>
                   <% }) %>
@@ -133,24 +156,15 @@
         <!-- Section: Social media -->
         <section class="mb-4">
             <!-- Facebook -->
-            <a
-            class="btn btn-primary btn-floating m-1"
-            style="background-color: #3b5998;"
-            href="https://www.facebook.com/NadiMiel/"
-            role="button"
-            target="_blank"
-            ><i class="fab fa-facebook-square"></i></a>
+            <a href="https://www.facebook.com/NadiMiel/" target="_blank" style="text-decoration: none; margin: 15px;">
+              <i class="fab fa-facebook-square fa-2x dark_brown"></i>
+            </a>
     
-         
-    
+        
             <!-- Instagram -->
-            <a
-            class="btn btn-primary btn-floating m-1"
-            style="background-color: #ac2bac;"
-            href="https://www.instagram.com/nadimiel_chamarel/?hl=en"
-            role="button"
-            target="_blank"
-            ><i class="fab fa-instagram-square"></i> </a>
+            <a href="https://www.instagram.com/nadimiel_chamarel/?hl=en" target="_blank" style="text-decoration: none; margin: 15px;">
+              <i class="fab fa-instagram-square fa-2x dark_brown"></i>
+            </a>
     
         </section>
         <!-- Section: Social media -->
@@ -159,8 +173,10 @@
   
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: #fbaa19">
-      © 2022 Copyright:
-      <a class="text-white" href="https://developers.institute/mu/">Developers Institute</a>
+      <span class="dark_brown">
+        © 2022 Designed with <span style="color: red">❤</span> by
+        <a class="dark_brown" href="https://developers.institute/mu/" style="text-decoration: none;">Developers Institute</a>
+      </span>
     </div>
     <!-- Copyright -->
   </footer>
