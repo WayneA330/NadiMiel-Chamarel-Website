@@ -116,25 +116,21 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2 orange">Products</h1>
-          <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-            </div>
-           
-          </div>
         </div>
-  
-   
+
         <div class="table-responsive">
-            <div class=" p-2 d-flex justify-content-start flex-wrap">
+            <div class=" p-2 d-flex justify-content-center flex-wrap">
                 <%  if (productMenu.length != 0) { %>
                     <% productMenu.forEach((product,index) => { %>
-                <div class="card m-2" style="width: 18rem;">
-                    <img src="<%=product.picture%>" class="card-img-top" >
-                    <div class="card-body">
-                      <h5 class="card-title"><%=product.product_name_fr%></h5>
-                      <p class="card-text">Rs<%=product.price%></p>
-                      <a href="product_description/<%=product.product_id%>" class="btn btn-primary">Shop Now</a>
-                    </div>
+                  <div class="card m-2" style="width: 18rem;">
+                      <div class="img_product">
+                        <img src="<%=product.picture%>" class="card-img-top" >
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title"><%=product.product_name_fr%></h5>
+                        <p class="card-text">Rs<%=product.price%></p>
+                        <a href="product_description/<%=product.product_id%>" class="btn btn-primary">Shop Now</a>
+                      </div>
                   </div>
                   <% }) %>
                   <% } %>

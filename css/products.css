@@ -124,3 +124,12 @@
     background-color: rgb(255, 213, 24);
     color: rgb(125, 78, 36);
 }
+
+.img_product {
+    height: 280px;
+    display: flex;
+}
+
+@media screen and (max-width: 630px) {
+    
+}
