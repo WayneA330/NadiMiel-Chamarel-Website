@@ -10,11 +10,14 @@ const db = require('knex')({
     client: 'pg',
     connection: {
         host: '127.0.0.1',
-        user: 'waynecelestin',
-        password: 'root',
+        user: 'postgres',
+        password: 'Living@123',
         database: 'Nadimiel-Database',
-        port: 5432
-    }
+        port: 5432,
+        ssl: { rejectUnauthorized: false }
+    
+    },
+    
 });
 
 app.set('db', db);
@@ -149,4 +152,6 @@ app.post('/add-customer', function(req, res) {
         });
 })
 
-app.listen(5001);
+app.listen(process.env.PORT || 3001, () => {
+    console.log(`app is running on port ${process.env.PORT}`);
+  })
