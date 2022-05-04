@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="/products.css">
+    <link rel="stylesheet" href="/css/products.css">
     <title>Nadi'Miel Chamarel</title>
 </head>
 <body class="body">
@@ -21,10 +21,6 @@
     <div class="my_navbar">
         <nav class="navbar navbar-expand-md navbar-dark bg-warning text-dark" aria-label="Fourth navbar example">
             <div class="container-fluid container-fluid-flex">
-                <!-- <div>
-                    <a class="navbar-brand" href="#">Logo</a>
-                </div> -->
-
                 <div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -57,7 +53,7 @@
     <!-- Description -->
 
     <div class="container_product d-flex justify-content-center" >
-        <div><img id="productImage" alt="Product image"src="<%=productMenu[0].picture%>"></div>
+        <div><img id="productImage" alt="Product image"src="images/<%=productMenu[0].picture%>"></div>
         <div class="container_description">
             <h3><%=productMenu[0].product_name_fr%></h3>
             <p><%=productMenu[0].product_description_fr%></p>

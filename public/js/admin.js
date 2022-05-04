@@ -130,10 +130,10 @@ function capitalise_name(name){
     return name.replace(name.charAt(0), name.charAt(0).toUpperCase());
 }
 
-// function display_product_details() {
-//     let new_id_update = id_update.value;
-//     let id_arr = new_id_update.split("-");
-//     console.log(Number(id_arr[0]));
+function display_product_details_update() {
+    let new_id_update = id_update.value;
+    let id_arr = new_id_update.split("-");
+    console.log(Number(id_arr[0]));
 
-//     name_fr_add.value = 
-// }
+    fetch('http://localhost:5001/admin')
+}

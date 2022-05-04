@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const localStorage = require('localStorage');
-
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 5000;
 
 //Database
 const db = require('knex')({
@@ -23,9 +23,10 @@ app.set('db', db);
 app.set('view engine', 'ejs');
 
 // load css and assets folder
-app.use(express.static('./images'));
-app.use(express.static('./css'));
-app.use(express.static('./js'));
+// app.use(express.static('./images'));
+// app.use(express.static('./css'));
+// app.use(express.static('./js'));
+app.use(express.static('public'));
 
 
 app.get('/', function(req, res){
@@ -155,4 +156,4 @@ app.post('/add-customer', function(req, res) {
         });
 })
 
-app.listen(5001);
+app.listen(PORT);
