@@ -21,3 +21,13 @@
 # 6. Errors
 1. If you are having errors when trying to run the website, go to the server.js file and scroll completely to the bottom.
 2. Change the port to 3000, 5000, 5001, or 5002. Then go to your terminal, press control + c press Enter, then press npm start.
+
+
+# Database online
+1. Create database in app using `heroku addons:create heroku-postgresql:hobby-dev`
+2. Get Database credentials: 
+Open database on Heroku account and navigate as follows:
+User > Data > Select Database > Database Credentials > View Credentials
+3. Open pgAdmin and create a new server with the database credentials
+4. The name > host
+5. 

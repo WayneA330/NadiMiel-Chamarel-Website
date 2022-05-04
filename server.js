@@ -3,17 +3,20 @@ const app = express();
 const localStorage = require('localStorage');
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 //Database
 const db = require('knex')({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'waynecelestin',
-        password: 'root',
-        database: 'Nadimiel-Database',
-        port: 5432
+        host: 'ec2-35-168-194-15.compute-1.amazonaws.com' || '127.0.0.1',
+        user: 'hijbttiixkirth' || 'waynecelestin',
+        password: 'b22c057232f47934c0f946d9a516509f72559bc9f03504846448807b35613052' || 'root',
+        database: 'daj4bgaqkmbhan' || 'Nadimiel-Database',
+        port: 5432,
+        ssl: { 
+            rejectUnauthorized: false 
+        }
     }
 });
 
