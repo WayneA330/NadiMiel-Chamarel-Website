@@ -39,13 +39,17 @@ app.get('/orders', function(req, res){
 })
 
 app.get('/product_description/:product_id', function(req, res){
-    console.log(req.params.product_id);
+    console.log(typeof parseInt(req.params.product_id));
     db
     .select().from('product')
-    .where({product_id: req.params.product_id})
+    .where({'product_id': parseInt(req.params.product_id)})
     .then(function(data){
         console.log(data);
         res.render('product_description', {title: 'Product description', 'productMenu': data});
+    })
+    .catch(function(data){
+        console.log('An error occured');
+        // console.log(data);
     })
 })
 
@@ -79,9 +83,11 @@ app.get('/recipe_details/:recipe_id', function(req, res){
 app.get('/admin', function(req, res){
     db
     .select().from('customer')
-    .then(function(data) {
-        // console.log(data);
-        res.render('admin', {title: 'Admin', customerLists: data});
+    .then(function(customers) {
+        db.select().from('product')
+        .then(function(products) {
+            res.render('admin', {title: 'Admin', customerLists: customers, productLists: products});
+        })
     })
 })
 

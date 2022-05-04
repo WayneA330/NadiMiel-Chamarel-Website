@@ -109,7 +109,7 @@
                     </div>
                     <div class="form-group form_spacing">
                         <label for="email_customer">Email:</label>
-                        <input type="text" class="form-control" name="email_customer" id="email_customer" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" placeholder="Email" required>
+                        <input type="text" class="form-control" name="email_customer" id="email_customer" placeholder="Email" required>
                     </div>
                     <div class="form-group form_spacing">
                         <label for="phone_customer">Phone:</label>
@@ -126,7 +126,6 @@
             </div>
         </div>
     </div>
-
 
     
  
@@ -222,7 +221,7 @@
                 price_div.className = "col cart-price";
                 price_div.innerHTML = `Rs${parseInt(item.price)}&nbsp;&nbsp;&nbsp;<span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>`
 
-                row.append(img_div);
+                // row.append(img_div);
                 row.appendChild(product_div);
                 row.appendChild(qty_div);
                 row.appendChild(price_div);
@@ -239,7 +238,7 @@
                 buttonClicker.parentElement.parentElement.parentElement.parentElement.remove();
                 update_cart();
             })
-        }
+            }
         }
 
         function updateTotal(){
@@ -250,10 +249,9 @@
                 let cartRow = cartRows[i]
                 let priceElement = cartRow.getElementsByClassName('cart-price')[0];
                 let quantityElement = cartRow.getElementsByClassName('quantity')[0];
-                let price = parseFloat(priceElement.innerText.replace('Rs', '')) ;
+                let price = parseFloat(priceElement.innerText.replace('Rs', ''));
                 let quantity = parseFloat(quantityElement.value);
                 total = total + (price * quantity);
-                
             }
             document.getElementsByClassName('cart-total')[0].innerHTML = 'Rs ' + total.toLocaleString();
         }
