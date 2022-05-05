@@ -33,13 +33,12 @@ app.use(express.static('public'));
 
 
 app.get('/', function(req, res){
-    res.render('index', {title: 'Home'}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/Home')
+    res.render('index', {title: 'Home'});
 })
 
 
 app.get('/orders', function(req, res){
-    res.render('checkout', {title: 'Add to Cart'}); //Name of the file is products
+    res.render('checkout', {title: 'Add to Cart'});
 })
 
 app.get('/product_description/:product_id', function(req, res){
