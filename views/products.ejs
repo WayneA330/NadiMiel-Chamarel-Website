@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="products.css">
+    <link rel="stylesheet" href="css/products.css">
     <title>Nadi'Miel Chamarel</title>
 </head>
 <body class="body">
@@ -21,10 +21,6 @@
     <div class="my_navbar">
         <nav class="navbar navbar-expand-md navbar-dark bg-warning text-dark" aria-label="Fourth navbar example">
             <div class="container-fluid container-fluid-flex">
-                <!-- <div>
-                    <a class="navbar-brand" href="#">Logo</a>
-                </div> -->
-
                 <div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -105,11 +101,7 @@
                 </label>
               </div>
             </div>
-         
-            
-        </div>
-  
-         
+          </div>
         </div>
       </nav>
   
@@ -124,7 +116,7 @@
                     <% productMenu.forEach((product,index) => { %>
                   <div class="card m-2" style="width: 18rem;">
                       <div class="img_product">
-                        <img src="<%=product.picture%>" class="card-img-top" >
+                        <img src="images/<%=product.picture%>" class="card-img-top" >
                       </div>
                       <div class="card-body">
                         <h5 class="card-title"><%=product.product_name_fr%></h5>
@@ -139,12 +131,6 @@
       </main>
     </div>
   </div>
-
-
-  
-   
-  
-
 
   <footer class=" text-center text-white" style="background-color: #fcbf56;">
     <!-- Grid container -->

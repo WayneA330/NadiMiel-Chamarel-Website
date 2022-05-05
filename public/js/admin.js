@@ -36,7 +36,7 @@ let unit_update = document.getElementById('unit_update');
 // Price
 let price_update = document.getElementById('price_update');
 // Picture
-let pic_update = document.getElementById('item_picture_update'); // not sure for this
+let pic_update = document.getElementById('item_picture_update');
 // Category
 let category_update = document.getElementById('category_update');
 
@@ -81,11 +81,17 @@ let update_product = () => {
            console.log(xhr.responseText);
         }};
 
-    var data = `product_id=${id_update.value}&product_name_fr=${name_fr_update.value}&product_name_eng=${name_eng_update.value}&product_description_fr=${desc_fr_update.value}&product_description_eng=${desc_eng_update.value}&unit_in_stock=${quantity_update.value}&unit=${unit_update.value}&price=${price_update.value}&category=${category_update.value}&picture=${pic_update.value}`;
+    let new_id_update = id_update.value;
+    let id_arr = new_id_update.split("-");
+    console.log(Number(id_arr[0]));
+
+    var data = `product_id=${Number(id_arr[0])}&product_name_fr=${name_fr_update.value}&product_name_eng=${name_eng_update.value}&product_description_fr=${desc_fr_update.value}&product_description_eng=${desc_eng_update.value}&unit_in_stock=${quantity_update.value}&unit=${unit_update.value}&price=${price_update.value}&category=${category_update.value}&picture=${pic_update.value}`;
     data = data.replace(/\n/g, '');
 
     xhr.send(data);
 }
+
+
 
 // Remove Product Button
 let remove_product = () => {
@@ -122,4 +128,12 @@ let add_customer = () => {
 
 function capitalise_name(name){
     return name.replace(name.charAt(0), name.charAt(0).toUpperCase());
+}
+
+function display_product_details_update() {
+    let new_id_update = id_update.value;
+    let id_arr = new_id_update.split("-");
+    console.log(Number(id_arr[0]));
+
+    fetch('http://localhost:5001/admin')
 }

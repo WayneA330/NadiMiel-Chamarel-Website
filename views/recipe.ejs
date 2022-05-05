@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="recipe.css">
+    <link rel="stylesheet" href="css/recipe.css">
     <title>Nadi'Miel Chamarel</title>
 </head>
 <body class="body">
@@ -56,56 +56,33 @@
 
     <!-- Products -->
 
-<div class="container-fluid">
-    <!-- Recipes -->
-
-    <div class="row">
-      
-    
-        <main >
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Recipe</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group me-2">
-              </div>
-             
+    <div class="container-fluid">
+        <!-- Recipes -->
+        <div class="row">
+            <main >
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2 title orange">Recipe</h1>
             </div>
-          </div>
-    
-     
-          <div class="table-responsive d-flex flex-wrap justify-content-center " >
-            <%  if (recipeMenu.length != 0) { %>
-                <% recipeMenu.forEach((recipes,index) => { %>
-            <div class="card m-2 border_recipe" style="width: 20rem;">
-                <img class="card-img-top" src="Cassoulet 4.jpg" alt="Card image cap">
-                <div class="card-body text-center">
-                  <h5 class="card-title"><%=recipes.recipe_name_fr%></h5>
-                  <em><h5 class="card-title"><%=recipes.recipe_name_eng%></h5></em>
-                  <p class="card-text"><%=recipes.recipe_description_fr%></p>
-                  <em><p class="card-text"><%=recipes.recipe_description_eng%></p></em>
-                  <p class="card-text"><%=recipes.recipe_article_fr%></p>
-                  <em><p class="card-text"><%=recipes.recipe_article_eng%></p></em>
+            <div class="table-responsive d-flex flex-wrap justify-content-center " >
+                <%  if (recipeMenu.length != 0) { %>
+                    <% recipeMenu.forEach((recipes,index) => { %>
+                <div class="card m-2 border_recipe" style="width: 20rem;">
+                    <img class="card-img-top" src="images/Cassoulet 4.jpg" alt="Card image cap">
+                    <div class="card-body text-center">
+                    <h5 class="card-title"><%=recipes.recipe_name_fr%></h5>
+                    <em><h5 class="card-title"><%=recipes.recipe_name_eng%></h5></em>
+                    <p class="card-text"><%=recipes.recipe_description_fr%></p>
+                    <em><p class="card-text"><%=recipes.recipe_description_eng%></p></em>
+                    <p class="card-text"><%=recipes.recipe_article_fr%></p>
+                    <em><p class="card-text"><%=recipes.recipe_article_eng%></p></em>
+                    </div>
                 </div>
+                    <% }) %>
+                <% } %>
             </div>
-                <% }) %>
-            <% } %>
-          </div>
-        </main>
-      </div>
-   
-
-
-
-
-
-  
-  </div>
-
-
-  
-   
-  
-
+            </main>
+        </div>
+    </div>
 
     <footer class=" text-center text-white" style="background-color: #fcbf56;">
         <!-- Grid container -->

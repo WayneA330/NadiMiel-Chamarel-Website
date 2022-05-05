@@ -124,24 +124,31 @@
 /* Featured products */
 .minicontainer {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 50px;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .myborder{
-    border: 4px solid rgb(168, 113, 19) ;
-    border-radius: 15px ;
+    border: 1px solid rgb(168, 113, 19) ;
+    /* border-radius: 5px ; */
     margin: 15px;
+}
+
+.grow {
+    transition: all .3s ease-out;
+}
+.grow:hover {
+    transform: scale(1.05); 
+    box-shadow: 5px 10px grey;
 }
 
 
 /* Reviews */
 
-.carousel-inner img {
-    width: 100%;
-    height: 100%;
-  }
+.carousel-inner iframe {
+    width: 70%;
+    height: 250px;
+}
 
 /* Contact Us */
 .contact{

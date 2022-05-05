@@ -1,19 +1,22 @@
 const express = require('express');
 const app = express();
 const localStorage = require('localStorage');
-
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 5001;
 
 //Database
 const db = require('knex')({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'waynecelestin',
-        password: 'root',
-        database: 'Nadimiel-Database',
-        port: 5432
+        host: 'ec2-35-168-194-15.compute-1.amazonaws.com' || '127.0.0.1',
+        user: 'hijbttiixkirth' || 'waynecelestin',
+        password: 'b22c057232f47934c0f946d9a516509f72559bc9f03504846448807b35613052' || 'root',
+        database: 'daj4bgaqkmbhan' || 'Nadimiel-Database',
+        port: 5432,
+        ssl: { 
+            rejectUnauthorized: false 
+        }
     }
 });
 
@@ -23,29 +26,33 @@ app.set('db', db);
 app.set('view engine', 'ejs');
 
 // load css and assets folder
-app.use(express.static('./images'));
-app.use(express.static('./css'));
-app.use(express.static('./js'));
+// app.use(express.static('./images'));
+// app.use(express.static('./css'));
+// app.use(express.static('./js'));
+app.use(express.static('public'));
 
 
 app.get('/', function(req, res){
-    res.render('index', {title: 'Home'}); //Name of the file is products
-    console.log('Listening to the server on http://localhost:5000/Home')
+    res.render('index', {title: 'Home'});
 })
 
 
 app.get('/orders', function(req, res){
-    res.render('checkout', {title: 'Add to Cart'}); //Name of the file is products
+    res.render('checkout', {title: 'Add to Cart'});
 })
 
 app.get('/product_description/:product_id', function(req, res){
-    console.log(req.params.product_id);
+    console.log(typeof parseInt(req.params.product_id));
     db
     .select().from('product')
-    .where({product_id: req.params.product_id})
+    .where({'product_id': parseInt(req.params.product_id)})
     .then(function(data){
         console.log(data);
         res.render('product_description', {title: 'Product description', 'productMenu': data});
+    })
+    .catch(function(data){
+        console.log('An error occured');
+        // console.log(data);
     })
 })
 
@@ -79,9 +86,11 @@ app.get('/recipe_details/:recipe_id', function(req, res){
 app.get('/admin', function(req, res){
     db
     .select().from('customer')
-    .then(function(data) {
-        // console.log(data);
-        res.render('admin', {title: 'Admin', customerLists: data});
+    .then(function(customers) {
+        db.select().from('product')
+        .then(function(products) {
+            res.render('admin', {title: 'Admin', customerLists: customers, productLists: products});
+        })
     })
 })
 
@@ -149,4 +158,4 @@ app.post('/add-customer', function(req, res) {
         });
 })
 
-app.listen(5001);
+app.listen(PORT);
