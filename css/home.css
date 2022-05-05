@@ -5,7 +5,8 @@
 }
 
 .body {
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
 } 
 
 .orange {
@@ -101,17 +102,28 @@
 }
 
 /* Our story */
+
+#more {display: none;} 
+
 .image {
     width: 450px;
-    border-radius: 15px;
-    border: 4px solid rgb(168, 113, 19);
+    border-radius: 1px;
+    border: 2px solid rgb(168, 113, 19);
 }
 
 .ourstory_text {
     text-align: justify;
     display: flex;
     justify-content: center;
-    align-items: center;
+   align-items: center;
+}
+
+.ourstory_text h5{
+    font-family: humanist, Arial, sans-serif; 
+    font-size: 16px;
+    text-align: center;
+    color:   #6f4e37;
+   
 }
 
 .ourstory_container {
@@ -150,6 +162,8 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+
 
 
 /* Media Queries */
