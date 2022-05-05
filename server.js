@@ -158,4 +158,6 @@ app.post('/add-customer', function(req, res) {
         });
 })
 
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`app is running on port ${process.env.PORT}`);
+  })
