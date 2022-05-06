@@ -66,10 +66,18 @@ app.get('/products', function(req, res){
 
 app.get('/recipe', function(req, res){
     db
-    .select().from('recipe').then(function(data){
-        res.render('recipe', {'title': 'Recipes', 'recipeMenu': data});
+    .select().from('recipe')
+    .then(function(recipe){
+        db.select('recipe_description_fr').from('recipe')
+        .then(function(ingredients) {
+            let ingredients_arr = ingredients[0].recipe_description_fr.split(',');
+            // console.log(ingredients_arr);
+            res.render('recipe', {'title': 'Recipes', 'recipeMenu': recipe, 'Ingredients': ingredients_arr});
+        })
     })
 })
+
+
 
 
 
