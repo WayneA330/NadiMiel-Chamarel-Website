@@ -9,6 +9,7 @@
     font-size: 14px;
 } 
 
+
 .orange {
     color: rgb(245, 156, 0);
 }
@@ -28,9 +29,17 @@
 .title {
     text-align: center;
     margin: 25px;
+    
+}
+.title_top {
+    text-align: center;
+    margin: 25px;
+    font-family: 'Newsreader', serif;
+    font-size: 50px;
 }
 
 /* Navbar and Banner */
+
 .container-fluid-flex{
     display: flex;
     justify-content: space-between;
@@ -101,7 +110,57 @@
     border-color: rgba(255,255,255,1);
 }
 
+#text-container{
+    position: relative;
+}
+
+#text-block{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgb(239, 39, 133);
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Tapestry', cursive;
+    
+}
+#text-block h4{
+    font-size: 65px; 
+    color: rgb(125, 78, 36);   
+    }
+
+#text-block-5{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Tapestry', cursive;
+    
+}
+#text-block-5 h4{
+    font-size: 65px; 
+    color: rgb(252, 240, 6);   
+    }
+
+
+
+
+#text-block p{
+    font-size: 50px; 
+    color: rgb(231, 43, 74);   
+    font-family: 'Water Brush', cursive;
+    }
+
 /* Our story */
+
+.title_story{
+    font-family: 'Pinyon Script', cursive; 
+    margin-bottom: 0px;
+    font-size: 90px;
+    text-align: center;
+}
 
 #more {display: none;} 
 
@@ -116,11 +175,12 @@
     display: flex;
     justify-content: center;
    align-items: center;
+   
 }
 
 .ourstory_text h5{
     font-family: humanist, Arial, sans-serif; 
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
     color:   #6f4e37;
    

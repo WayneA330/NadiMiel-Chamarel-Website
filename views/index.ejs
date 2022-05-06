@@ -12,6 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz@6..72&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Water+Brush&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="css/home.css">
     <title>Nadi'Miel Chamarel</title> 
@@ -57,33 +61,43 @@
     <div class="my_banner">
         <div class="banner_intro">
             <img id="homepagelogo" src="images/Logo Nadi'Miel New.jpg" alt="Logo of Nadi'Miel">
-            <h1 class="orange title">Taste our fresh local home-made products</h1>
+            <h1 class="orange title_top">Goûtez nos produits frais locaux faits maison</h1>
         </div>
         <hr style="height: 2px; color: #fbaa19;">
 
         <div class="banner_itself">
             <div id="carouselExampleControls" class="carousel slide slide_my" data-bs-ride="carousel">
                 <div class="carousel-inner pic_size">
-                  <div class="carousel-item active ">
+                  <div class="carousel-item active" id="text-container" >
+                    
                     <img src="images/bees.jpg" class="d-block w-100 img-fluid" alt="...">
+                    <div id="text-block">
+                      <h4><span style="color:#f46d12;">Bienvenue à</span>  Nadimiel Charamel</h4>
+                      <p>Une bouteille de miel qui peut dire mille mots.</p>
+                    </div>
+                   
                   </div>
                   <div class="carousel-item">
                     <img src="images/Chamarel.jpeg" class="d-block w-100 img-fluid" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/Civet de Cochon Marron.jpg" class="d-block w-100 img-fluid" alt="...">
+                    <img src="images/Miels_edit.jpg" class="d-block w-100 img-fluid" alt="...">
                   </div>
                   <div class="carousel-item">
-                    <img src="images/fromage de tete.jpg" class="d-block w-100 img-fluid" alt="...">
+                    <img src="images/snack.jpg" class="d-block w-100 img-fluid" alt="...">
+                  </div>
+                  <div class="carousel-item" id="text-container">
+                    <img src="images/meat.jpg" class="d-block w-100 img-fluid" alt="...">
+                    <div id="text-block-5">
+                      <h4><span style="color:white;">Savoureux</span>Fait maison</h4>
+                      
+                    </div>
                   </div>
                   <div class="carousel-item">
-                    <img src="images/Pâté de Porc.jpg" class="d-block w-100 img-fluid" alt="...">
+                    <img src="images/snack.jpg" class="d-block w-100 img-fluid" alt="...">
                   </div>
                   <div class="carousel-item">
                     <img src="images/feuilletés Boucané Porc.jpg" class="d-block w-100 img-fluid" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="images/Gato Koko au café de Chamarel.jpg" class="d-block w-100 img-fluid" alt="...">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -100,7 +114,7 @@
 
     <!-- Our Story -->
 
-    <h1 class="orange title" style="font-family: 'Petit Formal Script', cursive; margin-bottom: 0px;">Découvrir</h1>
+    <h1 class="orange title_story" >Découvrir</h1>
     <h1 class="black title" style="letter-spacing: 4px; font-family: 'IBM Plex Serif', serif; font-size: 24px; font-weight: bolder; color: #f7b10e;">NOTRE HISTOIRE</h1>
     <div class="ourstory_container">
         <div class="ourstory_image"><img class="image" src="images/NadineAndPierre.jpg" alt="Picture of owners"></div>
@@ -123,7 +137,7 @@
     
     <!-- Featured Products -->
     <div class="orange title">
-      <h1>Featured Products</h1>
+      <h1 class="black title" style="letter-spacing: 4px; font-family: 'IBM Plex Serif', serif; font-size: 24px; font-weight: bolder; color: #f7b10e;">NOS PRODUITS</h1>
     </div>
     <div class="minicontainer">
         <div class="card myborder grow" style="height: 235px;  width: 13rem;">
@@ -180,7 +194,7 @@
     
     <!-- Contact us -->
     <div class="orange title" id="contact-us">
-        <h1>Contact Us</h1>
+      <h1 class="black title" style="letter-spacing: 4px; font-family: 'IBM Plex Serif', serif; font-size: 24px; font-weight: bolder; color: #f7b10e;">NOUS CONTACTER</h1>
     </div>
     <div class="contact" id="contact-us">
         <div class="container my-4 ">
@@ -196,29 +210,29 @@
                         <div class="card-body">
                             <form action="https://formsubmit.co/your@email.com" method="POST">
                                 <div class="form-group">
-                                    <label for="InputName">Full Name</label>
-                                    <input type="text" class="form-control" id="InputName" aria-describedby="name" name="Fullname" placeholder="Enter your Name" required>
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
+                                    <label for="InputName">Nom complet</label>
+                                    <input type="text" class="form-control" id="InputName" aria-describedby="name" name="Fullname" placeholder="Entrez votre Nom" required>
+                                    <small id="emailHelp" class="form-text text-muted">Nous ne partagerons jamais vos informations avec qui que ce soit d'autre.</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="InputEmail">E-Mail</label>
-                                    <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Enter your Email" required>
+                                    <input type="email" class="form-control" id="InputEmail" name="email" placeholder="Entrer votre Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="InputEnquiry">Enquiry</label>
+                                    <label for="InputEnquiry">Enquête</label>
                                     <select class="form-control" id="InputEnquiry" name="Enquiry">
-                                        <option>General Enquiry</option>
-                                        <option>Make an Order</option>
-                                        <option>Plan your Event</option>
-                                        <option>Homemade recipe supply</option>
-                                        <option>Food Delivery</option>
+                                        <option>Enquête Générale</option>
+                                        <option>Faire une commande</option>
+                                        <option>Planifiez votre Evénement</option>
+                                        <option>Fourniture de recette maison</option>
+                                        <option>Livraison de nourriture</option>
                                     </select>
                                 </div>
                                 <div class="form-group py-2">
-                                    <label for="InputMessage">Write us a Message</label>
+                                    <label for="InputMessage">Écrivez-nous un message</label>
                                     <textarea class="form-control" id="InputMessage" rows="3" name="message"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-warning" style="margin-left: auto; margin-right: auto;">Submit</button>
+                                <button type="submit" class="btn btn-warning" style="margin-left: auto; margin-right: auto;">Soumettre</button>
                             </form>
                         </div>
                     </div>
