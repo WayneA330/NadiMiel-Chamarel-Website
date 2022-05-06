@@ -28,14 +28,14 @@
 
 .title {
     text-align: center;
-    margin: 25px;
+    margin: 30px;
     
 }
 .title_top {
     text-align: center;
     margin: 25px;
     font-family: 'Newsreader', serif;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 /* Navbar and Banner */
@@ -158,7 +158,7 @@
 .title_story{
     font-family: 'Pinyon Script', cursive; 
     margin-bottom: 0px;
-    font-size: 90px;
+    font-size: 60px;
     text-align: center;
 }
 
@@ -174,8 +174,8 @@
     text-align: justify;
     display: flex;
     justify-content: center;
-   align-items: center;
-   
+    align-items: center;
+    font-size: 1.5em;
 }
 
 .ourstory_text h5{
