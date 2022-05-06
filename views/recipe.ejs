@@ -63,23 +63,26 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2 title orange">Recipe</h1>
             </div>
-            <div class="table-responsive d-flex flex-wrap justify-content-center " >
+            <div class="card mb-3" style="max-width: 100%;">
                 <%  if (recipeMenu.length != 0) { %>
-                    <% recipeMenu.forEach((recipes,index) => { %>
-                <div class="card m-2 border_recipe" style="width: 20rem;">
-                    <img class="card-img-top" src="images/Cassoulet 4.jpg" alt="Card image cap">
-                    <div class="card-body text-center">
-                    <h5 class="card-title"><%=recipes.recipe_name_fr%></h5>
-                    <em><h5 class="card-title"><%=recipes.recipe_name_eng%></h5></em>
-                    <p class="card-text"><%=recipes.recipe_description_fr%></p>
-                    <em><p class="card-text"><%=recipes.recipe_description_eng%></p></em>
-                    <p class="card-text"><%=recipes.recipe_article_fr%></p>
-                    <em><p class="card-text"><%=recipes.recipe_article_eng%></p></em>
-                    </div>
-                </div>
+                    <% recipeMenu.forEach((recipes, index) => { %>
+                        <div class="row no-gutters">
+                            <div class="col-md-4 img_flex">
+                              <img src="images/Cassoulet 4.jpg" class="card-img image" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <h5 class="card-title"><%=recipes.recipe_name_fr%></h5>
+                                <p class="card-text"><%=recipes.recipe_description_fr%></p>
+                                  <p class="card-text"><%=recipes.recipe_article_fr%></p>
+                              </div>
+                            </div>
+                        </div>
                     <% }) %>
                 <% } %>
             </div>
+  
+
             </main>
         </div>
     </div>
@@ -118,5 +121,3 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
-
-    
