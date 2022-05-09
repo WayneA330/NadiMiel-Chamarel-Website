@@ -64,7 +64,7 @@
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3">
           <div class="nav flex-column">
-            <h3 class="title orange">Category</h3>
+            <h3 class="title orange">Catégorie</h3>
             <div class="p-2">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -111,7 +111,7 @@
   
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2 orange">Products</h1>
+          <h1 class="h2 orange">Produits</h1>
         </div>
 
         <div class="table-responsive">
@@ -123,20 +123,25 @@
                         <img src="images/<%=product.picture%>" class="card-img-top" >
                       </div>
                       <div class="card-body">
-                        <h5 class="card-title"><%=product.product_name_fr%></h5>
+                        <h5 class="card-title"><%=product.product_name_fr%> (<%= product.unit %>)</h5>
                         <p class="card-text">Rs<%=product.price%></p>
-                        <a href="product_description/<%=product.product_id%>" class="btn btn-primary">Shop Now</a>
+                        <% if (product.unit_in_stock === 0) { %>
+                          <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg> Out of stock</p>
+                        <% } else { %> 
+                          <p class="card-text"><b><%=product.unit_in_stock%></b> left in stock</p>
+                        <% } %> 
+                        <a href="product_description/<%=product.product_id%>" class="btn btn-primary shop_btn">Shop Now</a>
                       </div>
                   </div>
                   <% }) %>
-                  <% } %>
+                <% } %>
               </div>
         </div>
       </main>
     </div>
   </div>
 
-  <footer class=" text-center text-white" style="background-color: #fcbf56;">
+  <footer class=" text-center text-white" style="background-color: #fcbf56; bottom: 0; position: relative; width: 100%;">
     <!-- Grid container -->
     <div class="container p-4 pb-0">
         <!-- Section: Social media -->

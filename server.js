@@ -18,7 +18,7 @@ const db = require('knex')({
             rejectUnauthorized: false 
         }
     }
-});
+})
 
 app.set('db', db);
 
@@ -72,22 +72,13 @@ app.get('/recipe', function(req, res){
         .then(function(ingredients) {
             let ingredients_arr = ingredients[0].recipe_description_fr.split(',');
             // console.log(ingredients_arr);
-            res.render('recipe', {'title': 'Recipes', 'recipeMenu': recipe, 'Ingredients': ingredients_arr});
+            db.select('recipe_article_fr').from('recipe')
+            .then(function(preparation) {
+                let preparation_arr = preparation[0].recipe_article_fr.split(',');
+                // console.log(preparation_arr);e
+                res.render('recipe', {'title': 'Recipes', 'recipeMenu': recipe, 'Ingredients': ingredients_arr, 'Preparation': preparation_arr});
+            })
         })
-    })
-})
-
-
-
-
-
-app.get('/recipe_details/:recipe_id', function(req, res){
-    db
-    .select().from('recipe')
-    .where({'recipe_id': `${req.params.recipe_id}`})
-    .then(function(data){
-        res.render('recipe_details', {'title': 'Recipes', 'recipeMenu': data});
-        
     })
 })
 

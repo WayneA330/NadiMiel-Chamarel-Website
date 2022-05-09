@@ -124,6 +124,11 @@
     margin-right: 10px;
     background-color: rgb(255, 213, 24);
     color: rgb(125, 78, 36);
+    border: none;
+}
+
+.buttons:hover {
+    background-color: rgb(255, 205, 54);
 }
 
 .img_product {
@@ -131,6 +136,17 @@
     display: flex;
 }
 
-@media screen and (max-width: 630px) {
-    
+.shop_btn {
+    margin-left: 30%;
+}
+
+.justify-content-start {
+    justify-content: center!important;
+}
+
+.grow {
+    transition: all .3s ease-out;
+}
+.grow:hover {
+    transform: scale(1.03); 
 }

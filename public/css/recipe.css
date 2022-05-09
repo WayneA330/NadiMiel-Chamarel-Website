@@ -124,10 +124,10 @@ input[type=checkbox]:checked + label.strikethrough{
 }
 
 @media (max-width: 768px) {
-    /* .article {
+    .article {
         flex: 0 0 auto;
         width: 66.66666667%;
-    } */
+    }
 }
 
 
