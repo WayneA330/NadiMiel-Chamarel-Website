@@ -44,7 +44,7 @@
                         <a class="nav-link nav-color hover-underline-animation" href="products">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="#">Recettes</a>
+                        <a class="nav-link nav-color hover-underline-animation" href="#">Recette</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-color hover-underline-animation" href="orders">Commandes</a>
@@ -200,7 +200,13 @@
                         <form>
                             <div class="form-group form_spacing">
                                 <label for="name">Product ID:</label>
-                                <input type="number" class="form-control" name="product_id_update" id="product_id_remove" placeholder="ID" required>
+                                <select class="form-control" name="product_id_update" id="product_id_update" required>
+                                    <%  if (productLists.length != 0) { %>
+                                        <% productLists.forEach((product, index) => { %>
+                                            <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%></option>
+                                        <% }) %>
+                                    <% } %>
+                                </select>
                             </div>
                             <div class="btn_remove">
                                 <button onclick="remove_product()" class="form_spacing" id="remove_button" type="submit">Remove</button>

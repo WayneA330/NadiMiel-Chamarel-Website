@@ -83,7 +83,7 @@ let update_product = () => {
 
     let new_id_update = id_update.value;
     let id_arr = new_id_update.split("-");
-    console.log(Number(id_arr[0]));
+    // console.log(Number(id_arr[0]));
 
     var data = `product_id=${Number(id_arr[0])}&product_name_fr=${name_fr_update.value}&product_name_eng=${name_eng_update.value}&product_description_fr=${desc_fr_update.value}&product_description_eng=${desc_eng_update.value}&unit_in_stock=${quantity_update.value}&unit=${unit_update.value}&price=${price_update.value}&category=${category_update.value}&picture=${pic_update.value}`;
     data = data.replace(/\n/g, '');
@@ -104,7 +104,9 @@ let remove_product = () => {
            console.log(xhr.responseText);
         }};
 
-    var data = `product_id=${id_remove.value}`;
+    let new_id_remove = id_remove.value;
+    let id_arr = new_id_remove.split("-");
+    var data = `product_id=${Number(id_arr[0])}`;
 
     xhr.send(data);
 }

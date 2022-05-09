@@ -40,7 +40,7 @@
                         <a class="nav-link nav-color hover-underline-animation active_nav" href="#">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="recipe">Recettes</a>
+                        <a class="nav-link nav-color hover-underline-animation" href="recipe">Recette</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-color hover-underline-animation" href="orders">Commandes</a>
@@ -118,21 +118,26 @@
             <div class=" p-2 d-flex justify-content-start flex-wrap">
                 <%  if (productMenu.length != 0) { %>
                     <% productMenu.forEach((product,index) => { %>
-                  <div class="card m-2" style="width: 18rem;">
-                      <div class="img_product">
-                        <img src="images/<%=product.picture%>" class="card-img-top" >
-                      </div>
-                      <div class="card-body">
-                        <h5 class="card-title"><%=product.product_name_fr%> (<%= product.unit %>)</h5>
-                        <p class="card-text">Rs<%=product.price%></p>
-                        <% if (product.unit_in_stock === 0) { %>
-                          <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg> Out of stock</p>
-                        <% } else { %> 
-                          <p class="card-text"><b><%=product.unit_in_stock%></b> left in stock</p>
-                        <% } %> 
-                        <a href="product_description/<%=product.product_id%>" class="btn btn-primary shop_btn">Shop Now</a>
-                      </div>
-                  </div>
+                      <a href="product_description/<%=product.product_id%>" style="text-decoration: none; color:black">
+                        <div class="card m-2" style="width: 18rem;">
+                            <div class="img_product">
+                              <img src="images/<%=product.picture%>" class="card-img-top" >
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title"><%=product.product_name_fr%></h5>
+                              <h6>(<%= product.unit %>)</h6>
+                              <p class="card-text">Rs<%=product.price%></p>
+                              <% if (product.unit_in_stock === 0) { %>
+                                <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg> Out of stock</p>
+                              <% } else { %> 
+                                <p class="card-text"><b><%=product.unit_in_stock%></b> en stock</p>
+                              <% } %> 
+                              <div class="shop_btn">
+                                <a href="product_description/<%=product.product_id%>" class="btn btn-primary">Shop Now</a>
+                              </div>
+                            </div>
+                        </div>
+                      </a>
                   <% }) %>
                 <% } %>
               </div>
