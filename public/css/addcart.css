@@ -190,6 +190,10 @@ a {
     font-size: 0.7rem
 }
 
+.close:hover {
+    cursor: pointer;
+}
+
 img {
     width: 3.5rem
 }

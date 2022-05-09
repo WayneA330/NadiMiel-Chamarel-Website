@@ -65,7 +65,7 @@
         <div class="row">
             <main >
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2 title orange">Recipe</h1>
+                <h1 class="h2 title orange">Recettes</h1>
             </div>
             <div class="card mb-3" style="max-width: 100%;">
                 <%  if (recipeMenu.length != 0) { %>
@@ -74,7 +74,7 @@
                             <div class="col-md-4 img_flex">
                               <img src="images/Cassoulet 4.jpg" class="card-img image" alt="...">
                             </div>
-                            <div class="col"> 
+                            <div class="col-md-8"> 
                               <div class="card-body">
                                 <h2 class="card-title"><%=recipes.recipe_name_fr%></h2>
                                 <% if (Ingredients.length != 0) { %>
@@ -85,17 +85,25 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                             <label class="form-check-label strikethrough" for="flexCheckDefault">
-                                              <%=ingredient%>
+                                              <%=ingredient%> 
                                             </label>
                                         </div>
                                    <% }}) %>
                                 <% } %>
                               </div>
-                            </div>
-                            <div class="col article">
-                                <p class="card-text"><%=recipes.recipe_article_fr%></p>
+                              <div class="card-body">
+                                <% if (Preparation.length != 0) { %>
+                                    <% Preparation.forEach((preparation, index) => { %>
+                                        <p><%=preparation%></p>
+                                    <% }) %>
+                                <% } %>
+                              </div>
                             </div>
                         </div>
+                        <!-- <div class="row ">
+                            
+                        </div> -->
+                        
                     <% }) %>
                 <% } %>
             </div>
@@ -105,7 +113,7 @@
         </div>
     </div>
 
-    <footer class=" text-center text-white" style="background-color: #fcbf56;">
+    <footer class=" text-center text-white" style="background-color: #fcbf56; bottom: 0; position: relative; width: 100%;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->

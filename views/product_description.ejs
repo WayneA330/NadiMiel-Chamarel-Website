@@ -59,13 +59,18 @@
     <div class="container_product d-flex justify-content-center" >
         <div><img id="productImage" alt="Product image"src="images/<%=productMenu[0].picture%>"></div>
         <div class="container_description">
-            <h3><%=productMenu[0].product_name_fr%></h3>
+            <h3><%=productMenu[0].product_name_fr%> (<%= productMenu[0].unit %>)</h3>
             <p><%=productMenu[0].product_description_fr%></p>
+            <% if (productMenu[0].unit_in_stock === 0) { %>
+                <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg> Out of stock</p>
+              <% } else { %> 
+                <p class="card-text"><b><%=productMenu[0].unit_in_stock%></b> left in stock</p>
+            <% } %> 
             <h3>Rs <span><%=productMenu[0].price%></span></h3>
             <h3 style="display:none;"><%=productMenu[0].product_id%></h3>
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="20" value="1"> <br>
-            <button class="buttons mt-3 attToCart" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')">Add to cart</button>
+            <button class="buttons mt-3 attToCart grow" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')">Add to cart</button>
         </div>
     </div>
     
