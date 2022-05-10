@@ -34,7 +34,8 @@
 .title_top {
     text-align: center;
     margin: 25px;
-    font-family: 'Newsreader', serif;
+    font-family: 'Petit Formal Script', cursive;
+    font-weight:900;
     font-size: 40px;
 }
 
@@ -139,10 +140,26 @@
     font-family: 'Tapestry', cursive;
     
 }
+
+#text-block-6{
+    position: absolute;
+    top: 20px;
+    left: 20%;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Tapestry', cursive;
+    
+}
 #text-block-5 h4{
     font-size: 65px; 
     color: rgb(252, 240, 6);   
     }
+
+    #text-block-6 h4{
+        font-size: 65px; 
+        color: white;   
+        }
 
 
 
@@ -157,9 +174,10 @@
 
 .title_story{
     font-family: 'Pinyon Script', cursive; 
-    margin-bottom: 0px;
+    margin-top: 45px;
     font-size: 60px;
     text-align: center;
+    line-height: 0%;
 }
 
 #more {display: none;} 
@@ -179,8 +197,8 @@
 }
 
 .ourstory_text h5{
-    font-family: humanist, Arial, sans-serif; 
-    font-size: 18px;
+    font-family: 'Goudy Bookletter 1911', serif;
+    font-size: 20px;
     text-align: center;
     color:   #6f4e37;
    
