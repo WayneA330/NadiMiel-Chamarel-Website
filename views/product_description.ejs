@@ -55,7 +55,6 @@
     </div>
 
     <!-- Description -->
-
     <div class="container_product d-flex justify-content-center" >
         <div><img id="productImage" alt="Product image"src="images/<%=productMenu[0].picture%>"></div>
         <div class="container_description">
@@ -70,7 +69,30 @@
             <h3 style="display:none;"><%=productMenu[0].product_id%></h3>
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="20" value="1"> <br>
-            <button class="buttons mt-3 attToCart grow" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')">Add to cart</button>
+            <button class="buttons mt-3 attToCart grow" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add to cart</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <a type="button" class="close close_modal_x" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            <a/>
+            </div>
+            <div class="modal-body text-center">
+                <h3 class="orange">Votre article a été ajouté au panier!</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn close_modal" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
         </div>
     </div>
     
@@ -78,7 +100,7 @@
 
 
 
-    <footer class=" text-center text-white" style="background-color: #fcbf56;">
+    <footer class=" text-center text-white" style="background-color: #fcbf56; bottom: 0; position: absolute; width: 100%;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
             <!-- Section: Social media -->

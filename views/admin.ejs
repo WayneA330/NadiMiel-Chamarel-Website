@@ -44,7 +44,7 @@
                         <a class="nav-link nav-color hover-underline-animation" href="products">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="#">Recettes</a>
+                        <a class="nav-link nav-color hover-underline-animation" href="recipe">Recette</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-color hover-underline-animation" href="orders">Commandes</a>
@@ -70,9 +70,6 @@
           <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
                     <div class="add_product">
-                        <div>
-                            <h2 class=""></h2>
-                        </div>
                         <form name="add">
                             <div class="form-group form_spacing input_name_desc">
                                 <label for="name1">Name:</label>
@@ -199,8 +196,14 @@
                     <div class="remove_product">
                         <form>
                             <div class="form-group form_spacing">
-                                <label for="name">Product ID:</label>
-                                <input type="number" class="form-control" name="product_id_update" id="product_id_remove" placeholder="ID" required>
+                                <label for="name">Products</label>
+                                <select class="form-control" name="product_id_update" id="product_id_update" required>
+                                    <%  if (productLists.length != 0) { %>
+                                        <% productLists.forEach((product, index) => { %>
+                                            <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%></option>
+                                        <% }) %>
+                                    <% } %>
+                                </select>
                             </div>
                             <div class="btn_remove">
                                 <button onclick="remove_product()" class="form_spacing" id="remove_button" type="submit">Remove</button>
@@ -231,7 +234,7 @@
                             </div>
                             <div class="form-group form_spacing">
                                 <label for="email_customer">Email:</label>
-                                <input type="text" class="form-control" name="email_customer" id="email_customer" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" placeholder="Email" required>
+                                <input type="text" class="form-control" name="email_customer" id="email_customer" placeholder="Email" required>
                             </div>
                             <div class="form-group form_spacing">
                                 <label for="phone_customer">Phone:</label>

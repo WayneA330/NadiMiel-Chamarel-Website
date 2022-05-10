@@ -137,7 +137,10 @@
 }
 
 .shop_btn {
-    margin-left: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
 }
 
 .justify-content-start {
@@ -149,4 +152,33 @@
 }
 .grow:hover {
     transform: scale(1.03); 
+}
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.close_modal {
+    background-color: rgb(255, 185, 9);
+    color: white;
+}
+
+.close_modal:hover {
+    background-color: rgb(255, 198, 12);
+    color: white;
+}
+
+.close_modal_x {
+    color: rgb(255, 185, 9);
+}
+
+.close_modal_x:hover {
+    color: rgb(255, 198, 12);
 }
