@@ -54,7 +54,7 @@ let address = document.getElementById('address_customer');
 
 // Create domain variable
 // const server_port = sessionStorage.getItem('server_port');
-const domain = `http://${window.location.hostname}:${server_port}`;
+const domain = `https://${window.location.hostname}:${server_port}`;
 console.log(domain);
 
 // Add Product Button
