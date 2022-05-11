@@ -210,7 +210,7 @@ function display_product_details_update(product) {
 
 function convert_picture_link(link){
     if (link.includes('drive.google')){
-        link = link.replace('file/d/', 'uc?export=view&id=').replace('/view?usp=sharing', '');
+        link = link.replace('file/d/', 'uc?export=view§§id=').replace('/view?usp=sharing', '');
     }
     return link
 }

@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const localStorage = require('localStorage');
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
+
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 5001;
 
@@ -129,7 +131,7 @@ app.post('/add-product', function(req, res) {
     let data = JSON.parse(JSON.stringify(req.body));
     console.log(data);
 
-    const picture_link = data.picture + '&id=' + data.id;
+    const picture_link = data.picture;
 
     db('product')
         .insert({ product_name_fr : data.product_name_fr, product_name_eng : data.product_name_eng, product_description_fr : data.product_description_fr, product_description_eng : data.product_description_eng, unit_in_stock : data.unit_in_stock, picture : picture_link, unit : data.unit, category : data.category, price : data.price }, ['*'])
@@ -146,7 +148,7 @@ app.post('/update-product', function(req, res) {
     let data = JSON.parse(JSON.stringify(req.body));
     console.log(data);
 
-    const picture_link = data.picture + '&id=' + data.id;
+    const picture_link = data.picture;
 
     db('product')
         .where('product_id', data.product_id)
@@ -175,7 +177,7 @@ app.post('/remove-product', function(req, res) {
 
 // Add Customer to database
 app.post('/add-customer', function(req, res) {
-    console.log('Product has been received');
+    console.log('Add Customer request has been received');
 
     let data = JSON.parse(JSON.stringify(req.body));
     console.log(data);
@@ -188,6 +190,85 @@ app.post('/add-customer', function(req, res) {
         });
 })
 
+// Confirm order
+app.post('/confirm-order', function(req, res) {
+    console.log('Order request has been received');
+
+    let data = JSON.parse(JSON.stringify(req.body));
+    console.log(data);
+
+    send_email(data);
+
+    // db('orders')
+    //     .insert({ first_name : data.first_name, last_name : data.last_name, email : data.email, phone : data.phone, address : data.address}, ['*'])
+    //     .then(res.send('Order added in database'))
+    //     .then(() => {
+    //         send_email(data);
+    //     })
+    //     .catch(err => {
+    //         console.log('Request Failed:', err);
+    //     });
+})
+
+async function send_email(user) {
+    //let testAccount = await nodemailer.createTestAccount();
+    //cart_obj = JSON.parse(user.cart);
+    console.log(user);
+  
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      auth: {
+          user: 'dradhoa74@gmail.com',
+          pass: 'yaj051201?'
+      }
+    });
+    
+    let order_summary = ``;
+
+    let msg = `<p>
+    <div class='container'>
+        <p>Thank you for your purchase!<p>
+        <br>
+        <img class="center" src="https://drive.google.com/uc?export=view&id=1kGnYKjU8HvKYkpMJFQeAE40iX0ap1X_6" height="200px"><br>
+        <p>Hello ${user.first_name}, We're happy to let you know that we've received your order.</p>
+        <p>Here is a summary of your order:</p>
+
+        ${order_summary}
+
+        <p>If you have any questions, contact us here or call us on 52538740!</p>
+        <br>
+        <br>
+        Click here to visit our Facebook and instagram page!<br><br>
+        <a href="https://www.facebook.com/NadiMiel/" target="_blank" style="text-decoration: none">
+        <img src="https://logoeps.com/wp-content/uploads/2013/11/facebook-flat-vector-logo.png" height="50px">
+        </a>
+        <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" height="44px" style="padding: 3px">
+        </a>
+    </div>
+    </p>`
+
+    let order_id = "000001";
+    let regex = /^.+@.+\..+$/;
+
+    if(regex.test(user.email)) {
+    let info = await transporter.sendMail({
+        from: `Nadi'Miel Chamarel Order`,
+        to: user.email, 
+        subject: `Order #${order_id} received`, 
+        text: "",
+        html: msg, 
+    });
+        console.log(`Email sent to ${user.email} (${user.first_name})`);
+    } 
+    else{
+        console.log(`Error - The email provided is invalid: ${user.email}`);
+    }
+}
+
+
+  
 app.listen(PORT, () => {
     console.log(`app is running on port ${PORT}`);
 })
