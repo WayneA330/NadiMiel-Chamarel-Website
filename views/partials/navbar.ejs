@@ -1,36 +1,64 @@
-<!-- Navbar and Banner -->
-<div class="my_navbar">
-    <nav class="navbar navbar-expand-md navbar-dark bg-warning text-dark" aria-label="Fourth navbar example">
-        <div class="container-fluid container-fluid-flex ">
-            <!-- <div>
-                <a class="navbar-brand" href="#">Logo</a>
-            </div> -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
 
-            <div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            
-            <div class="collapse navbar-collapse " id="navbarsExample04">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0 ">
-                    <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" aria-current="page" href="#">Acceuil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="products">Produits</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="recipe">Recette</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="orders">Commandes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-color hover-underline-animation" href="#contact-us">Contactez-nous</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </nav>
-</div>
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="/">
+        <img
+          src="/images/logo-removebg.png"
+          height="40"
+          alt="Nadi'Miel Logo"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-around">
+        <li class="nav-item">
+          <a class="nav-link nav-color hover-underline-animation" href="/">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-color hover-underline-animation" href="/products">Produits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-color hover-underline-animation" href="/recipe">Recettes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-color hover-underline-animation" href="/orders">Commandes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-color hover-underline-animation" href="/#contact-us">Contactez-nous</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+
+    <!-- Collapsible wrapper -->
+
+    <!-- Right elements -->
+    <div class="d-flex align-items-center">
+      <!-- Icon -->
+      <a class="nav-color text-reset me-3" href="orders" style="text-decoration: none">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge rounded-pill badge-notification bg-danger">0</span>
+      </a>
+    </div>
+    <!-- Right elements -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->

@@ -15,7 +15,7 @@ let unit_add = document.getElementById('unit_add');
 // Price
 let price_add = document.getElementById('price_add');
 // Picture
-let pic_add = document.getElementById('item_picture_add'); // not sure for this
+let pic_add = document.getElementById('item_picture_add');
 // Category
 let category_add = document.getElementById('category_add');
 
@@ -64,7 +64,7 @@ let add_product = () => {
            console.log(xhr.responseText);
         }};
 
-    var data = `product_name_fr=${name_fr_add.value}&product_name_eng=${name_eng_add.value}&product_description_fr=${desc_fr_add.value}&product_description_eng=${desc_eng_add.value}&unit_in_stock=${quantity_add.value}&unit=${unit_add.value}&price=${price_add.value}&category=${category_add.value}&picture=${pic_add.value}`;
+    var data = `product_name_fr=${name_fr_add.value}&product_name_eng=${name_eng_add.value}&product_description_fr=${desc_fr_add.value}&product_description_eng=${desc_eng_add.value}&unit_in_stock=${quantity_add.value}&unit=${unit_add.value}&price=${price_add.value}&category=${category_add.value}&picture=${convert_picture_link(pic_add.value)}`;
     data = data.replace(/\n/g, '');
 
     xhr.send(data);
@@ -157,10 +157,58 @@ function capitalise_name(name){
     return name.replace(name.charAt(0), name.charAt(0).toUpperCase());
 }
 
-function display_product_details_update() {
-    let new_id_update = id_update.value;
-    let id_arr = new_id_update.split("-");
-    console.log(Number(id_arr[0]));
+function retrieve_product(id){
+    console.log(`Retrieving product ${id}`);
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', `http://localhost:5001/product_id/${id}`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
 
-    fetch('http://localhost:5001/admin')
+    //onload - Executed after response has been received
+    xhr.onload = function(){
+    if(xhr.status === 200){
+      product = JSON.parse(xhr.response)[0];
+      console.log(product);
+      display_product_details_update(product);
+    }
+    else{
+      console.log("Error!");
+      alert(`Status code: ${xhr.status} - ${xhr.statusText}`);
+    }
+  }
+  
+  // onerror - When you have an error
+  xhr.onerror = function(){
+    alert("Request failed!");
+  }
 }
+
+function display_product_details_update(product) {
+    // Name
+    name_fr_update.value = product.product_name_fr;
+    name_eng_update.value = product.product_name_eng;
+    // Description
+    desc_fr_update.value = product.product_description_fr
+    desc_eng_update.value = product.product_description_eng
+    // Quantity
+    quantity_update.value = product.unit_in_stock
+    // Unit
+    unit_update.value = product.unit
+    // Price
+    price_update.value = product.price
+    // // Picture
+    pic_update.value = convert_picture_link(product.picture)
+    // Category
+    category_update.value = product.category
+}
+
+function convert_picture_link(link){
+    if (link.includes('drive.google')){
+        link = link.replace('file/d/', 'uc?export=view&id=').replace('/view?usp=sharing', '');
+    }
+    return link
+}
+
+convert_picture_link("")
+ 

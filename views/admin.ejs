@@ -6,7 +6,6 @@
 </head>
 <body class="body">
     <%- include('partials/navbar'); %>
-
     <!-- Slider for products -->
     <div class="accordion accordion-flush" id="accordionFlushExample">
         <!-- Add Products -->
@@ -43,8 +42,8 @@
                                 <input type="number" class="form-control" name="price_add" id="price_add" placeholder="Price" required>
                             </div>
                             <div class="form-group form_spacing">
-                                <label for="item_picture">Choose Picture:</label><br>
-                                <input type="file" class="form-control-file" name="picture_add" id="item_picture_add">
+                                <label for="item_picture">Picture Link:</label><br>
+                                <input type="text" class="form-control" name="picture_add" id="item_picture_add" placeholder="Paste picture link here" required>
                             </div>
                             <div class="form-group form_spacing">
                                 <label for="category">Category:</label>
@@ -80,10 +79,14 @@
                         <div class="form-group form_spacing">
                             <label for="name">Products:</label>
                             <!-- <input type="number" class="form-control" name="product_id_update" id="product_id_update" placeholder="ID" required> -->
-                            <select class="form-control" name="product_id_update" id="product_id_update" required>
+                            <select class="form-control" name="product_id_update" id="product_id_update" 
+                            onchange="retrieve_product(this.selectedOptions[0].value)" required >
+                                <option disabled selected value> -- Select a product -- </option>
                                 <%  if (productLists.length != 0) { %>
                                     <% productLists.forEach((product, index) => { %>
-                                        <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%></option>
+                                        <option value="<%=product.product_id%>">
+                                            <%=product.product_id%> - <%=product.product_name_fr%>
+                                        </option>
                                     <% }) %>
                                 <% } %>
                             </select>
@@ -111,8 +114,8 @@
                             <input type="number" class="form-control" name="price_update" id="price_update" placeholder="Price" required>
                         </div>
                         <div class="form-group form_spacing">
-                            <label for="item_picture_update">Choose Picture:</label><br>
-                            <input type="file" class="form-control-file" name="picture_update" id="item_picture_update">
+                            <label for="item_picture_update">Picture Link:</label><br>
+                            <input type="text" class="form-control" name="picture_update" id="item_picture_update" placeholder="Paste picture link here" required>
                         </div>
                         <div class="form-group form_spacing">
                             <label for="category_update">Category:</label>
@@ -147,6 +150,7 @@
                             <div class="form-group form_spacing">
                                 <label for="name">Products</label>
                                 <select class="form-control" name="product_id_update" id="product_id_update" required>
+                                    <option disabled selected value> -- Select a product -- </option>
                                     <%  if (productLists.length != 0) { %>
                                         <% productLists.forEach((product, index) => { %>
                                             <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%></option>

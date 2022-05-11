@@ -135,7 +135,8 @@
             let cartItemContainer = document.getElementsByClassName('outerContainer')[0];
 
             let products = JSON.parse(sessionStorage.getItem("cart"));
-
+            
+            // ToDo check if products are not null or undefined
             for (item of products){
                 item = JSON.parse(item);
 
