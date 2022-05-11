@@ -54,6 +54,7 @@ let address = document.getElementById('address_customer');
 
 // Create domain variable
 const domain = `http://${window.location.hostname}:${window.location.port}`;
+console.log(domain);
 
 // Add Product Button
 let add_product = () => {
