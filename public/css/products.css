@@ -103,6 +103,10 @@
 
 /* Layout */
 /* product description */
+.margin-category {
+    margin-bottom: 30px;
+}
+
 .container_product {
     display: flex;
     margin: 20px;
