@@ -52,11 +52,13 @@ let email = document.getElementById('email_customer');
 let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
+// Create domain variable
+const domain = `http://${window.location.hostname}:${window.location.port}`;
 
 // Add Product Button
 let add_product = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/add-product', true);
+    xhr.open('POST', `${domain}/add-product`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -73,7 +75,7 @@ let add_product = () => {
 // Update Product Button
 let update_product = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/update-product', true);
+    xhr.open('POST', `${domain}/update-product`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -94,7 +96,7 @@ let update_product = () => {
 // Get values of update product
 let values_update_product = () => {
     // let xhr = new XMLHttpRequest();
-    // xhr.open('GET', 'http://localhost:5001/admin', true);
+    // xhr.open('GET', `${domain}/admin`, true);
     // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     // xhr.onreadystatechange = function () {
     //     if (xhr.readyState === 4) {
@@ -121,7 +123,7 @@ values_update_product();
 // Remove Product Button
 let remove_product = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/remove-product', true);
+    xhr.open('POST', `${domain}/remove-product`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -139,7 +141,7 @@ let remove_product = () => {
 // Add Customer Button
 let add_customer = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/add-customer', true);
+    xhr.open('POST', `${domain}/add-customer`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -161,7 +163,7 @@ function retrieve_product(id){
     console.log(`Retrieving product ${id}`);
     
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', `http://localhost:5001/product_id/${id}`, true);
+    xhr.open('GET', `${domain}/product_id/${id}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
 
@@ -209,6 +211,4 @@ function convert_picture_link(link){
     }
     return link
 }
-
-convert_picture_link("")
  

@@ -7,10 +7,13 @@ let email = document.getElementById('email_customer');
 let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
+// Create domain variable
+const domain = `http://${window.location.hostname}:${window.location.port}`;
+
 // Add Customer Button
 let add_customer = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/add-customer', true);
+    xhr.open('POST', `${domain}/add-customer`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
