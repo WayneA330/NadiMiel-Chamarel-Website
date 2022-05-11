@@ -33,12 +33,12 @@ app.use(express.static('public'));
 
 
 app.get('/', function(req, res){
-    res.render('index', {title: 'Home'});
+    res.render('index');
 })
 
 
 app.get('/orders', function(req, res){
-    res.render('checkout', {title: 'Add to Cart'});
+    res.render('checkout',  {PORT: PORT, title: 'Add to Cart'});
 })
 
 app.get('/product_description/:product_id', function(req, res){
@@ -104,7 +104,7 @@ app.get('/admin', function(req, res){
     .then(function(customers) {
         db.select().from('product')
         .then(function(products) {
-            res.render('admin', {title: 'Admin', customerLists: customers, productLists: products});
+            res.render('admin', {PORT: PORT, title: 'Admin', customerLists: customers, productLists: products});
         })
     })
 })

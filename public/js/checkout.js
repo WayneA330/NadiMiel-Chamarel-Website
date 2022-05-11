@@ -8,7 +8,7 @@ let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
 // Create domain variable
-const domain = `http://${window.location.hostname}:${window.location.port}`;
+const domain = `http://${window.location.hostname}:${server_port}`;
 
 // Add Customer Button
 let add_customer = () => {

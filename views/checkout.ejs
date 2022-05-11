@@ -100,7 +100,11 @@
     </div>
 
     
- 
+    <script>
+        const server_port = '<%= PORT %>';
+        sessionStorage.setItem('server_port', server_port);
+    </script>
+    
     <script>
         //DummyDatabase
         let cartMenu = [
