@@ -66,7 +66,7 @@ app.get('/product_id/:product_id', function(req, res){
         res.send(data);
     })
     .catch(function(data){
-        console.log('An error occured');
+        console.log('Failed to retrieve product');
         // console.log(data);
     })
 })
