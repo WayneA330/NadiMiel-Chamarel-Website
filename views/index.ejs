@@ -6,11 +6,12 @@
 </head>
 <body class="body"> 
     <%- include('partials/navbar'); %>
+    <div id="google_translate_element"></div>
 
     <div class="my_banner">
         <div class="banner_intro">
             <img id="homepagelogo" src="images/Logo Nadi'Miel New.jpg" alt="Logo of Nadi'Miel">
-            <h1 class="orange title_story" style="flex-wrap: wrap;">Dégustez nos produits locaux et fraîchement préparés</h1>
+            <h1 class="orange first_title_story">Dégustez nos produits locaux et fraîchement préparés</h1>
         </div>
         <hr style="height: 2px; color: #fbaa19;">
 
@@ -141,7 +142,7 @@
     <!-- Contact us -->
     <div class="orange title" id="contact-us">
       <h1 class="orange title_story">Comment</h1>
-      <h1 class="black title" style="letter-spacing: 4px; font-family: 'Arial', cursive; font-size: 28px; font-weight: 900; color: rgb(125, 78, 36);">NOUS CONTACTER</h1>
+      <h1 class="black title" style="letter-spacing: 4px; font-family: 'Arial', cursive; font-size: 28px; font-weight: 900; color: rgb(125, 78, 36);">VOUS POUVAIS NOUS CONTACTER</h1>
     </div>
     <div class="contact" id="contact-us">
         <div class="container my-4 ">
@@ -229,10 +230,10 @@
 
     <script type="text/javascript">
       function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'fr',includedLanguages: 'de,zh-CN,fr,en,hi',layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        new google.translate.TranslateElement({pageLanguage: 'fr',includedLanguages: 'de,zh-CN,fr,en,hi',layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
       }
-      </script>
+    </script>
 
-      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>

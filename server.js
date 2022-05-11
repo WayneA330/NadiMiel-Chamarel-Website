@@ -62,7 +62,7 @@ app.get('/product_id/:product_id', function(req, res){
     .select().from('product')
     .where({'product_id': parseInt(req.params.product_id)})
     .then(function(data){
-        console.log(data);
+        // console.log(data);
         res.send(data);
     })
     .catch(function(data){
@@ -74,6 +74,7 @@ app.get('/product_id/:product_id', function(req, res){
 app.get('/products', function(req, res){
     db
     .select().from('product').then(function(data){
+        // console.log(data);
         res.render('products', {title: 'Products', productMenu: data});
     })
     

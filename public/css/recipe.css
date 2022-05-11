@@ -27,4 +27,15 @@ input[type=checkbox]:checked + label.strikethrough{
     }
 }
 
+#google_translate_element{text-align:right;}
+.goog-te-banner-frame.skiptranslate { display: none !important;}
+body { top: 0px !important; }
+#goog-gt-tt{display: none !important; top: 0px !important; }
+.goog-tooltip skiptranslate{display: none !important; top: 0px !important; }
+.activity-root { display: hide !important;}
+.status-message { display: hide !important;}
+.started-activity-container { display: hide !important;}
 
+select {
+    padding: 4px;
+}

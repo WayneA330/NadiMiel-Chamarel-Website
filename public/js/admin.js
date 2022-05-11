@@ -91,33 +91,6 @@ let update_product = () => {
     xhr.send(data);
 }
 
-// Get values of update product
-let values_update_product = () => {
-    // let xhr = new XMLHttpRequest();
-    // xhr.open('GET', 'http://localhost:5001/admin', true);
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    // xhr.onreadystatechange = function () {
-    //     if (xhr.readyState === 4) {
-    //        console.log(xhr.status);
-    //        console.log(xhr.responseText);
-    //     }};
-
-    // console.log(productList);
-
-    // let new_id_update = id_update.value;
-    // let id_arr = new_id_update.split("-");
-    // // console.log(Number(id_arr[0]));
-
-    // var data = `product_id=${Number(id_arr[0])}&product_name_fr=${name_fr_update.value}&product_name_eng=${name_eng_update.value}&product_description_fr=${desc_fr_update.value}&product_description_eng=${desc_eng_update.value}&unit_in_stock=${quantity_update.value}&unit=${unit_update.value}&price=${price_update.value}&category=${category_update.value}&picture=${pic_update.value}`;
-    // data = data.replace(/\n/g, '');
-
-    // xhr.send(data);
-}
-
-values_update_product();
-
-
-
 // Remove Product Button
 let remove_product = () => {
     let xhr = new XMLHttpRequest();
