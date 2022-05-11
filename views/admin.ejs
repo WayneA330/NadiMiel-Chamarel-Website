@@ -6,7 +6,6 @@
 </head>
 <body class="body">
     <%- include('partials/navbar'); %>
-
     <!-- Slider for products -->
     <div class="accordion accordion-flush" id="accordionFlushExample">
         <!-- Add Products -->
@@ -80,10 +79,13 @@
                         <div class="form-group form_spacing">
                             <label for="name">Products:</label>
                             <!-- <input type="number" class="form-control" name="product_id_update" id="product_id_update" placeholder="ID" required> -->
-                            <select class="form-control" name="product_id_update" id="product_id_update" required>
+                            <select class="form-control" name="product_id_update" id="product_id_update" 
+                            onchange="retrieve_product(this.selectedOptions[0].value)" required >
                                 <%  if (productLists.length != 0) { %>
                                     <% productLists.forEach((product, index) => { %>
-                                        <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%></option>
+                                        <option value="<%=product.product_id%>">
+                                            <%=product.product_id%> - <%=product.product_name_fr%>
+                                        </option>
                                     <% }) %>
                                 <% } %>
                             </select>

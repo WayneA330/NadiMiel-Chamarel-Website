@@ -56,6 +56,21 @@ app.get('/product_description/:product_id', function(req, res){
     })
 })
 
+app.get('/product_id/:product_id', function(req, res){
+    console.log(typeof parseInt(req.params.product_id));
+    db
+    .select().from('product')
+    .where({'product_id': parseInt(req.params.product_id)})
+    .then(function(data){
+        console.log(data);
+        res.send(data);
+    })
+    .catch(function(data){
+        console.log('An error occured');
+        // console.log(data);
+    })
+})
+
 app.get('/products', function(req, res){
     db
     .select().from('product').then(function(data){
