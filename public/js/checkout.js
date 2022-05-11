@@ -7,8 +7,9 @@ let email = document.getElementById('email_customer');
 let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
-// Create domain variable
-const domain = `https://${window.location.hostname}`;
+// Retrieve domain (online or local)
+const hostname = window.location.hostname;
+const domain = hostname == 'localhost'? `http://${hostname}:${server_port}` :`https://${hostname}`;
 
 // Add Customer Button
 let add_customer = () => {

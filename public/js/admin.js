@@ -52,9 +52,10 @@ let email = document.getElementById('email_customer');
 let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
-// Create domain variable
+// Retrieve domain (online or local)
 // const server_port = sessionStorage.getItem('server_port');
-const domain = `https://${window.location.hostname}`;
+const hostname = window.location.hostname;
+const domain = hostname == 'localhost'? `http://${hostname}:${server_port}` :`https://${hostname}`;
 console.log(domain);
 
 // Add Product Button
