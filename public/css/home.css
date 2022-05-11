@@ -16,9 +16,31 @@
     text-align: center;
 }
 
-.carousel-inner {
+#carouselExampleControls > .carousel-inner {
     width: 100%;
-    max-height: 600px !important; 
+    max-height: 650px !important;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: 1030px;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 25rem;
+    left: 15%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: center;
+}
+
+.title_story_carousel{
+    font-family: 'Pinyon Script', cursive;
+    color: #fff;
+    font-size: 40px;
 }
 
 /* Our story */
@@ -49,24 +71,27 @@
 
 .ourstory_text h5{
     font-family: 'Arial', serif;
-    font-size: 20px;
+    font-size: 18px;
     text-align: justify;
     color:   #6f4e37;
-   
 }
 
 .ourstory_container {
     display: flex;
     justify-content: space-evenly;
-    margin: 20px;
+    margin: 20px 20px;
     gap: 20px;
+    max-width: 1430px;
+    place-items: center;
 }
 
 /* Featured products */
 .minicontainer {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 1500px;
+    place-items: center;
+    margin: 0 auto;
 }
 
 .myborder{
@@ -85,10 +110,10 @@
 
 
 /* Reviews */
-
-.carousel-inner iframe {
-    width: 70%;
-    height: 250px;
+.carousel-item iframe {
+    width: 80%;
+    height: 200px;
+    margin-top: 30px;
 }
 
 /* Contact Us */
@@ -99,40 +124,21 @@
     background-repeat: no-repeat;
 }
 
-
-
-
 /* Media Queries */
-@media only screen and (max-width: 768px) {
-  iframe {
-    height:400px;
-    width:400px;
-  }
-   
-   .gmap_canvas {
-    display: flex;
-    justify-content: center;
-   }
-}  
-
-/* If screen size is 600px wide, or less, set the font-size of <div> to 30px */
-@media screen and (max-width: 600px) {
-  #homepagelogo {
-    width: 75vw;
-  }
-}  
-
-@media screen and (max-width: 985px) {
-    .gmap_canvas {
-        display: flex;
-        justify-content: center;
+@media screen and (max-width: 1430px) {
+    .minicontainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        place-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
     }
 }
 
-
-@media screen and (max-width: 630px) {
-    .image {
-        width: 275px;
+@media screen and (max-width: 1353px) {
+    iframe {
+        width: 600px;
+        height: 460px;
     }
 }
 
@@ -150,13 +156,6 @@
     }
 }
 
-@media screen and (max-width: 1353px) {
-    iframe {
-        width: 600px;
-        height: 460px;
-    }
-}
-
 @media screen and (max-width: 1195px) {
     iframe {
         width: 570px;
@@ -168,4 +167,59 @@
     .banner_itself {
        display: none;
     }   
+}
+
+@media screen and (max-width: 985px) {
+    .gmap_canvas {
+        display: flex;
+        justify-content: center;
+    }
+
+    .carousel-item iframe {
+        width: 70%;
+        height: 200px;
+        margin-top: 30px;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+  iframe {
+    height:400px;
+    width:400px;
+  }
+
+   .gmap_canvas {
+    display: flex;
+    justify-content: center;
+   }
+}
+
+@media screen and (max-width: 714px) {
+    .minicontainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .image {
+        width: 275px;
+    }
+}
+
+/* If screen size is 600px wide, or less, set the font-size of <div> to 30px */
+@media screen and (max-width: 600px) {
+  #homepagelogo {
+    width: 75vw;
+  }
+}
+
+@media screen and (max-width: 577px) {
+    .minicontainer {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }

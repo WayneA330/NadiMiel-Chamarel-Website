@@ -1,8 +1,4 @@
 /* add to cart */
-.title {
-    margin-bottom: 5vh
-}
-
 .card {
     margin: auto;
     max-width: 950px;
@@ -207,4 +203,39 @@ a:hover {
 
 .input_name_desc > input {
     margin-bottom: 10px;
+}
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.close_modal {
+    background-color: rgb(255, 185, 9);
+    color: white;
+}
+
+.close_modal:hover {
+    background-color: rgb(255, 198, 12);
+    color: white;
+}
+
+.close_modal_x {
+    color: rgb(255, 185, 9);
+}
+
+.close_modal_x:hover {
+    color: rgb(255, 198, 12);
+}
+
+.order_title {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 30px auto;
 }
