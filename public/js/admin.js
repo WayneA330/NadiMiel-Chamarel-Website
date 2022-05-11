@@ -15,7 +15,7 @@ let unit_add = document.getElementById('unit_add');
 // Price
 let price_add = document.getElementById('price_add');
 // Picture
-let pic_add = document.getElementById('item_picture_add'); // not sure for this
+let pic_add = document.getElementById('item_picture_add');
 // Category
 let category_add = document.getElementById('category_add');
 
@@ -64,7 +64,7 @@ let add_product = () => {
            console.log(xhr.responseText);
         }};
 
-    var data = `product_name_fr=${name_fr_add.value}&product_name_eng=${name_eng_add.value}&product_description_fr=${desc_fr_add.value}&product_description_eng=${desc_eng_add.value}&unit_in_stock=${quantity_add.value}&unit=${unit_add.value}&price=${price_add.value}&category=${category_add.value}&picture=${pic_add.value}`;
+    var data = `product_name_fr=${name_fr_add.value}&product_name_eng=${name_eng_add.value}&product_description_fr=${desc_fr_add.value}&product_description_eng=${desc_eng_add.value}&unit_in_stock=${quantity_add.value}&unit=${unit_add.value}&price=${price_add.value}&category=${category_add.value}&picture=${convert_picture_link(pic_add.value)}`;
     data = data.replace(/\n/g, '');
 
     xhr.send(data);
@@ -198,9 +198,17 @@ function display_product_details_update(product) {
     // Price
     price_update.value = product.price
     // // Picture
-    // pic_update.value = product.picture
+    pic_update.value = convert_picture_link(product.picture)
     // Category
     category_update.value = product.category
 }
 
+function convert_picture_link(link){
+    if (link.includes('drive.google')){
+        link = link.replace('file/d/', 'uc?export=view&id=').replace('/view?usp=sharing', '');
+    }
+    return link
+}
+
+convert_picture_link("")
  

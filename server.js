@@ -129,8 +129,10 @@ app.post('/add-product', function(req, res) {
     let data = JSON.parse(JSON.stringify(req.body));
     console.log(data);
 
+    const picture_link = data.picture + '&id=' + data.id;
+
     db('product')
-        .insert({ product_name_fr : data.product_name_fr, product_name_eng : data.product_name_eng, product_description_fr : data.product_description_fr, product_description_eng : data.product_description_eng, unit_in_stock : data.unit_in_stock, picture : data.picture, unit : data.unit, category : data.category, price : data.price }, ['*'])
+        .insert({ product_name_fr : data.product_name_fr, product_name_eng : data.product_name_eng, product_description_fr : data.product_description_fr, product_description_eng : data.product_description_eng, unit_in_stock : data.unit_in_stock, picture : picture_link, unit : data.unit, category : data.category, price : data.price }, ['*'])
         .then(res.send('Product inserted in database'))
         .catch(err => {
             console.log('Request Failed:', err);
@@ -144,11 +146,11 @@ app.post('/update-product', function(req, res) {
     let data = JSON.parse(JSON.stringify(req.body));
     console.log(data);
 
-    // console.log(data.picture);
+    const picture_link = data.picture + '&id=' + data.id;
 
     db('product')
         .where('product_id', data.product_id)
-        .update({ product_name_fr : data.product_name_fr, product_name_eng : data.product_name_eng, product_description_fr : data.product_description_fr, product_description_eng : data.product_description_eng, unit_in_stock : data.unit_in_stock, picture : data.picture, unit : data.unit, category : data.category, price : data.price }, ['*'])
+        .update({ product_name_fr : data.product_name_fr, product_name_eng : data.product_name_eng, product_description_fr : data.product_description_fr, product_description_eng : data.product_description_eng, unit_in_stock : data.unit_in_stock, picture : picture_link, unit : data.unit, category : data.category, price : data.price }, ['*'])
         .then(res.send('Product inserted in database'))
         .catch(err => {
             console.log('Request Failed:', err);
