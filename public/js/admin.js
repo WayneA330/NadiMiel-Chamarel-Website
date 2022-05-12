@@ -52,11 +52,16 @@ let email = document.getElementById('email_customer');
 let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
+// Retrieve domain (online or local)
+// const server_port = sessionStorage.getItem('server_port');
+const hostname = window.location.hostname;
+const domain = hostname == 'localhost'? `http://${hostname}:${server_port}` :`https://${hostname}`;
+console.log(domain);
 
 // Add Product Button
 let add_product = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/add-product', true);
+    xhr.open('POST', `${domain}/add-product`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -73,7 +78,7 @@ let add_product = () => {
 // Update Product Button
 let update_product = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/update-product', true);
+    xhr.open('POST', `${domain}/update-product`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -91,10 +96,40 @@ let update_product = () => {
     xhr.send(data);
 }
 
+<<<<<<< HEAD
+=======
+// Get values of update product
+let values_update_product = () => {
+    // let xhr = new XMLHttpRequest();
+    // xhr.open('GET', `${domain}/admin`, true);
+    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4) {
+    //        console.log(xhr.status);
+    //        console.log(xhr.responseText);
+    //     }};
+
+    // console.log(productList);
+
+    // let new_id_update = id_update.value;
+    // let id_arr = new_id_update.split("-");
+    // // console.log(Number(id_arr[0]));
+
+    // var data = `product_id=${Number(id_arr[0])}&product_name_fr=${name_fr_update.value}&product_name_eng=${name_eng_update.value}&product_description_fr=${desc_fr_update.value}&product_description_eng=${desc_eng_update.value}&unit_in_stock=${quantity_update.value}&unit=${unit_update.value}&price=${price_update.value}&category=${category_update.value}&picture=${pic_update.value}`;
+    // data = data.replace(/\n/g, '');
+
+    // xhr.send(data);
+}
+
+values_update_product();
+
+
+
+>>>>>>> d08eddeb99970b7fdac358684619c03ae9d3e024
 // Remove Product Button
 let remove_product = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/remove-product', true);
+    xhr.open('POST', `${domain}/remove-product`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -112,7 +147,7 @@ let remove_product = () => {
 // Add Customer Button
 let add_customer = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:5001/add-customer', true);
+    xhr.open('POST', `${domain}/add-customer`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -134,7 +169,7 @@ function retrieve_product(id){
     console.log(`Retrieving product ${id}`);
     
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', `http://localhost:5001/product_id/${id}`, true);
+    xhr.open('GET', `${domain}/product_id/${id}`, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
 
@@ -178,10 +213,8 @@ function display_product_details_update(product) {
 
 function convert_picture_link(link){
     if (link.includes('drive.google')){
-        link = link.replace('file/d/', 'uc?export=view&id=').replace('/view?usp=sharing', '');
+        link = link.replace('file/d/', 'uc?export=view§§id=').replace('/view?usp=sharing', '');
     }
     return link
 }
-
-convert_picture_link("")
  
