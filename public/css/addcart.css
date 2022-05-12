@@ -1,0 +1,254 @@
+/* add to cart */
+.card {
+    margin: auto;
+    max-width: 950px;
+    width: 90%;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1rem;
+    border: transparent
+}
+
+@media(max-width:767px) {
+    .card {
+        margin: 3vh auto
+    }
+}
+
+.cart {
+    background-color: #fff;
+    padding: 4vh 5vh;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem
+}
+
+@media(max-width:767px) {
+    .cart {
+        padding: 4vh;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 1rem
+    }
+}
+
+.summary {
+    background-color: #ddd;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 4vh;
+    color: rgb(65, 65, 65)
+}
+
+@media(max-width:767px) {
+    .summary {
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 1rem
+    }
+}
+
+.summary .col-2 {
+    padding: 0
+}
+
+.summary .col-10 {
+    padding: 0
+}
+
+.row {
+    margin: 0
+}
+
+.title b {
+    font-size: 1.5rem
+}
+
+.main {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%
+}
+
+.col-2,
+.col {
+    padding: 0 1vh
+}
+
+a {
+    padding: 0 1vh
+}
+
+.close {
+    margin-left: auto;
+    font-size: 0.7rem
+}
+
+.close:hover {
+    cursor: pointer;
+}
+
+img {
+    width: 3.5rem
+}
+
+.back-to-shop {
+    margin-top: 4.5rem
+}
+
+h5 {
+    margin-top: 4vh
+}
+
+hr {
+    margin-top: 1.25rem
+}
+
+form {
+    padding: 2vh 0
+}
+
+.select_payment {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+input {
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    /* margin-bottom: 4vh; */
+    outline: none;
+    width: 100%;
+    background-color: rgb(247, 247, 247)
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+#check {
+    background-color: #000;
+    border-color: #000;
+    color: white;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 0
+} 
+
+.btn:focus {
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none
+}
+
+.btn:hover {
+    color: white
+}
+
+a {
+    color: black
+}
+
+a:hover {
+    color: black;
+    text-decoration: none
+}
+
+#code {
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center
+}
+
+/* input[type='number']{
+    width: 50px;
+}  */
+
+/* Customer Table */
+.customer_form {
+    border: 2px solid rgb(168, 113, 19);
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.btn-customer {
+    text-align: center;
+}
+
+.btn-customer > button {
+    width: 100px;
+    border: 2px solid #ffc00a;
+    border-radius: 15px;
+    color: white;
+    background-color: #ffc00a;
+    font-size: large;
+    margin: 20px;
+}
+
+.btn-customer > button:hover {
+    background-color: #f5c000;
+    border: 2px solid #f5c000;
+}
+
+.form_spacing {
+    margin: 10px;
+}
+
+.input_name_desc > input {
+    margin-bottom: 10px;
+}
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.close_modal {
+    background-color: rgb(255, 185, 9);
+    color: white;
+}
+
+.close_modal:hover {
+    background-color: rgb(255, 198, 12);
+    color: white;
+}
+
+.close_modal_x {
+    color: rgb(255, 185, 9);
+}
+
+.close_modal_x:hover {
+    color: rgb(255, 198, 12);
+}
+
+.order_title {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 30px auto;
+}
+
+#google_translate_element{text-align:right;}
+.goog-te-banner-frame.skiptranslate { display: none !important;}
+body { top: 0px !important; }
+#goog-gt-tt{display: none !important; top: 0px !important; }
+.goog-tooltip skiptranslate{display: none !important; top: 0px !important; }
+.activity-root { display: hide !important;}
+.status-message { display: hide !important;}
+.started-activity-container { display: hide !important;}
+
+select {
+    padding: 4px;
+}

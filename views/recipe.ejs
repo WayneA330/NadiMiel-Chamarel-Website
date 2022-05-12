@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+    <link rel="stylesheet" href="css/recipe.css">
+</head>
+<body class="body">
+    <%- include('partials/navbar'); %>
+    <div  id="google_translate_element"></div>
+
+    <div class="container-fluid">
+        <!-- Recipes -->
+        <div class="row">
+            <main >
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2 title orange" style="font-family: 'Arial', cursive; font-size: 28px; font-weight: 900; color: rgb(125, 78, 36);">Recette</h1>
+            </div>
+            <div class="card mb-3" style="max-width: 100%;">
+                <%  if (recipeMenu.length != 0) { %>
+                    <% recipeMenu.forEach((recipes, index) => { %>
+                        <div class="row no-gutters">
+                            <div class="col-12 text-center dark_brown">
+                                <div class="card-body">
+                                    <h2 class="card-title"><%=recipes.recipe_name_fr%></h2>
+                                </div>
+                            </div>
+                            <div class="col-md-4 img_flex">
+                              <img src="images/Cassoulet 4.jpg" class="card-img image" alt="...">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card-body">
+                                    <% if (Ingredients.length != 0) { %>
+                                        <% Ingredients.forEach((ingredient, index) => { %>
+                                            <% if (index == 0) { %>
+                                            <h4 class="orange"><%=ingredient%></h4>
+                                            <% } else { %>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label strikethrough" for="flexCheckDefault">
+                                                <%=ingredient%>
+                                                </label>
+                                            </div>
+                                        <% }}) %>
+                                    <% } %>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body">
+                                    <% if (Preparation.length != 0) { %>
+                                        <% Preparation.forEach((preparation, index) => { %>
+                                            <% section = preparation.split(':');%>
+                                            <h4 class="orange"><%=section[0]%>:</h4>
+                                            <ol>
+                                                <% section.forEach((content, idx) => {%>
+                                                    <% if (idx > 0) {%>
+                                                        <li><%=content%></li>
+                                                    <%}%>
+                                                <%})%>
+                                            </ol>
+                                        <% }) %>
+                                    <% } %>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+  
+
+            </main>
+        </div>
+    </div>
+
+    <%- include('partials/footer.ejs'); %>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'fr',includedLanguages: 'de,zh-CN,fr,en,hi',layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

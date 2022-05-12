@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head'); %>
+    <link rel="stylesheet" href="css/addcart.css">
+</head>
+<body class="body">
+    <%- include('partials/navbar'); %>
+    <div  id="google_translate_element"></div>
+
+    <!-- Add to Cart -->
+    <div class="card mx-auto mt-3 mb-3">
+        <div class="row">
+            <div>
+                <div class="row">
+                    <div class="order_title">
+                        <h4 class="" style="font-family: 'Arial', cursive; font-size: 28px; font-weight: 900; color: rgb(125, 78, 36);"><b>Panier</b></h4>
+                    </div>
+                    <!-- <div class="col align-self-center text-right text-muted"></div> -->
+                </div>
+            </div>
+
+            <div class="col-md-8 cart outerContainer">
+            <!-- List products from cart here -->
+                
+            </div>
+            <div class="col-md-4 summary">
+                <div>
+                    <h5><b>Paiement</b></h5>
+                </div>
+                <hr>
+                <form>
+                    <p>Options</p>
+                    <select id="payment_option">
+                        <option disabled selected value> -- Options de paiement -- </option>
+                        <option class="text-muted">Payer cash sur livraison</option>
+                        <option class="text-muted">Payer avec JUICE sur livraison</option>
+                    </select>
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0; font-weight: bold;">
+                    <div class="col">Prix Total</div>
+                    <div class="col text-right cart-total">0</div>
+                </div> 
+            </div>
+            <div class="customer_form">
+                <div>
+                    <h2 class="title orange">Remplissez le formulaire ci-dessous</h2>
+                </div>
+                <form id="info_form">
+                    <div class="form-group form_spacing">
+                        <label for="first_name_customer">Prénom:</label>
+                        <input type="text" class="form-control" name="first_name_customer" id="first_name_customer" placeholder="Prénom" required>
+                    </div>
+                    <div class="form-group form_spacing">
+                        <label for="last_name_customer">Nom de famille:</label>
+                        <input type="text" class="form-control" name="last_name_customer" id="last_name_customer" placeholder="Nom de famille" required>
+                    </div>
+                    <div class="form-group form_spacing">
+                        <label for="email_customer">E-mail:</label>
+                        <input type="email" class="form-control" name="email_customer" id="email_customer" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group form_spacing">
+                        <label for="phone_customer">Numéro de téléphone:</label>
+                        <input type="number" class="form-control" name="phone_customer" id="phone_customer" placeholder="Numéro de téléphone" required>
+                    </div>
+                    <div class="form-group form_spacing">
+                        <label for="address_customer">Adresse:</label>
+                        <input type="text" class="form-control" name="address_customer" id="address_customer" placeholder="Adresse" required>
+                    </div>
+                    <div class="btn-customer">
+                        <button id="submit" type="submit" style="width: 190px;"
+                            data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            Finaliser votre achat
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <a type="button" class="close close_modal_x" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            <a/>
+            </div>
+            <div class="modal-body text-center">
+                <h3 class="orange">Veuillez vérifier votre e-mail pour recevoir les détails de votre commande</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn close_modal" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    
+    <script>
+        const server_port = '<%= PORT %>';
+        sessionStorage.setItem('server_port', server_port);
+
+        let submit = document.getElementById('submit');
+        submit.addEventListener('click', function(ev){
+            ev.preventDefault();
+
+            checkout();
+            // document.getElementById('info_form').reset();
+            // sessionStorage.removeItem('cart');
+        })
+
+        function display_products(){
+            let cartItemContainer = document.getElementsByClassName('outerContainer')[0];
+
+            let products = JSON.parse(sessionStorage.getItem("cart"));
+
+            // ToDo check if products are not null or undefined
+            for (item of products){
+                item = JSON.parse(item);
+
+                let innerContainer = document.createElement('div');
+                innerContainer.className = "row border-top border-bottom innerContainer";
+
+                let row = document.createElement('div');
+                row.className = "row main align-items-center";
+
+                let img_div = document.createElement('div');
+                img_div.className = "col-2"
+                let img = document.createElement('img');
+                img.src = item.picture.replace('§§', '&');
+                img_div.append(img);
+
+                let product_div = document.createElement('div');
+                product_div.className = "col";
+
+                let product_name = document.createElement('div');
+                product_name.className = "row";
+                
+                product_name.innerText = item.product_name_fr;
+                let product_id = document.createElement('div');
+                product_id.className = "row text-muted product-serial";
+                product_id.innerText = create_product_serial(item.product_id);
+                product_div.appendChild(product_name);
+                product_div.appendChild(product_id);
+
+                let qty_div = document.createElement('div');
+                qty_div.className = "col";
+                qty_div.innerHTML = `<input type="number" value=${item.qty} class="quantity" onchange="update_cart();">`;
+
+                let price_div = document.createElement('div');
+                price_div.className = "col cart-price";
+                price_div.innerHTML = `Rs ${parseInt(item.price)}&nbsp;&nbsp;&nbsp;<span class="close" style=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg></span>`
+
+                row.append(img_div);
+                row.appendChild(product_div);
+                row.appendChild(qty_div);
+                row.appendChild(price_div);
+
+                innerContainer.append(row);
+                cartItemContainer.append(innerContainer);
+            }
+
+            let removeCartItemButtons = document.getElementsByClassName('close')
+            for(let i =0; i< removeCartItemButtons.length; i++){
+            let button = removeCartItemButtons[i];
+            button.addEventListener('click', function(event){
+                let buttonClicker = event.target;
+                buttonClicker.parentElement.parentElement.parentElement.parentElement.remove();
+                update_cart();
+            })
+            }
+        }
+
+        function updateTotal(){
+            let total = 0;
+            let cartItemContainer = document.getElementsByClassName('outerContainer')[0]
+            let cartRows = cartItemContainer.getElementsByClassName('innerContainer')
+            for (let i = 0; i < cartRows.length; i++){
+                let cartRow = cartRows[i]
+                let priceElement = cartRow.getElementsByClassName('cart-price')[0];
+                let quantityElement = cartRow.getElementsByClassName('quantity')[0];
+                let price = parseFloat(priceElement.innerText.replace('Rs', ''));
+                let quantity = parseFloat(quantityElement.value);
+                total = total + (price * quantity);
+            }
+            document.getElementsByClassName('cart-total')[0].innerHTML = 'Rs ' + total.toLocaleString();
+        }
+
+        function update_cart(){
+            let product_serials = document.getElementsByClassName('product-serial');
+            let product_qty = document.getElementsByClassName('quantity');
+
+            let cart = sessionStorage.getItem("cart");
+            cart = JSON.parse(cart);
+
+            for (i in product_serials){
+                if (product_serials[i].innerText != undefined){
+                    let product_id = convert_product_id_serial(product_serials[i].innerText);
+
+                    for (k in cart){
+                        item = JSON.parse(cart[k]);
+                        if (item.product_id == product_id){
+                            item.qty = product_qty[i].value;
+                            cart[k] = JSON.stringify(item);
+                            console.log(cart);
+                            break;
+                        }
+                    }
+                }
+            }
+            console.log(cart);
+            sessionStorage.setItem("cart", JSON.stringify(cart));
+            updateTotal();
+        }
+
+        function create_product_serial(product_id){
+            return ("N" + product_id.toString().padStart(4, 0));
+        }
+
+        function convert_product_id_serial(product_serial){
+            console.log(product_serial);
+            return Number(product_serial.slice(1));
+        }
+
+        display_products();
+        updateTotal();
+    </script>
+
+
+    <%- include('partials/footer.ejs'); %>
+    <script src="js/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <script src="js/checkout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'fr',includedLanguages: 'de,zh-CN,fr,en,hi',layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+
+

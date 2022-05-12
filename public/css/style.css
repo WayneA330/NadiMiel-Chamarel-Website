@@ -1,0 +1,156 @@
+/* General Container */
+:root {
+    --orange: rgb(245, 156, 0);
+    --brown: rgb(168, 113, 19);
+    --dark_brown: rgb(125, 78, 36);
+    --yellow: rgb(255, 213, 24);
+  }
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+} 
+
+
+.orange {
+    color: var(--orange);
+}
+
+.brown {
+    color: var(--brown);
+}
+
+.dark_brown {
+    color: var(--dark_brown);
+}
+
+.yellow {
+    color: var(--yellow);
+}
+
+.title {
+    text-align: center;
+    margin: 30px;
+    
+}
+.title_top {
+    text-align: center;
+    margin: 25px;
+    font-family: 'Petit Formal Script', cursive;
+    font-weight:900;
+    font-size: 40px;
+}
+
+/* Navbar  */
+.my_navbar {
+    position: sticky;
+    z-index: 100;
+    top: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .show > .nav-link {
+    color: var(--yellow);
+    margin-right: 50px;
+    background-color: white;
+}
+
+.nav-color {
+    font-size: 22px;
+    color: var(--yellow);
+}
+
+/* .nav-color:hover {
+    background-color: var(--yellow);
+    color: white;
+} */
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    /* color: var(--dark_brown); */
+}
+
+.hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--yellow);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255,255,255,.55);
+    border-color: rgba(255,255,255,1);
+}
+
+#text-container{
+    position: relative;
+}
+
+#text-block{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgb(239, 39, 133);
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Tapestry', cursive;
+    
+}
+#text-block h4{
+    font-size: 65px; 
+    color: rgb(125, 78, 36);   
+    }
+
+#text-block-5{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Tapestry', cursive;
+    
+}
+
+#text-block-6{
+    position: absolute;
+    top: 20px;
+    left: 20%;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Tapestry', cursive;
+    
+}
+#text-block-5 h4{
+    font-size: 65px; 
+    color: var(--yellow);   
+    }
+
+#text-block-6 h4{
+    font-size: 65px; 
+    color: white;   
+}
+
+
+#text-block p{
+    font-size: 50px; 
+    color: rgb(231, 43, 74);   
+    font-family: 'Water Brush', cursive;
+    }
