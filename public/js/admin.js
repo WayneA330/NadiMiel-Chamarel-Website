@@ -110,6 +110,7 @@ let remove_product = () => {
     let new_id_remove = id_remove.value;
     let id_arr = new_id_remove.split("-");
     var data = `product_id=${Number(id_arr[0])}`;
+    console.log(data);
 
     xhr.send(data);
 }

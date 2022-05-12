@@ -46,7 +46,7 @@ let miel_id = document.getElementById("Honey");
 let snacks_id = document.getElementById("Snacks");
 let charcuterie_id = document.getElementById("Charcuterie");
 let piment_id = document.getElementById("Achard & Piments / Chili");
-let patisserie_id  =document.getElementById("Pâtisserie / Pastry");
+let patisserie_id = document.getElementById("Pâtisserie / Pastry");
 
 // Function for honey
 function toggleCheckboxMiel(id) {
