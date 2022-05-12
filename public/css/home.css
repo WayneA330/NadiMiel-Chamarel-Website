@@ -78,7 +78,8 @@
     font-family: 'Arial', serif;
     font-size: 18px;
     text-align: justify;
-    color:   #6f4e37;
+    color:#6f4e37;
+    line-height: 20pt;
 }
 
 .ourstory_container {
