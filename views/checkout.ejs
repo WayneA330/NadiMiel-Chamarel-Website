@@ -33,8 +33,8 @@
                 </div> -->
                 <form>
                     <p>Options</p>
-                    <select>
-                        <option class="text-muted">Options de paiement</option>
+                    <select id="payment_option">
+                        <!-- <option disabled selected value> -- Options de paiement -- </option> -->
                         <option class="text-muted">Payer cash sur livraison</option>
                         <option class="text-muted">Payer avec JUICE sur livraison</option>
                     </select>
@@ -48,7 +48,7 @@
                 <div>
                     <h2 class="title orange">Remplissez le formulaire ci-dessous</h2>
                 </div>
-                <form>
+                <form id="info_form">
                     <div class="form-group form_spacing">
                         <label for="first_name_customer">Prénom:</label>
                         <input type="text" class="form-control" name="first_name_customer" id="first_name_customer" placeholder="Prénom" required>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group form_spacing">
                         <label for="email_customer">E-mail:</label>
-                        <input type="text" class="form-control" name="email_customer" id="email_customer" placeholder="E-mail" required>
+                        <input type="email" class="form-control" name="email_customer" id="email_customer" placeholder="E-mail" required>
                     </div>
                     <div class="form-group form_spacing">
                         <label for="phone_customer">Numéro de téléphone:</label>
@@ -70,7 +70,10 @@
                         <input type="text" class="form-control" name="address_customer" id="address_customer" placeholder="Adresse" required>
                     </div>
                     <div class="btn-customer">
-                        <button type="button" onclick="add_customer()" style="width: 190px;" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Finaliser votre achat</button>
+                        <button id="submit" type="submit" style="width: 190px;"
+                            data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            Finaliser votre achat
+                        </button>
                     </div>
                 </form>
             </div>
@@ -100,58 +103,18 @@
     </div>
 
     
- 
     <script>
-        //DummyDatabase
-        let cartMenu = [
-            {
-                product_id: "1",
-                category: "Meal",
-                price: 100,
-                product_name_fr: "Poulet",
-                qty: 2,
-            },
-            {
-                product_id: "2",
-                category: "Meal",
-                price: 200,
-                product_name_fr: "Briyani",
-                qty: 2,
-            },
-            {
-                product_id: "3",
-                category: "Snack",
-                price: 50,
-                product_name_fr: "Gateau Piment",
-                qty: 2,
-            },
-            {
-                product_id: "4",
-                category: "Snack",
-                price: 30,
-                product_name_fr: "Boulettes",
-                qty: 2,
-            },
-        ]
+        const server_port = '<%= PORT %>';
+        sessionStorage.setItem('server_port', server_port);
 
-        // <div class="row border-top border-bottom innerContainer">
-        //     <div class="row main align-items-center">
-        //         <div class="col-2">
-        //            <img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg">
-        //         </div>
-        //         <div class="col">
-        //             <div class="row text-muted test_name"></div>
-        //             <div class="row test_product"> </div>
-        //         </div>
-        //         <div class="col ">
-        //             <input type="number" value="1" class="quantity" onchange="updateTotal()">
-        //         </div>
-        //         <div class="col cart-price">
-        //             <span class="close"><i class="fa fa-trash" aria-hidden="true"></i></span>
-        //         </div>
+        let submit = document.getElementById('submit');
+        submit.addEventListener('click', function(ev){
+            ev.preventDefault();
 
-        //     </div>
-        // </div>
+            checkout();
+            // document.getElementById('info_form').reset();
+            // sessionStorage.removeItem('cart');
+        })
 
         function display_products(){
             let cartItemContainer = document.getElementsByClassName('outerContainer')[0];
@@ -171,8 +134,7 @@
                 let img_div = document.createElement('div');
                 img_div.className = "col-2"
                 let img = document.createElement('img');
-                //img.src = item.picture;
-                img.src="https://i.imgur.com/1GrakTl.jpg";
+                img.src = item.picture.replace('§§', '&');
                 img_div.append(img);
 
                 let product_div = document.createElement('div');
@@ -196,7 +158,7 @@
                 price_div.className = "col cart-price";
                 price_div.innerHTML = `Rs ${parseInt(item.price)}&nbsp;&nbsp;&nbsp;<span class="close" style=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg></span>`
 
-                // row.append(img_div);
+                row.append(img_div);
                 row.appendChild(product_div);
                 row.appendChild(qty_div);
                 row.appendChild(price_div);
