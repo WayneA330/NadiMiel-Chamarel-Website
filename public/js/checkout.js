@@ -80,5 +80,5 @@ function capitalise_name(name){
 
 function checkout(){
     confirm_order();
-    // add_customer();
+    add_customer();
 }
