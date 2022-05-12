@@ -198,6 +198,13 @@
     display: flex;
     justify-content: center;
    }
+
+   .first_title_story {
+    font-family: 'Rouge Script', cursive;
+    font-size: 65px;
+    margin-left: 20px;
+    margin-right: 10px;
+   }
 }
 
 @media screen and (max-width: 714px) {
