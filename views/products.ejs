@@ -54,7 +54,7 @@
                       <a href="product_description/<%=product.product_id%>" style="text-decoration: none; color:black">
                         <div class="card m-2 <%= product.category %>" style="width: 18rem;">
                             <div class="img_product">
-                              <img src="<%=product.picture.replace('§§', '&')%>" class="card-img-top" >
+                              <img src="<%=product.picture.replace('§§', '&')%>" class="card-img-top" loading="lazy">
                             </div>
                             <div class="card-body">
                               <h5 class="card-title"><%=product.product_name_fr%></h5>
