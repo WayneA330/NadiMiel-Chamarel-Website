@@ -48,7 +48,7 @@
                 <div>
                     <h2 class="title orange">Remplissez le formulaire ci-dessous</h2>
                 </div>
-                <form>
+                <form id="info_form">
                     <div class="form-group form_spacing">
                         <label for="first_name_customer">Prénom:</label>
                         <input type="text" class="form-control" name="first_name_customer" id="first_name_customer" placeholder="Prénom" required>
@@ -70,8 +70,8 @@
                         <input type="text" class="form-control" name="address_customer" id="address_customer" placeholder="Adresse" required>
                     </div>
                     <div class="btn-customer">
-                        <button type="submit" onclick="checkout()" style="width: 190px;">
-                            <!-- data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> -->
+                        <button id="submit" type="submit" style="width: 190px;"
+                            data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                             Finaliser votre achat
                         </button>
                     </div>
@@ -106,6 +106,15 @@
     <script>
         const server_port = '<%= PORT %>';
         sessionStorage.setItem('server_port', server_port);
+
+        let submit = document.getElementById('submit');
+        submit.addEventListener('click', function(ev){
+            ev.preventDefault();
+
+            checkout();
+            // document.getElementById('info_form').reset();
+            // sessionStorage.removeItem('cart');
+        })
 
         function display_products(){
             let cartItemContainer = document.getElementsByClassName('outerContainer')[0];
