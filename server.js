@@ -214,6 +214,39 @@ async function send_email(user) {
     //let testAccount = await nodemailer.createTestAccount();
     //cart_obj = JSON.parse(user.cart);
     console.log(user);
+
+    let order_summary = ``;
+
+    let cart_arr = JSON.parse(user.cart);
+    let cart_total = 0;
+    for (product of cart_arr){
+        item = JSON.parse(product);
+        console.log(item);
+        const item_total = Number(item.qty) * Number(item.price);
+        cart_total += item_total;
+        order_summary +=   `<tr>
+                                <td style="text-align:left">${item.product_name_fr}</td>
+                                <td style="text-align:center">${item.qty}</td>
+                                <td style="text-align:right">${item.price}</td>
+                                <td style="text-align:right">${item_total}</td>
+                            </tr>`
+    }
+
+    order_summary +=   `<tr>
+                            <td colspan="4"><hr/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="2" style="text-align:right; font-weight: bold">Total amount (MUR):</td>
+                            <td style="text-align:right; font-weight: bold">${cart_total.toLocaleString()}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><hr/></td>
+                        </tr>
+                        
+                        <p><span style="font-weight: bold">Payment mode: </span><br>
+                        ${user.payment}</p>
+                        `
   
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
@@ -224,7 +257,6 @@ async function send_email(user) {
       }
     });
     
-    let order_summary = ``;
 
     let msg = `<p>
     <div class='container'>
@@ -234,8 +266,37 @@ async function send_email(user) {
         <p>Hello ${user.first_name}, We're happy to let you know that we've received your order.</p>
         <p>Here is a summary of your order:</p>
 
-        ${order_summary}
+        <table>
+            <tr>
+                <td style="text-align:left; font-weight: bold">Name:</td>
+                <td>${user.first_name} ${user.last_name}</td>
+            </tr>
+            <tr>
+                <td style="text-align:left; font-weight: bold">Contact No.:</td>
+                <td>${user.phone}</td>
+            </tr>
+            <tr>
+                <td style="text-align:left; font-weight: bold">Address:</td>
+                <td>${user.address}</td>
+            </tr>
+        </table>
 
+        <br>
+
+        <table>
+            <tr>
+                <th style="text-align:left">Product</th>
+                <th style="text-align:center">Qty</th>
+                <th style="text-align:right">Unit Price</th>
+                <th style="text-align:right">Total Price</th>
+            </tr>
+            <tr>
+                <td colspan="4"><hr/></td>
+            </tr>
+            
+            ${order_summary}
+        </table>
+    
         <p>If you have any questions, contact us here or call us on 52538740!</p>
         <br>
         <br>
@@ -249,23 +310,23 @@ async function send_email(user) {
     </div>
     </p>`
 
-    let order_id = "000001";
+    let order_id = "000000";
     let regex = /^.+@.+\..+$/;
 
-    if(regex.test(user.email)) {
-    let info = await transporter.sendMail({
-        from: `Nadi'Miel Chamarel Order`,
-        to: user.email, 
-        subject: `Order #${order_id} received`, 
-        text: "",
-        html: msg, 
-    });
-        console.log(`Email sent to ${user.email} (${user.first_name})`);
-    } 
-    else{
-        console.log(`Error - The email provided is invalid: ${user.email}`);
+    if (regex.test(user.email)) {
+        let info = await transporter.sendMail({
+            from: `Nadi'Miel Chamarel Order`,
+            to: user.email, 
+            subject: `Order #${order_id} received [Testing]`, 
+            text: "",
+            html: msg, 
+        });
+            console.log(`Email sent to ${user.email} (${user.first_name})`);
+        } 
+        else{
+            console.log(`Error - The email provided is invalid: ${user.email}`);
+        }
     }
-}
 
 
   
