@@ -246,6 +246,47 @@
                 </div>
             </div>
         </div>
+        <!-- Order table -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSix">
+              <button class="accordion-button collapsed orange fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                <span>Order Table</span>
+              </button>
+            </h2>
+            <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="customer_table" id="table_customer">
+                        <table class="table">
+                            <thead class="table-light">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Order Date</th>
+                                <th scope="col">Order Status</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <%  if (customerLists.length != 0) { %>
+                                    <% customerLists.forEach((customer,index) => { %>
+                                        <tr>
+                                            <th scope="row"><%= %></th>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                        </tr>
+                                    <% }) %>
+                                <% } %>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <%- include('partials/footer.ejs'); %>
