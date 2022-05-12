@@ -154,7 +154,7 @@
                                     <option disabled selected value> -- Select a product -- </option>
                                     <%  if (productLists.length != 0) { %>
                                         <% productLists.forEach((product, index) => { %>
-                                            <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%></option>
+                                            <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%> (<%= product.unit %>)</option>
                                         <% }) %>
                                     <% } %>
                                 </select>
