@@ -52,7 +52,7 @@
                 <%  if (productMenu.length != 0) { %>
                     <% productMenu.forEach((product, index) => { %>
                       <a href="product_description/<%=product.product_id%>" style="text-decoration: none; color:black">
-                        <div class="card m-2" style="width: 18rem;" id="<%= product.category %>">
+                        <div class="card m-2 <%= product.category %>" style="width: 18rem;">
                             <div class="img_product">
                               <img src="<%=product.picture.replace('§§', '&')%>" class="card-img-top" >
                             </div>

@@ -42,76 +42,112 @@ for (var i = 0; i < input.length; i++) {
 
 // FILTER
 //Card Items 
-let miel_id = document.getElementById("Honey");
-let snacks_id = document.getElementById("Snacks");
-let charcuterie_id = document.getElementById("Charcuterie");
-let piment_id = document.getElementById("Achard & Piments / Chili");
-let patisserie_id = document.getElementById("Pâtisserie / Pastry");
+let miel_class = document.getElementsByClassName("Honey");
+let snacks_class = document.getElementsByClassName("Snacks");
+let charcuterie_class = document.getElementsByClassName("Charcuterie");
+let piment_class = document.getElementsByClassName("Achard/Piments");
+let patisserie_class = document.getElementsByClassName("Pâtisserie");
+// console.log(patisserie_class[0]);
 
 // Function for honey
 function toggleCheckboxMiel(id) {
   if (document.getElementById(id).checked === true) {
-    miel_id.style.display = 'revert';
+      Array.from(miel_class).forEach(item => {
+      item.style.display = 'revert';
+    });
   }
   else if (document.getElementById(id).checked === false) {
-    miel_id.style.display = 'none';
+      Array.from(miel_class).forEach(item => {
+      item.style.display = 'none';
+    });
   }
 }
 
 // Function for snacks
 function toggleCheckboxSnacks(id) {
   if (document.getElementById(id).checked === true) {
-    snacks_id.style.display = 'revert';
+      Array.from(snacks_class).forEach(item => {
+      item.style.display = 'revert';
+    });
   }
   else if (document.getElementById(id).checked === false) {
-    snacks_id.style.display = 'none';
+      Array.from(snacks_class).forEach(item => {
+      item.style.display = 'none';
+    });
   }
 }
 
 // Function for charcuterie
 function toggleCheckboxCharcuterie(id) {
   if (document.getElementById(id).checked === true) {
-    charcuterie_id.style.display = 'revert';
+      Array.from(charcuterie_class).forEach(item => {
+      item.style.display = 'revert';
+    });
   }
   else if (document.getElementById(id).checked === false) {
-    charcuterie_id.style.display = 'none';
+      Array.from(charcuterie_class).forEach(item => {
+      item.style.display = 'none';
+    });
   }
 }
 
 // Function for patisserie
 function toggleCheckboxPatisserie(id) {
   if (document.getElementById(id).checked === true) {
-    patisserie_id.style.display = 'revert';
+      Array.from(patisserie_class).forEach(item => {
+      item.style.display = 'revert';
+    });
   }
   else if (document.getElementById(id).checked === false) {
-    patisserie_id.style.display = 'none';
+      Array.from(patisserie_class).forEach(item => {
+      item.style.display = 'none';
+    });
   }
 }
 
+// Function for achard & piment
 function toggleCheckboxAchardPiment(id) {
   if (document.getElementById(id).checked === true) {
-    piment_id.style.display = 'revert';
+      Array.from(piment_class).forEach(item => {
+      item.style.display = 'revert';
+    });
   }
   else if (document.getElementById(id).checked === false) {
-    piment_id.style.display = 'none';
+      Array.from(piment_class).forEach(item => {
+      item.style.display = 'none';
+    });
   }
 }
 
 // Check ID
-let miel_check = document.getElementById('miel');
-let snacks_check = document.getElementById('snacks');
-let charcuterie_check = document.getElementById('charcuterie');
-let piment_check = document.getElementById('Achard_&_Piment');
-let patisserie_check = document.getElementById('patisserie');
+// let miel_check = document.getElementById('miel');
+// let snacks_check = document.getElementById('snacks');
+// let charcuterie_check = document.getElementById('charcuterie');
+// let piment_check = document.getElementById('Achard_&_Piment');
+// let patisserie_check = document.getElementById('patisserie');
 
-function displayAll() {
-  if(miel_check.checked === false && snacks_check.checked === false && charcuterie_check.checked === false && piment_check.checked === false && patisserie_check.checked === false) {
-    miel_id.style.display = 'revert';
-    snacks_id.style.display = 'revert';
-    charcuterie_id.style.display = 'revert';
-    patisserie_id.style.display = 'revert';
-    piment_id.style.display = 'revert';
-  }
-}
+// function displayAll() {
+//   if(miel_check.checked === false && snacks_check.checked === false && charcuterie_check.checked === false && piment_check.checked === false && patisserie_check.checked === false) {
+//       Array.from(miel_class).forEach(item => {
+//       item.style.display = 'revert';
+//     });
 
-displayAll();
+//       Array.from(snacks_class).forEach(item => {
+//       item.style.display = 'revert';
+//     });
+
+//       Array.from(charcuterie_class).forEach(item => {
+//       item.style.display = 'revert';
+//     });
+
+//       Array.from(patisserie_class).forEach(item => {
+//       item.style.display = 'revert';
+//     });
+
+//       Array.from(piment_class).forEach(item => {
+//       item.style.display = 'revert';
+//     });
+//   }
+// }
+
+// displayAll();

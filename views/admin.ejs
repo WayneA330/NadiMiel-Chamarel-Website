@@ -23,12 +23,12 @@
                             <div class="form-group form_spacing input_name_desc">
                                 <label for="name1">Name:</label>
                                 <input type="text" class="form-control" name="name1_add" id="name_french_add" placeholder="French" required>
-                                <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English">
+                                <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English" style="display: none;">
                             </div>
                             <div class="form-group form_spacing input_name_desc">
                                 <label for="description1">Description:</label>
                                 <input type="text" class="form-control" name="description1_add" id="desc_french_add" placeholder="French" required>
-                                <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English">
+                                <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English" style="display: none;">
                             </div>
                             <div class="form-group form_spacing">
                                 <label for="quantity">Quantity:</label>
@@ -51,9 +51,9 @@
                                 <select class="form-control" id="category_add" name="category_add" required>
                                     <option>Honey</option>
                                     <option>Charcuterie</option>
-                                    <option>Achard & Piments / Chili</option>
+                                    <option>Achard/Piments</option>
                                     <option>Snacks</option>
-                                    <option>Pâtisserie / Pastry</option>
+                                    <option>Pâtisserie</option>
                                 </select>
                             </div>
                             <div class="btn_add">
@@ -86,7 +86,7 @@
                                 <%  if (productLists.length != 0) { %>
                                     <% productLists.forEach((product, index) => { %>
                                         <option value="<%=product.product_id%>">
-                                            <%=product.product_id%> - <%=product.product_name_fr%>
+                                            <%=product.product_id%> - <%=product.product_name_fr%> (<%= product.unit %>)
                                         </option>
                                     <% }) %>
                                 <% } %>
@@ -95,12 +95,12 @@
                         <div class="form-group form_spacing input_name_desc">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name1_update" id="name_french_update" placeholder="French" required>
-                            <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English">
+                            <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English" style="display: none;">
                         </div>
                         <div class="form-group form_spacing input_name_desc">
                             <label for="description">Description:</label>
                             <input type="text" class="form-control" name="description1_update" id="description_french_update" placeholder="French" required>
-                            <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English">
+                            <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English" style="display: none;">
                         </div>
                         <div class="form-group form_spacing">
                             <label for="quantity">Quantity:</label>
@@ -123,9 +123,9 @@
                             <select class="form-control" id="category_update" name="category_update" required>
                                 <option>Honey</option>
                                 <option>Charcuterie</option>
-                                <option>Achard & Piments / Chili</option>
+                                <option>Achard/Piments</option>
                                 <option>Snacks</option>
-                                <option>Pâtisserie / Pastry</option>
+                                <option>Pâtisserie</option>
                             </select>
                         </div>
                         <div class="btn_update">
