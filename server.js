@@ -113,18 +113,6 @@ app.get('/admin', function(req, res){
 })
 
 
-
-// app.get('js/admin.js', function(req, res){
-//     db
-//     .select().from('customer')
-//     .then(function(customers) {
-//         db.select().from('product')
-//         .then(function(products) {
-//             res.render('admin', {title: 'Admin', customerLists: customers, productLists: products});
-//         })
-//     })
-// })
-
 // Add products in database
 app.post('/add-product', function(req, res) {
     console.log('Product has been received');
