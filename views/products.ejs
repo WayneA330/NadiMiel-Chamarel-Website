@@ -17,39 +17,39 @@
           <h1 class="h2 orange" style="font-family: 'Arial', cursive; font-size: 28px; font-weight: 900; color: rgb(125, 78, 36);">Produits</h1>
         </div>
 
-        <% 
-          let categories = [];
+         <% 
+          //let categories = [];
 
-          productMenu.forEach(element => {
-            categories.push(element.category)
-          });
-          categories = [...new Set(categories)]
-          console.log(categories);
-        %> 
+          //productMenu.forEach(element => {
+            // categories.push(element.category)
+          // });
+          // categories = [...new Set(categories)]
+          // console.log(categories);
+         %> 
 
+        <!-- The filter button -->
         <div>
-          <!-- The filter button -->
           <button id="filter-button" class="button">Filter</button>
           <div id="filter-container" class="filters">
             <ul class="filters__list">
               <li>
-                <input id="Miel" type="checkbox" />
-                <label for="Miel">Miel</label>
+                <input id="miel" type="checkbox" onchange="toggleCheckboxMiel('miel')" checked/>
+                <label for="miel">Miel</label>
               </li>
               <li>
-                <input id="Charcuterie" type="checkbox" />
-                <label for="Charcuterie">Charcuterie</label>
+                <input id="charcuterie" type="checkbox" onchange="toggleCheckboxCharcuterie('charcuterie')" checked/>
+                <label for="charcuterie">Charcuterie</label>
               </li>
               <li>
-                <input id="Patisserie" type="checkbox" />
-                <label for="Patisserie">Patisserie</label>
+                <input id="patisserie" type="checkbox" onchange="toggleCheckboxPatisserie('patisserie')" checked/>
+                <label for="patisserie">Patisserie</label>
               </li>
               <li>
-                <input id="Snacks" type="checkbox" />
-                <label for="Snacks">Snacks</label>
+                <input id="snacks" type="checkbox" onchange="toggleCheckboxSnacks('snacks')" checked/>
+                <label for="snacks">Snacks</label>
               </li>
               <li>
-                <input id="Achard_&_Piment" type="checkbox" />
+                <input id="Achard_&_Piment" type="checkbox" onchange="toggleCheckboxAchardPiment('Achard_&_Piment')" checked/>
                 <label for="Achard_&_Piment">Achard & Piment</label>
               </li>
             </ul>
@@ -61,7 +61,7 @@
                 <%  if (productMenu.length != 0) { %>
                     <% productMenu.forEach((product, index) => { %>
                       <a href="product_description/<%=product.product_id%>" style="text-decoration: none; color:black">
-                        <div class="card m-2" style="width: 18rem;">
+                        <div class="card m-2" style="width: 18rem;" id="<%= product.category %>">
                             <div class="img_product">
                               <img src="<%=product.picture%>" class="card-img-top" >
                             </div>
