@@ -150,7 +150,7 @@
 
                 let qty_div = document.createElement('div');
                 qty_div.className = "col-2";
-                qty_div.innerHTML = `<input type="number" value=${item.qty} style="width: 60px" class="quantity" onchange="update_cart();">`;
+                qty_div.innerHTML = `<input type="number" min="0" max=${item.unit_in_stock < 1? 0: item.unit_in_stock} value=${item.qty} style="width: 60px" class="quantity" onchange="update_cart();">`;
 
                 let price_div = document.createElement('div');
                 price_div.className = "col-3 cart-price";
