@@ -24,9 +24,9 @@
             <% } %> 
             <h3>Rs <span><%=productMenu[0].price%></span></h3>
             <h3 style="display:none;"><%=productMenu[0].product_id%></h3>
-            <label for="quantity">Quantity:</label>
+            <label for="quantity">Quantité:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="20" value="1"> <br>
-            <button class="buttons mt-3 attToCart grow" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Add to cart</button>
+            <button class="buttons mt-3 attToCart grow" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Ajouter au panier</button>
         </div>
     </div>
 
