@@ -40,7 +40,13 @@ app.get('/', function(req, res){
 
 
 app.get('/orders', function(req, res){
-    res.render('checkout',  {PORT: PORT, title: 'Add to Cart'});
+    db
+    .select().from('calender')
+    .then(function(data) {
+        console.log(data);
+        res.render('checkout',  {PORT: PORT, title: 'Add to Cart', CalenderItems: data});
+    })
+    
 })
 
 app.get('/product_description/:product_id', function(req, res){
@@ -173,6 +179,21 @@ app.post('/add-customer', function(req, res) {
 
     db('customer')
         .insert({ first_name : data.first_name, last_name : data.last_name, email : data.email, phone : data.phone, address : data.address}, ['*'])
+        .then(res.send('Product inserted in database'))
+        .catch(err => {
+            console.log('Request Failed:', err);
+        });
+})
+
+// Add Calender to database
+app.post('/add-calendar', function(req, res) {
+    console.log('Add Calendar request has been received');
+
+    let data = JSON.parse(JSON.stringify(req.body));
+    console.log(data);
+
+    db('calender')
+        .insert({ time_slot: data.time_slot, location: data.location, date: data.date })
         .then(res.send('Product inserted in database'))
         .catch(err => {
             console.log('Request Failed:', err);
