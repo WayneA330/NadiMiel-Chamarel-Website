@@ -156,7 +156,7 @@ app.get('/admin', function(req, res){
             })
            
 
-            res.render('admin', {PORT: PORT, title: 'Admin', customerLists: customers, productLists: products});
+            // res.render('admin', {PORT: PORT, title: 'Admin', customerLists: customers, productLists: products});
         })
     })
 })
