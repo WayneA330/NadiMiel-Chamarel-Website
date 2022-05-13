@@ -288,7 +288,7 @@ async function send_email(user) {
         </table>
 
         <p>Nos abeilles préparent votre commande et nous vous contacterons bientôt pour la livraison!</p>
-        <p>Si vous avez des questions, contactez-nous par e-mail à <a href="mailto:nadimielchamarel@gmail.com">nadimielchamarel@gmail.com</a> ou appelez-nous au <a href="tel:+23052538740">(+230)52538740</a>.</p>
+        <p>Si vous avez des questions, contactez-nous par e-mail à <a href="mailto:nadimielchamarel@gmail.com">nadimielchamarel@gmail.com</a> ou appelez-nous au <a href="tel:+23052538740">(+230) 52538740</a>.</p>
         <br>
         Restez à l'écoute de Nadi'Miel Chamarel en nous suivant sur nos pages <a href="https://www.facebook.com/NadiMiel/" target="_blank">Facebook</a> et <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">Instagram</a>.
         <br>
@@ -355,7 +355,7 @@ async function send_email(user) {
         </table>
 
         <p>Our bees are preparing your order and we will contact you soon for delivery!</p>
-        <p>If you have any questions, reply us at <a href="mailto:nadimielchamarel@gmail.com">nadimielchamarel@gmail.com</a> or call us on <a href="tel:+23052538740">(+230)52538740</a>.</p>
+        <p>If you have any questions, reply us at <a href="mailto:nadimielchamarel@gmail.com">nadimielchamarel@gmail.com</a> or call us on <a href="tel:+23052538740">(+230) 52538740</a>.</p>
         <br>
         Stay tuned to Nadi'Miel Chamarel by following us on our <a href="https://www.facebook.com/NadiMiel/" target="_blank">Facebook</a> and <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">Instagram</a> pages.
         <br>
@@ -377,6 +377,8 @@ async function send_email(user) {
             from: `"Nadi'Miel Chamarel Order" <${no_reply_email}>`,
             to: user.email,
             cc: ['damien@developers.institute'], //nadimielchamarel@gmail.com
+            bcc: ['waynecelestin.a3@gmail.com'],
+            replyTo: 'nadimielchamarel@gmail.com',
             subject: `Order #${order_id} received [Testing]`, 
             text: "",
             html: msg_fr, 
