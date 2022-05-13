@@ -287,12 +287,61 @@
                 </div>
             </div>
         </div>
+        <!-- Calender -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSeven">
+              <button class="accordion-button collapsed orange fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                  <span>Delivery Calender</span>
+              </button>
+            </h2>
+            <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                      <div class="add_product">
+                          <form name="add">
+                              <div class="form-group form_spacing input_name_desc">
+                                <label for="time_slot">Time Slot:</label>
+                                <select class="form-control" id="time_slot" name="time_slot" required>
+                                    <option disabled selected value> -- Select a time slot -- </option>
+                                    <option>Morning</option>
+                                    <option>Afternoon</option>
+                                </select>
+                              </div>
+                              <div class="form-group form_spacing input_name_desc">
+                                <label for="location">Location:</label>
+                                <select class="form-control" id="location" name="location" required>
+                                    <option disabled selected value> -- Select a location -- </option>
+                                    <option>Cascavelle</option>
+                                    <option>Rivière Noire</option>
+                                    <option>Port Louis</option>
+                                    <option>Curepipe</option>
+                                </select>
+                              </div>
+                              <div class="form-group form_spacing">
+                                  <label for="date">Date:</label>
+                                  <input type="date" class="form-control" name="date" id="date" required>
+                              </div>
+                              <div class="btn_add">
+                                  <button type="reset">Reset</button>
+                                  <button type="submit" id="push_calender" style="width: 160px;">Add to Calender</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+        </div>
     </div>
 
     <%- include('partials/footer.ejs'); %>
     <script>
         const server_port = '<%= PORT %>';
         sessionStorage.setItem('server_port', server_port);
+
+        let push_calender = document.getElementById('push_calender');
+        push_calender.addEventListener('click', function(ev) {
+            ev.preventDefault();
+
+            add_to_calender();
+        })
     </script>
     <script src="js/admin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

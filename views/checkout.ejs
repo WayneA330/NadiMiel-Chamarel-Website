@@ -28,19 +28,34 @@
                 <div>
                     <h5><b>Paiement</b></h5>
                 </div>
-                <hr>
+                <hr style="margin-top: 15px;">
                 <form>
                     <p>Options</p>
                     <select id="payment_option">
-                        <!-- <option disabled selected value> -- Options de paiement -- </option> -->
+                        <option disabled selected value> -- Options de paiement -- </option>
                         <option class="text-muted">Payer cash sur livraison</option>
                         <option class="text-muted">Payer avec JUICE sur livraison</option>
                     </select>
                 </form>
-                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0; font-weight: bold;">
+                <hr style="margin-top: 15px;">
+                <div class="row" style="padding: 0.2vh 0; font-weight: bold;">
                     <div class="col">Prix Total</div>
                     <div class="col text-right cart-total">0</div>
                 </div> 
+                <hr style="margin-top: 15px;">
+                <div>
+                    <h5><b>Livraison</b></h5>
+                </div>
+                <hr style="margin-top: 15px;">
+                <select id="payment_delivery">
+                    <%  if (CalenderItems.length != 0) { %>
+                        <% CalenderItems.forEach((items, index) => { %>
+                            <option>
+                                <%= items.date %> - <%=items.location%> - <%=items.time_slot%>
+                            </option>
+                        <% }) %>
+                    <% } %>
+                </select>
             </div>
             <div class="customer_form">
                 <div>

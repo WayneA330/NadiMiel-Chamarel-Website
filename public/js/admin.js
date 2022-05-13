@@ -52,6 +52,11 @@ let email = document.getElementById('email_customer');
 let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
+// ADD NEW DATA TO CALENDER
+let time_slot = document.getElementById('time_slot');
+let delivery_location = document.getElementById('location');
+let date = document.getElementById('date');
+
 // Retrieve domain (online or local)
 // const server_port = sessionStorage.getItem('server_port');
 const hostname = window.location.hostname;
@@ -189,3 +194,19 @@ function convert_picture_link(link){
     return link
 }
  
+// Add To Calender
+function add_to_calender() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', `${domain}/add-calendar`, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+           console.log(xhr.status);
+           console.log(xhr.responseText);
+        }};
+
+    var data = `time_slot=${time_slot.value}&location=${delivery_location.value}&date=${date.value}`;
+    data = data.replace(/\n/g, '');
+
+    xhr.send(data);
+}
