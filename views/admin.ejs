@@ -6,6 +6,7 @@
 </head>
 <body class="body">
     <%- include('partials/navbar'); %>
+    
     <!-- Slider for products -->
     <div class="accordion accordion-flush" id="accordionFlushExample">
         <!-- Add Products -->
@@ -22,12 +23,12 @@
                             <div class="form-group form_spacing input_name_desc">
                                 <label for="name1">Name:</label>
                                 <input type="text" class="form-control" name="name1_add" id="name_french_add" placeholder="French" required>
-                                <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English" required>
+                                <input type="text" class="form-control" name="name2_add" id="name_english_add" placeholder="English" style="display: none;">
                             </div>
                             <div class="form-group form_spacing input_name_desc">
                                 <label for="description1">Description:</label>
                                 <input type="text" class="form-control" name="description1_add" id="desc_french_add" placeholder="French" required>
-                                <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English" required>
+                                <input type="text" class="form-control" name="description2_add" id="desc_english_add" placeholder="English" style="display: none;">
                             </div>
                             <div class="form-group form_spacing">
                                 <label for="quantity">Quantity:</label>
@@ -35,7 +36,7 @@
                             </div>
                             <div class="form-group form_spacing">
                                 <label for="unit">Unit:</label>
-                                <input type="text" class="form-control" name="unit_add" id="unit_add" placeholder="(150g, 250g, 500g, etc)" required>
+                                <input type="text" class="form-control" name="unit_add" id="unit_add" placeholder="(150g, 250g, 500g, etc)">
                             </div>
                             <div class="form-group form_spacing">
                                 <label for="quantity">Price:</label>
@@ -50,9 +51,9 @@
                                 <select class="form-control" id="category_add" name="category_add" required>
                                     <option>Honey</option>
                                     <option>Charcuterie</option>
-                                    <option>Achard & Piments / Chili</option>
+                                    <option>Achard/Piments</option>
                                     <option>Snacks</option>
-                                    <option>Pâtisserie / Pastry</option>
+                                    <option>Pâtisserie</option>
                                 </select>
                             </div>
                             <div class="btn_add">
@@ -86,7 +87,7 @@
                                 <%  if (productLists.length != 0) { %>
                                     <% productLists.forEach((product, index) => { %>
                                         <option value="<%=product.product_id%>">
-                                            <%=product.product_id%> - <%=product.product_name_fr%>
+                                            <%=product.product_id%> - <%=product.product_name_fr%> (<%= product.unit %>)
                                         </option>
                                     <% }) %>
                                 <% } %>
@@ -95,12 +96,12 @@
                         <div class="form-group form_spacing input_name_desc">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name1_update" id="name_french_update" placeholder="French" required>
-                            <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English" required>
+                            <input type="text" class="form-control" name="name2_update" id="name_english_update" placeholder="English" style="display: none;">
                         </div>
                         <div class="form-group form_spacing input_name_desc">
                             <label for="description">Description:</label>
                             <input type="text" class="form-control" name="description1_update" id="description_french_update" placeholder="French" required>
-                            <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English" required>
+                            <input type="text" class="form-control" name="description1_update" id="description_english_update" placeholder="English" style="display: none;">
                         </div>
                         <div class="form-group form_spacing">
                             <label for="quantity">Quantity:</label>
@@ -108,7 +109,7 @@
                         </div>
                         <div class="form-group form_spacing">
                             <label for="unit">Unit:</label>
-                            <input type="text" class="form-control" name="unit_update" id="unit_update" placeholder="(150g, 250g, 500g, etc)" required>
+                            <input type="text" class="form-control" name="unit_update" id="unit_update" placeholder="(150g, 250g, 500g, etc)">
                         </div>
                         <div class="form-group form_spacing">
                             <label for="price">Price:</label>
@@ -123,9 +124,9 @@
                             <select class="form-control" id="category_update" name="category_update" required>
                                 <option>Honey</option>
                                 <option>Charcuterie</option>
-                                <option>Achard & Piments / Chili</option>
+                                <option>Achard/Piments</option>
                                 <option>Snacks</option>
-                                <option>Pâtisserie / Pastry</option>
+                                <option>Pâtisserie</option>
                             </select>
                         </div>
                         <div class="btn_update">
@@ -150,11 +151,11 @@
                         <form>
                             <div class="form-group form_spacing">
                                 <label for="name">Products</label>
-                                <select class="form-control" name="product_id_update" id="product_id_update" required>
+                                <select class="form-control" name="product_id_remove" id="product_id_remove" required>
                                     <option disabled selected value> -- Select a product -- </option>
                                     <%  if (productLists.length != 0) { %>
                                         <% productLists.forEach((product, index) => { %>
-                                            <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%></option>
+                                            <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%> (<%= product.unit %>)</option>
                                         <% }) %>
                                     <% } %>
                                 </select>
@@ -246,13 +247,57 @@
                 </div>
             </div>
         </div>
+        <!-- Order table -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingSix">
+              <button class="accordion-button collapsed orange fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                <span>Order Table</span>
+              </button>
+            </h2>
+            <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <div class="customer_table" id="table_customer">
+                        <table class="table">
+                            <thead class="table-light">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Order Date</th>
+                                <th scope="col">Order Status</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <%  if (customerLists.length != 0) { %>
+                                    <% customerLists.forEach((customer,index) => { %>
+                                        <tr>
+                                            <th scope="row"><%= %></th>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                            <td><%= %></td>
+                                        </tr>
+                                    <% }) %>
+                                <% } %>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="butn" style="text-align: center;">
         <button style="padding: 20px; margin: 20px; border: none; background-color: brown;"><a href="/route/logout" style="color: white;">Logout</a></button> 
     </div>
   
     <%- include('partials/footer.ejs'); %>
-    
+    <script>
+        const server_port = '<%= PORT %>';
+        sessionStorage.setItem('server_port', server_port);
+    </script>
     <script src="js/admin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

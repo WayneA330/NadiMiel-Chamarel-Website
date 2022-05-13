@@ -6,76 +6,64 @@
 </head>
 <body class="body">
     <%- include('partials/navbar'); %>
+    <div  id="google_translate_element"></div>
 
     <!-- Products -->
 
 <div class="container-fluid">
     <div class="row">
+      <main>
 
-    
-     
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-          <div class="nav flex-column">
-            <h3 class="margin-category" style="font-family: 'Arial', cursive; font-size: 28px; font-weight: 900; color: rgb(125, 78, 36);">Catégorie</h3>
-            <div class="p-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Miel
-                </label>
-              </div>
-            </div>
-            <div class="p-1">
-              <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                  Snacks
-              </label>
-              </div>
-            </div>
-            <div class="p-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Achard & Piment
-                </label>
-              </div>
-            </div>
-            <div class="p-1">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Charcuterie
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-  
-      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2 orange" style="font-family: 'Arial', cursive; font-size: 28px; font-weight: 900; color: rgb(125, 78, 36);">Produits</h1>
+          <h1 class="h2 orange">Produits</h1>
+        </div>
+
+        <!-- The filter button -->
+        <div>
+          <button id="filter-button" class="button">Filter</button>
+          <div id="filter-container" class="filters">
+            <ul class="filters__list">
+              <li>
+                <input id="miel" type="checkbox" onchange="toggleCheckboxMiel('miel')" checked/>
+                <label for="miel">Miel</label>
+              </li>
+              <li>
+                <input id="charcuterie" type="checkbox" onchange="toggleCheckboxCharcuterie('charcuterie')" checked/>
+                <label for="charcuterie">Charcuterie</label>
+              </li>
+              <li>
+                <input id="patisserie" type="checkbox" onchange="toggleCheckboxPatisserie('patisserie')" checked/>
+                <label for="patisserie">Patisserie</label>
+              </li>
+              <li>
+                <input id="snacks" type="checkbox" onchange="toggleCheckboxSnacks('snacks')" checked/>
+                <label for="snacks">Snacks</label>
+              </li>
+              <li>
+                <input id="Achard_&_Piment" type="checkbox" onchange="toggleCheckboxAchardPiment('Achard_&_Piment')" checked/>
+                <label for="Achard_&_Piment">Achard & Piment</label>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="table-responsive">
-            <div class=" p-2 d-flex justify-content-start flex-wrap">
+            <div class=" d-flex justify-content-start flex-wrap">
                 <%  if (productMenu.length != 0) { %>
-                    <% productMenu.forEach((product,index) => { %>
+                    <% productMenu.forEach((product, index) => { %>
                       <a href="product_description/<%=product.product_id%>" style="text-decoration: none; color:black">
-                        <div class="card m-2" style="width: 18rem;">
+                        <div class="card m-2 <%= product.category %>" style="width: 18rem;">
                             <div class="img_product">
-                              <img src="<%=product.picture%>" class="card-img-top" >
+                              <img src="<%=product.picture.replace('§§', '&')%>" class="card-img-top" loading="lazy">
                             </div>
                             <div class="card-body">
                               <h5 class="card-title"><%=product.product_name_fr%></h5>
                               <h6>(<%= product.unit %>)</h6>
                               <p class="card-text">Rs<%=product.price%></p>
                               <% if (product.unit_in_stock === 0) { %>
-                                <p class="card-text">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
-                                  Out of stock
+                                <p class="card-text" style="color: red;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-octagon" viewBox="0 0 16 16"><path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>
+                                  En rupture de stock
                                 </p>
                               <% } else { %> 
                                 <p class="card-text"><b><%=product.unit_in_stock%></b> en stock</p>
@@ -97,8 +85,16 @@
   <%- include('partials/footer.ejs'); %>
     
 
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'fr',includedLanguages: 'de,zh-CN,fr,en,hi',layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+  <script src="js/product.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 </html>

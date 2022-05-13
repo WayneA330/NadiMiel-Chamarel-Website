@@ -38,19 +38,24 @@
 }
 
 .title_story_carousel{
-    font-family: 'Pinyon Script', cursive;
+    font-family: 'Rouge Script', cursive;
     color: #fff;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 /* Our story */
 
 .title_story{
-    font-family: 'Pinyon Script', cursive; 
+    font-family: 'Rouge Script', cursive;
     margin-top: 45px;
     font-size: 60px;
     text-align: center;
     line-height: 0%;
+}
+
+.first_title_story {
+    font-family: 'Rouge Script', cursive;
+    font-size: 70px;
 }
 
 #more {display: none;} 
@@ -73,7 +78,8 @@
     font-family: 'Arial', serif;
     font-size: 18px;
     text-align: justify;
-    color:   #6f4e37;
+    color:#6f4e37;
+    line-height: 20pt;
 }
 
 .ourstory_container {
@@ -193,6 +199,13 @@
     display: flex;
     justify-content: center;
    }
+
+   .first_title_story {
+    font-family: 'Rouge Script', cursive;
+    font-size: 65px;
+    margin-left: 20px;
+    margin-right: 10px;
+   }
 }
 
 @media screen and (max-width: 714px) {
@@ -224,7 +237,7 @@
     }
 }
 
-#google_translate_element{width:300px;float:right;text-align:right;display:block}
+#google_translate_element{text-align:right;}
 .goog-te-banner-frame.skiptranslate { display: none !important;}
 body { top: 0px !important; }
 #goog-gt-tt{display: none !important; top: 0px !important; }
@@ -232,3 +245,7 @@ body { top: 0px !important; }
 .activity-root { display: hide !important;}
 .status-message { display: hide !important;}
 .started-activity-container { display: hide !important;}
+
+select {
+    padding: 4px;
+}
