@@ -154,3 +154,16 @@
     color: rgb(231, 43, 74);   
     font-family: 'Water Brush', cursive;
     }
+
+.alter-success{
+     background-color: rgb(228, 139, 139);  
+}
+
+.alter-log{
+    background-color: rgb(228, 139, 139);  
+}
+
+.login-box{
+    max-width: 400px;
+    min-height: 300px;
+}
