@@ -188,12 +188,35 @@
                 let quantity = parseFloat(quantityElement.value);
                 total = total + (price * quantity);
             }
+
+            // let cart = sessionStorage.getItem('cart');
+            // cart = JSON.parse(cart);
+
+            // for (item of cart) {
+            //     item = JSON.parse(item);
+            //     if (item != null || item != undefined) {
+            //         // console.log(item.unit_price, item.qty);
+            //         total += (Number(item.price) * Number(item.qty));
+            //     }
+            // }
+
             document.getElementsByClassName('cart-total')[0].innerHTML = 'Rs ' + total.toLocaleString();
         }
 
         function update_cart(){
             let product_serials = document.getElementsByClassName('product-serial');
             let product_qty = document.getElementsByClassName('quantity');
+
+            // Check stock value
+            // if (obj_product.qty > obj_product.unit_in_stock) {
+            //     qty.value = obj_product.unit_in_stock;
+            //     obj_product.qty = obj_product.unit_in_stock;
+            // } else if (obj_product.qty < 0) {
+            //     qty.value =  0;
+            //     return;
+            // } else {
+            //     obj_product.qty = qty.value;
+            // }
 
             let cart = sessionStorage.getItem("cart");
             cart = JSON.parse(cart);
