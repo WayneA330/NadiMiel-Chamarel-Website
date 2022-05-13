@@ -205,6 +205,8 @@ async function send_email(user) {
     console.log(user);
 
     let order_summary = ``;
+    const no_reply_email = 'dradhoa74@gmail.com';
+    const no_reply_pass = 'yaj051201?';
 
     let cart_arr = JSON.parse(user.cart);
     let cart_total = 0;
@@ -216,57 +218,113 @@ async function send_email(user) {
         order_summary +=   `<tr>
                                 <td style="text-align:left">${item.product_name_fr}</td>
                                 <td style="text-align:center">${item.qty}</td>
-                                <td style="text-align:right">${item.price}</td>
-                                <td style="text-align:right">${item_total}</td>
+                                <td style="text-align:right">${item.price.toLocaleString()}</td>
+                                <td style="text-align:right">${item_total.toLocaleString()}</td>
                             </tr>`
     }
-
-    order_summary +=   `<tr>
-                            <td colspan="4"><hr/></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td colspan="2" style="text-align:right; font-weight: bold">Total amount (MUR):</td>
-                            <td style="text-align:right; font-weight: bold">${cart_total.toLocaleString()}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"><hr/></td>
-                        </tr>
-                        
-                        <p><span style="font-weight: bold">Payment mode: </span><br>
-                        ${user.payment}</p>
-                        `
   
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
       auth: {
-          user: 'dradhoa74@gmail.com',
-          pass: 'yaj051201?'
+          user: no_reply_email,
+          pass: no_reply_pass
       }
     });
     
 
-    let msg = `<p>
+    let msg_fr = `<p>
     <div class='container'>
-        <p>Thank you for your purchase!<p>
+        <p>Merci pour votre commande!<p>
         <br>
         <img class="center" src="https://drive.google.com/uc?export=view&id=1kGnYKjU8HvKYkpMJFQeAE40iX0ap1X_6" height="200px"><br>
-        <p>Hello ${user.first_name}, We're happy to let you know that we've received your order.</p>
-        <p>Here is a summary of your order:</p>
+        <p>Bonjour ${user.first_name}, nous sommes heureux de vous annoncer que nous avons bien reçu votre commande comme suit:</p>
 
         <table>
             <tr>
-                <td style="text-align:left; font-weight: bold">Name:</td>
+                <td style="text-align:left; font-weight: bold; width: 150px">Nom:</td>
                 <td>${user.first_name} ${user.last_name}</td>
             </tr>
             <tr>
-                <td style="text-align:left; font-weight: bold">Contact No.:</td>
+                <td style="text-align:left; font-weight: bold; width: 150px">Téléphone:</td>
                 <td>${user.phone}</td>
             </tr>
             <tr>
-                <td style="text-align:left; font-weight: bold">Address:</td>
+                <td style="text-align:left; font-weight: bold; width: 150px">Adresse:</td>
                 <td>${user.address}</td>
+            </tr>
+            <tr>
+                <td style="text-align:left; font-weight: bold; width: 150px">Mode de paiement:</td>
+                <td>${user.payment}</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <table>
+            <tr>
+                <th style="text-align:left">Produit</th>
+                <th style="text-align:center">Qté</th>
+                <th style="text-align:right">Prix à l'unité</th>
+                <th style="text-align:right; min-width: 80px">Prix Total</th>
+            </tr>
+            <tr>
+                <td colspan="4"><hr/></td>
+            </tr>
+            ${order_summary}
+            <tr>
+                <td colspan="4"><hr/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" style="text-align:right; font-weight: bold">Montant total (MUR):</td>
+                <td style="text-align:right; font-weight: bold">${cart_total.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td colspan="4"><hr/></td>
+            </tr>
+            
+            
+        </table>
+
+        <p>Nos abeilles préparent votre commande et nous vous contacterons bientôt pour la livraison!</p>
+        <p>Si vous avez des questions, contactez-nous par e-mail à <a href="mailto:nadimielchamarel@gmail.com">nadimielchamarel@gmail.com</a> ou appelez-nous au <a href="tel:+23052538740">(+230)52538740</a>.</p>
+        <br>
+        Restez à l'écoute de Nadi'Miel Chamarel en nous suivant sur nos pages <a href="https://www.facebook.com/NadiMiel/" target="_blank">Facebook</a> et <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">Instagram</a>.
+        <br>
+        <br>
+        <a href="https://www.facebook.com/NadiMiel/" target="_blank" style="text-decoration: none">
+        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/facebook_001.png">
+        </a>
+        <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">
+        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/instagram_001.png">
+        </a>
+    </div>
+    </p>`
+
+    let msg_en = `<p>
+    <div class='container'>
+        <p>Thank you for your order!<p>
+        <br>
+        <img class="center" src="https://drive.google.com/uc?export=view&id=1kGnYKjU8HvKYkpMJFQeAE40iX0ap1X_6" height="200px"><br>
+        <p>Hello ${user.first_name}, we're happy to let you know that we've received your order as follows:</p>
+
+        <table>
+            <tr>
+                <td style="text-align:left; font-weight: bold; width: 150px">Name:</td>
+                <td>${user.first_name} ${user.last_name}</td>
+            </tr>
+            <tr>
+                <td style="text-align:left; font-weight: bold; width: 150px">Phone:</td>
+                <td>${user.phone}</td>
+            </tr>
+            <tr>
+                <td style="text-align:left; font-weight: bold; width: 150px">Address:</td>
+                <td>${user.address}</td>
+            </tr>
+            <tr>
+                <td style="text-align:left; font-weight: bold; width: 150px">Payment mode:</td>
+                <td>${user.payment}</td>
             </tr>
         </table>
 
@@ -277,24 +335,36 @@ async function send_email(user) {
                 <th style="text-align:left">Product</th>
                 <th style="text-align:center">Qty</th>
                 <th style="text-align:right">Unit Price</th>
-                <th style="text-align:right">Total Price</th>
+                <th style="text-align:right; min-width: 80px">Total Price</th>
             </tr>
             <tr>
                 <td colspan="4"><hr/></td>
             </tr>
-            
             ${order_summary}
+            <tr>
+                <td colspan="4"><hr/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" style="text-align:right; font-weight: bold">Total amount (MUR):</td>
+                <td style="text-align:right; font-weight: bold">${cart_total.toLocaleString()}</td>
+            </tr>
+            <tr>
+                <td colspan="4"><hr/></td>
+            </tr>        
         </table>
-    
-        <p>If you have any questions, contact us here or call us on 52538740!</p>
+
+        <p>Our bees are preparing your order and we will contact you soon for delivery!</p>
+        <p>If you have any questions, reply us at <a href="mailto:nadimielchamarel@gmail.com">nadimielchamarel@gmail.com</a> or call us on <a href="tel:+23052538740">(+230)52538740</a>.</p>
+        <br>
+        Stay tuned to Nadi'Miel Chamarel by following us on our <a href="https://www.facebook.com/NadiMiel/" target="_blank">Facebook</a> and <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">Instagram</a> pages.
         <br>
         <br>
-        Click here to visit our Facebook and instagram page!<br><br>
         <a href="https://www.facebook.com/NadiMiel/" target="_blank" style="text-decoration: none">
-        <img src="https://logoeps.com/wp-content/uploads/2013/11/facebook-flat-vector-logo.png" height="50px">
+        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/facebook_001.png">
         </a>
         <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png" height="44px" style="padding: 3px">
+        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/instagram_001.png">
         </a>
     </div>
     </p>`
@@ -304,18 +374,18 @@ async function send_email(user) {
 
     if (regex.test(user.email)) {
         let info = await transporter.sendMail({
-            from: `Nadi'Miel Chamarel Order`,
-            to: user.email, 
+            from: `"Nadi'Miel Chamarel Order" <${no_reply_email}>`,
+            to: user.email,
+            cc: ['damien@developers.institute'], //nadimielchamarel@gmail.com
             subject: `Order #${order_id} received [Testing]`, 
             text: "",
-            html: msg, 
+            html: msg_fr, 
         });
             console.log(`Email sent to ${user.email} (${user.first_name})`);
-        } 
-        else{
-            console.log(`Error - The email provided is invalid: ${user.email}`);
-        }
+    } else{
+        console.log(`Error - The email provided is invalid: ${user.email}`);
     }
+}
 
 
   
