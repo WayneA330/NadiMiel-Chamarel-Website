@@ -26,8 +26,8 @@
             <h3 style="display:none;"><%=productMenu[0].product_id%></h3>
             <% if (productMenu[0].unit_in_stock > 0){ %>
                 <label for="quantity">Quantité:</label>
-                <input type="number" id="quantity" name="quantity" min="1" max="<%= productMenu[0].unit_in_stock < 1? 1: productMenu[0].unit_in_stock %>" 
-                value="0"> <br>
+                <input type="number" id="quantity" name="quantity" min="1" max="<%= productMenu[0].unit_in_stock < 2? 1: productMenu[0].unit_in_stock %>" 
+                value="1"> <br>
                 <button class="buttons mt-3 attToCart grow" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> %>Ajouter au panier</button>
             <%} %>
         </div>
@@ -61,10 +61,22 @@
     <script>
         function add_to_cart(product){
 
-            let qty = document.getElementById('quantity').value;
-            console.log(qty);
+            let qty = document.getElementById('quantity');
+            console.log(qty.value);
             let obj_product = JSON.parse(product);
-            obj_product['qty'] = qty;
+            obj_product['qty'] = qty.value;
+
+            // Check stock value
+            if (obj_product.qty > obj_product.unit_in_stock) {
+                qty.value = obj_product.unit_in_stock;
+                obj_product.qty = obj_product.unit_in_stock;
+            } else if (obj_product.qty < 0) {
+                qty.value =  0;
+                return;
+            } else {
+                obj_product.qty = qty.value;
+            }
+                            
 
            console.log("Adding to cart:", obj_product);
 
