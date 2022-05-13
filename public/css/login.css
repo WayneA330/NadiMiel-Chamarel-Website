@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('backpage.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
+   
+}
+.center-div{
+    padding-top: 10%;
+    
+}
+

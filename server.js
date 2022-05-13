@@ -4,6 +4,22 @@ const localStorage = require('localStorage');
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 5001;
+const {v4: uuidv4 } = require('uuid');
+const router = express.Router();
+const session = require('express-session');
+const bcrypt = require('bcrypt')
+
+//for admin session
+app.use(session({
+    secret: uuidv4(),
+    resave: false,
+    saveUninitialized:true,
+    
+}));
+
+
+
+
 
 //Database
 const db = require('knex')({
@@ -97,30 +113,52 @@ app.get('/recipe', function(req, res){
     })
 })
 
+
+
 // let productLists;
+
 app.get('/admin', function(req, res){
+    
     db
     .select().from('customer')
     .then(function(customers) {
         db.select().from('product')
         .then(function(products) {
-            res.render('admin', {title: 'Admin', customerLists: customers, productLists: products});
+            db.select().from('admin')
+            .then(function(login){
+                //get hash
+                // const saltRound = 10;
+                // bcrypt.genSalt(saltRound ,function(err, salt){
+                //     if(err){
+                //         throw err
+                //     }else{
+                //         bcrypt.hash(login[0].password, salt, function(err, hash){
+                //             if(err){
+                //                 throw err
+                //             }else{
+                //                 console.log(hash);
+                //             }
+                //         })
+                //     }
+                // })
+               
+
+
+                if(req.session.user == login[0].email && req.session.password == login[0].password){
+                    res.render('admin', {title: 'Admin', customerLists: customers, productLists: products})
+                } 
+                else{
+                    res.render('loginpage', {title: 'Login'})
+                }
+            })
+           
         })
     })
 })
 
 
+  
 
-// app.get('js/admin.js', function(req, res){
-//     db
-//     .select().from('customer')
-//     .then(function(customers) {
-//         db.select().from('product')
-//         .then(function(products) {
-//             res.render('admin', {title: 'Admin', customerLists: customers, productLists: products});
-//         })
-//     })
-// })
 
 // Add products in database
 app.post('/add-product', function(req, res) {
@@ -187,6 +225,66 @@ app.post('/add-customer', function(req, res) {
             console.log('Request Failed:', err);
         });
 })
+
+//ALL ABOUT ADMIN LOGIN
+app.use('/route', router);
+
+app.get('/login', function(req, res){
+    res.render('loginpage', {title: 'Login'});
+});
+
+router.post('/admin/login',  (req, res) =>{
+    db.select().from('admin')
+    .then(function(login){
+       
+        // const passwordEnteredByUser = req.body.password
+        // const Username = req.body.email
+        // console.log(passwordEnteredByUser);
+        // const hash = login[0].password;
+        
+        // bcrypt.compare(passwordEnteredByUser, hash, function(err, isMatch) {
+        // if (err) {
+        //     throw err
+        // } else if (!isMatch) {
+        //     console.log("Password doesn't match!")
+        //     res.render('loginpage',{title: "Unauthorized User", incorrect: "Wrong Username or Password"})
+        // } else {
+        //     console.log("Password matches!");
+        //      if(req.body.email == login[0].email && req.body.password == login[0].password){
+        //     req.session.user = req.body.email;
+        //     req.session.password = req.body.password;
+        
+        //     res.redirect('/admin')
+        //     }
+           
+        // }
+        // })
+
+    if(req.body.email == login[0].email && req.body.password == login[0].password){
+        req.session.user = req.body.email;
+        req.session.password = req.body.password;
+       
+        res.redirect('/admin')
+    }
+    else{
+        res.render('loginpage',{title: "Unauthorized User", incorrect: "Wrong Username or Password"})
+    }
+    
+})
+});
+
+//route to logout
+router.get('/logout', (req, res)=>{
+    req.session.destroy(function(err){
+        if(err){
+            res.send("Error")
+        }
+        else{
+            res.render('loginpage',{title: "Logout",logout: "logout successfully"})
+        }
+    })
+})
+
 
 app.listen(PORT, () => {
     console.log(`app is running on port ${PORT}`);

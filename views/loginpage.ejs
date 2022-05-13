@@ -1,0 +1,35 @@
+
+
+
+<%-include('partials/head')-%>
+<%- include('partials/navbar'); %>
+<div class="text-center center-div ">
+    <div class="container border py-5 login-box" >
+        <div class="title pb-5">
+            <h2 class="font-weight-bold">Login System</h2>
+            <span>Ceci est une page de connexion d'administrateur</span>
+            <% if(locals.logout){%>
+                <div class="alter alter-success text-center">
+                   <p id="text-log"><%=logout%></p> 
+                </div>
+            <% } %>
+
+            <% if(locals.incorrect){%>
+                <div class="alter-log text-center">
+                   <p id="text-log"><%=incorrect%></p> 
+                </div>
+            <% } %>
+        </div>
+
+       <form action="/route/admin/login" method="POST" class="pt-3">
+           <div class="form-group pb-3">
+               <input type="email" class="form-control" placeholder="Entrer votre LoginID" name="email">
+           </div>
+           <div class="form-group pb-2">
+               <input type="password" class="form-control" name="password" placeholder="Password">
+           </div>
+           <button type="submit" class="btn btn-success rounded-pi">Login</button>
+       </form>
+    </div>
+</div>
+<%-include('partials/footer.ejs')-%>
