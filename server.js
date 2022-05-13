@@ -294,10 +294,10 @@ async function send_email(user) {
         <br>
         <br>
         <a href="https://www.facebook.com/NadiMiel/" target="_blank" style="text-decoration: none">
-        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/facebook_001.png">
+        <img src="https://drive.google.com/uc?export=view&id=1D6Ln2ISMAltBoXxjCBMW9uBRI1UJMLYC">
         </a>
         <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">
-        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/instagram_001.png">
+        <img src="https://drive.google.com/uc?export=view&id=1HHzsuzHZn1KfI0PivoLVvVaVznGb43Vp">
         </a>
     </div>
     </p>`
@@ -361,10 +361,10 @@ async function send_email(user) {
         <br>
         <br>
         <a href="https://www.facebook.com/NadiMiel/" target="_blank" style="text-decoration: none">
-        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/facebook_001.png">
+        <img src="https://drive.google.com/uc?export=view&id=1D6Ln2ISMAltBoXxjCBMW9uBRI1UJMLYC">
         </a>
         <a href="https://www.instagram.com/nadimiel_chamarel/" target="_blank">
-        <img src="https://www.xink.io/wp-content/themes/hello-elementor/assets/icons/color/64/instagram_001.png">
+        <img src="https://drive.google.com/uc?export=view&id=1HHzsuzHZn1KfI0PivoLVvVaVznGb43Vp">
         </a>
     </div>
     </p>`
