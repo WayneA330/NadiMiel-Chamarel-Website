@@ -64,23 +64,28 @@
                 <form id="info_form">
                     <div class="form-group form_spacing">
                         <label for="first_name_customer">Prénom:</label>
-                        <input type="text" class="form-control" name="first_name_customer" id="first_name_customer" placeholder="Prénom" required>
+                        <input type="text" class="form-control" name="first_name_customer" id="first_name_customer"
+                               placeholder="Prénom" required>
                     </div>
                     <div class="form-group form_spacing">
                         <label for="last_name_customer">Nom de famille:</label>
-                        <input type="text" class="form-control" name="last_name_customer" id="last_name_customer" placeholder="Nom de famille" required>
+                        <input type="text" class="form-control" name="last_name_customer" id="last_name_customer"
+                               placeholder="Nom de famille" required>
                     </div>
                     <div class="form-group form_spacing">
                         <label for="email_customer">E-mail:</label>
-                        <input type="email" class="form-control" name="email_customer" id="email_customer" placeholder="E-mail" required>
+                        <input type="email" class="form-control" name="email_customer" id="email_customer"
+                               placeholder="E-mail" required>
                     </div>
                     <div class="form-group form_spacing">
                         <label for="phone_customer">Numéro de téléphone:</label>
-                        <input type="number" class="form-control" name="phone_customer" id="phone_customer" placeholder="Numéro de téléphone" required>
+                        <input type="number" class="form-control" name="phone_customer" id="phone_customer"
+                               placeholder="Numéro de téléphone" required>
                     </div>
                     <div class="form-group form_spacing">
                         <label for="address_customer">Adresse:</label>
-                        <input type="text" class="form-control" name="address_customer" id="address_customer" placeholder="Adresse" required>
+                        <input type="text" class="form-control" name="address_customer" id="address_customer"
+                               placeholder="Adresse" required>
                     </div>
                     <div class="btn-customer">
                         <button id="submit" type="submit" style="width: 190px;"
@@ -93,13 +98,15 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                     <a type="button" class="close close_modal_x" data-bs-dismiss="modal" aria-label="Close">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-x-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
                         </svg>
@@ -238,12 +245,12 @@
             cart = JSON.parse(cart);
 
             for (i in product_serials){
-                if (product_serials[i].innerText != undefined){
+                if (product_serials[i].innerText !== undefined){
                     let product_id = convert_product_id_serial(product_serials[i].innerText);
 
                     for (k in cart){
                         item = JSON.parse(cart[k]);
-                        if (item.product_id == product_id){
+                        if (item.product_id === product_id){
                             item.qty = product_qty[i].value;
                             cart[k] = JSON.stringify(item);
                             console.log(cart);
@@ -274,11 +281,14 @@
     <%- include('partials/footer.ejs'); %>
 
     <script src="js/checkout.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'fr',includedLanguages: 'de,zh-CN,fr,en,hi',layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
+          new google.translate.TranslateElement({pageLanguage: 'fr',includedLanguages: 'de,zh-CN,fr,en,hi',
+              layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
