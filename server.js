@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const localStorage = require('localStorage');
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 
@@ -28,9 +27,6 @@ app.set('db', db);
 app.set('view engine', 'ejs');
 
 // load css and assets folder
-// app.use(express.static('./images'));
-// app.use(express.static('./css'));
-// app.use(express.static('./js'));
 app.use(express.static('public'));
 
 
@@ -278,6 +274,10 @@ async function send_email(user) {
                 <td style="text-align:left; font-weight: bold; width: 150px">Mode de paiement:</td>
                 <td>${user.payment}</td>
             </tr>
+            <tr>
+                <td style="text-align:left; font-weight: bold; width: 150px">Livraison:</td>
+                <td>${user.delivery}</td>
+            </tr>
         </table>
 
         <br>
@@ -297,8 +297,7 @@ async function send_email(user) {
                 <td colspan="4"><hr/></td>
             </tr>
             <tr>
-                <td></td>
-                <td colspan="2" style="text-align:right; font-weight: bold">Montant total (MUR):</td>
+                <td colspan="3" style="text-align:right; font-weight: bold">Montant total (MUR):</td>
                 <td style="text-align:right; font-weight: bold">${cart_total.toLocaleString()}</td>
             </tr>
             <tr>
@@ -347,6 +346,10 @@ async function send_email(user) {
                 <td style="text-align:left; font-weight: bold; width: 150px">Payment mode:</td>
                 <td>${user.payment}</td>
             </tr>
+             <tr>
+                <td style="text-align:left; font-weight: bold; width: 150px">Delivery:</td>
+                <td>${user.delivery}</td>
+            </tr>
         </table>
 
         <br>
@@ -366,8 +369,7 @@ async function send_email(user) {
                 <td colspan="4"><hr/></td>
             </tr>
             <tr>
-                <td></td>
-                <td colspan="2" style="text-align:right; font-weight: bold">Total amount (MUR):</td>
+                <td colspan="3" style="text-align:right; font-weight: bold">Total amount (MUR):</td>
                 <td style="text-align:right; font-weight: bold">${cart_total.toLocaleString()}</td>
             </tr>
             <tr>
@@ -398,7 +400,7 @@ async function send_email(user) {
             from: `"Nadi'Miel Chamarel Order" <${no_reply_email}>`,
             to: user.email,
             cc: ['damien@developers.institute'], //nadimielchamarel@gmail.com
-            bcc: ['waynecelestin.a3@gmail.com'],
+            // bcc: ['waynecelestin.a3@gmail.com'],
             replyTo: 'nadimielchamarel@gmail.com',
             subject: `Order #${order_id} received [Testing]`, 
             text: "",

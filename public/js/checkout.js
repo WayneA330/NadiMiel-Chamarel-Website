@@ -6,10 +6,11 @@ let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
 let payment = document.getElementById('payment_option');
+let delivery = document.getElementById('payment_delivery');
 
 // Retrieve domain (online or local)
 const hostname = window.location.hostname;
-const domain = hostname == 'localhost'? `http://${hostname}:${server_port}` :`https://${hostname}`;
+const domain = hostname === 'localhost'? `http://${hostname}:${server_port}` :`https://${hostname}`;
 
 // Add Customer Button
 let add_customer = () => {
@@ -68,7 +69,7 @@ let confirm_order = () => {
 
     let cart = sessionStorage.getItem('cart');
 
-    var data = `first_name=${capitalise_name(first_name.value)}&last_name=${capitalise_name(last_name.value)}&email=${email.value}&phone=${phone.value}&address=${address.value}&payment=${payment.selectedOptions[0].value}&cart=${cart}`;
+    var data = `first_name=${capitalise_name(first_name.value)}&last_name=${capitalise_name(last_name.value)}&email=${email.value}&phone=${phone.value}&address=${address.value}&payment=${payment.selectedOptions[0].value}&delivery=${delivery.selectedOptions[0].value}&cart=${cart}`;
     data = data.replace(/\n/g, '');
 
     xhr.send(data);
