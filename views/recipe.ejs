@@ -48,7 +48,7 @@
                                     <div class="card-body">
                                         <% if (Preparation.length !== 0) { %>
                                             <% Preparation.forEach((preparation, index) => { %>
-                                                <% section = preparation.split(':');%>
+                                                <% let section = preparation.split(':');%>
                                                 <h4 class="orange"><%=section[0]%>:</h4>
                                                 <ol>
                                                     <% section.forEach((content, idx) => {%>

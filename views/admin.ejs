@@ -83,7 +83,7 @@
                             <select class="form-control" name="product_id_update" id="product_id_update"
                             onchange="retrieve_product(this.selectedOptions[0].value)" required >
                                 <option disabled selected value> -- Select a product -- </option>
-                                <%  if (productLists.length != 0) { %>
+                                <%  if (productLists.length !== 0) { %>
                                     <% productLists.forEach((product, index) => { %>
                                         <option value="<%=product.product_id%>">
                                             <%=product.product_id%> - <%=product.product_name_fr%> (<%= product.unit %>)
@@ -152,7 +152,7 @@
                                 <label for="name">Products</label>
                                 <select class="form-control" name="product_id_remove" id="product_id_remove" required>
                                     <option disabled selected value> -- Select a product -- </option>
-                                    <%  if (productLists.length != 0) { %>
+                                    <%  if (productLists.length !== 0) { %>
                                         <% productLists.forEach((product, index) => { %>
                                             <option><%=product.product_id%><%=' - '%><%=product.product_name_fr%> (<%= product.unit %>)</option>
                                         <% }) %>
@@ -229,7 +229,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                                <%  if (customerLists.length != 0) { %>
+                                <%  if (customerLists.length !== 0) { %>
                                     <% customerLists.forEach((customer,index) => { %>
                                         <tr>
                                             <th scope="row"><%=customer.customer_id%></th>
@@ -270,7 +270,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                                <%  if (customerLists.length != 0) { %>
+                                <%  if (customerLists.length !== 0) { %>
                                     <% customerLists.forEach((customer,index) => { %>
                                         <tr>
                                             <th scope="row"><%= %></th>

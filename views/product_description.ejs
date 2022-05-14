@@ -95,8 +95,8 @@
 
                 let product_exist = false;
 
-                for (i in cart){
-                    item = JSON.parse(cart[i]);
+                for (let i in cart){
+                    let item = JSON.parse(cart[i]);
                     if (item.product_id == obj_product.product_id){
                         //cart[i].qty = obj_product.qty;
                         cart[i] = JSON.stringify(obj_product);

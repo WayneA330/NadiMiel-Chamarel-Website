@@ -23,7 +23,7 @@ let add_customer = () => {
            console.log(xhr.responseText);
         }};
 
-        var data = `first_name=${capitalise_name(first_name.value)}&last_name=${capitalise_name(last_name.value)}&email=${email.value}&phone=${phone.value}&address=${address.value}`;
+    let data = `first_name=${capitalise_name(first_name.value)}&last_name=${capitalise_name(last_name.value)}&email=${email.value}&phone=${phone.value}&address=${address.value}`;
     data = data.replace(/\n/g, '');
 
     xhr.send(data);
@@ -69,7 +69,7 @@ let confirm_order = () => {
 
     let cart = sessionStorage.getItem('cart');
 
-    var data = `first_name=${capitalise_name(first_name.value)}&last_name=${capitalise_name(last_name.value)}&email=${email.value}&phone=${phone.value}&address=${address.value}&payment=${payment.selectedOptions[0].value}&delivery=${delivery.selectedOptions[0].value}&cart=${cart}`;
+    let data = `first_name=${capitalise_name(first_name.value)}&last_name=${capitalise_name(last_name.value)}&email=${email.value}&phone=${phone.value}&address=${address.value}&payment=${payment.selectedOptions[0].value}&delivery=${delivery.selectedOptions[0].value}&cart=${cart}`;
     data = data.replace(/\n/g, '');
 
     xhr.send(data);

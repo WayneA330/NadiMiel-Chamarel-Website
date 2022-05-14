@@ -265,7 +265,7 @@
         }
 
         function create_product_serial(product_id){
-            return ("N" + product_id.toString().padStart(4, 0));
+            return ("N" + product_id.toString().padStart(4, '0'));
         }
 
         function convert_product_id_serial(product_serial){
