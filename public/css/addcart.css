@@ -30,7 +30,7 @@
 }
 
 .summary {
-    background-color: #ddd;
+    background-color: rgb(255,221,169); //#ddd;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 4vh;
@@ -183,13 +183,14 @@ a:hover {
 }
 
 .btn-customer > button {
-    width: 100px;
+    width: 220px;
     border: 2px solid #ffc00a;
     border-radius: 15px;
-    color: white;
+    color: rgb(125, 78, 36); //white;
     background-color: #ffc00a;
     font-size: large;
     margin: 20px;
+    padding: 10px;
 }
 
 .btn-customer > button:hover {

@@ -26,28 +26,30 @@
             </div>
             <div class="col-md-4 summary">
                 <div>
-                    <h5><b>Paiement</b></h5>
+                    <h5><b>Paiement:</b></h5>
                 </div>
-                <hr style="margin-top: 15px;">
+
                 <form>
-                    <p>Options</p>
+<!--                    <p>Options</p>-->
                     <select id="payment_option">
 <!--                        <option disabled selected value> &#45;&#45; Options de paiement &#45;&#45; </option>-->
                         <option class="text-muted">Payer cash sur livraison</option>
                         <option class="text-muted">Payer avec JUICE sur livraison</option>
                     </select>
                 </form>
-                <hr style="margin-top: 15px;">
-                <div class="row" style="padding: 0.2vh 0; font-weight: bold;">
+
+                <div class="row" style="padding: 0.2vh 0; font-weight: bold; margin-top: 15px;">
                     <div class="col">Prix Total</div>
                     <div class="col text-right cart-total">0</div>
-                </div> 
-                <hr style="margin-top: 15px;">
-                <div>
-                    <h5><b>Livraison</b></h5>
                 </div>
+
                 <hr style="margin-top: 15px;">
-                <select id="payment_delivery">
+
+                <div>
+                    <h5><b>Livraison:</b></h5>
+                </div>
+
+                <select id="payment_delivery"  style="margin-top: 15px;">
                     <%  if (CalenderItems.length !== 0) { %>
                         <% CalenderItems.forEach((items, index) => { %>
                             <option>
@@ -88,7 +90,7 @@
                                placeholder="Adresse" required>
                     </div>
                     <div class="btn-customer">
-                        <button id="submit" type="submit" style="width: 190px;"
+                        <button id="submit" type="submit"
                             data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
                             Finaliser votre achat
                         </button>
@@ -132,6 +134,7 @@
         submit.addEventListener('click', function(ev){
             ev.preventDefault();
 
+            update_cart();
             checkout();
             // document.getElementById('info_form').reset();
             // sessionStorage.removeItem('cart');
@@ -143,7 +146,7 @@
             let products = JSON.parse(sessionStorage.getItem("cart"));
 
             // ToDo check if products are not null or undefined
-            for (item of products){
+            for (let item of products){
                 item = JSON.parse(item);
 
                 let innerContainer = document.createElement('div');
@@ -201,27 +204,19 @@
 
         function updateTotal(){
             let total = 0;
-            let cartItemContainer = document.getElementsByClassName('outerContainer')[0]
-            let cartRows = cartItemContainer.getElementsByClassName('innerContainer')
-            for (let i = 0; i < cartRows.length; i++){
-                let cartRow = cartRows[i]
-                let priceElement = cartRow.getElementsByClassName('cart-price')[0];
-                let quantityElement = cartRow.getElementsByClassName('quantity')[0];
-                let price = parseFloat(priceElement.innerText.replace('Rs', ''));
-                let quantity = parseFloat(quantityElement.value);
-                total = total + (price * quantity);
+            let cart = sessionStorage.getItem('cart');
+            cart = JSON.parse(cart);
+
+            // Calculate total
+            for (let item of cart) {
+                item = JSON.parse(item);
+                if (item !== null || item !== undefined) {
+                    // console.log(item.unit_price, item.qty);
+                    if (item.qty > 0) {
+                        total += (Number(item.price) * Number(item.qty));
+                    }
+                }
             }
-
-            // let cart = sessionStorage.getItem('cart');
-            // cart = JSON.parse(cart);
-
-            // for (item of cart) {
-            //     item = JSON.parse(item);
-            //     if (item != null || item != undefined) {
-            //         // console.log(item.unit_price, item.qty);
-            //         total += (Number(item.price) * Number(item.qty));
-            //     }
-            // }
 
             document.getElementsByClassName('cart-total')[0].innerHTML = 'Rs ' + total.toLocaleString();
         }
@@ -230,35 +225,36 @@
             let product_serials = document.getElementsByClassName('product-serial');
             let product_qty = document.getElementsByClassName('quantity');
 
-            // Check stock value
-            // if (obj_product.qty > obj_product.unit_in_stock) {
-            //     qty.value = obj_product.unit_in_stock;
-            //     obj_product.qty = obj_product.unit_in_stock;
-            // } else if (obj_product.qty < 0) {
-            //     qty.value =  0;
-            //     return;
-            // } else {
-            //     obj_product.qty = qty.value;
-            // }
+            let cart = retrieve_cart();
 
-            let cart = sessionStorage.getItem("cart");
-            cart = JSON.parse(cart);
-
-            for (i in product_serials){
+            // Update product with new qty
+            for (let i in product_serials){
                 if (product_serials[i].innerText !== undefined){
                     let product_id = convert_product_id_serial(product_serials[i].innerText);
 
-                    for (k in cart){
-                        item = JSON.parse(cart[k]);
+                    for (let k in cart){
+                        let item = JSON.parse(cart[k]);
                         if (item.product_id === product_id){
-                            item.qty = product_qty[i].value;
+                            if (item.qty < 1){
+                                item.qty = 0;
+                                product_qty[i].value = 0;
+                            }
+                            else if (item.qty > item.unit_in_stock){
+                                item.qty = item.unit_in_stock;
+                                product_qty[i].value = item.unit_in_stock;
+                            }
+                            else{
+                                item.qty = product_qty[i].value;
+                            }
                             cart[k] = JSON.stringify(item);
+                            console.log(item);
                             console.log(cart);
                             break;
                         }
                     }
                 }
             }
+
             console.log(cart);
             sessionStorage.setItem("cart", JSON.stringify(cart));
             updateTotal();
@@ -271,6 +267,31 @@
         function convert_product_id_serial(product_serial){
             console.log(product_serial);
             return Number(product_serial.slice(1));
+        }
+
+        function retrieve_cart(){
+            let cart = sessionStorage.getItem("cart");
+            cart = JSON.parse(cart);
+
+            // ToDo Request update from DB to verify latest values
+
+            // Remove any product with qty less than 1 and adjust value if above stock
+            for (let k in cart){
+                let item = JSON.parse(cart[k]);
+                if (item.qty < 1){
+                    console.log(`Removing ${item.product_name_fr} from cart (Qty: ${item.qty})`)
+                    cart[k] = null;
+                }
+                else if (item.qty > item.unit_in_stock){
+                    console.log(`Adjusting ${item.product_name_fr} from cart (Qty: ${item.qty})`)
+                    cart[k].qty = item.qty;
+                }
+            }
+
+            // Remove null or empty elements
+            cart = cart.filter((n) => n);
+
+            return cart;
         }
 
         display_products();

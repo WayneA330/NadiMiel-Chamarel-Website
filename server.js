@@ -227,17 +227,20 @@ async function send_email(user) {
 
     let cart_arr = JSON.parse(user.cart);
     let cart_total = 0;
-    for (product of cart_arr){
-        item = JSON.parse(product);
+    for (let product of cart_arr){
+        let item = JSON.parse(product);
         console.log(item);
-        const item_total = Number(item.qty) * Number(item.price);
-        cart_total += item_total;
-        order_summary +=   `<tr>
+
+        if (item.qty > 0) {
+            const item_total = Number(item.qty) * Number(item.price);
+            cart_total += item_total;
+            order_summary += `<tr>
                                 <td style="text-align:left">${item.product_name_fr}</td>
                                 <td style="text-align:center">${item.qty}</td>
                                 <td style="text-align:right">${item.price.toLocaleString()}</td>
                                 <td style="text-align:right">${item_total.toLocaleString()}</td>
                             </tr>`
+        }
     }
   
     const transporter = nodemailer.createTransport({
