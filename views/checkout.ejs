@@ -180,7 +180,7 @@
 
                 let price_div = document.createElement('div');
                 price_div.className = "col-3 cart-price";
-                price_div.innerHTML = `Rs ${parseInt(item.price)}&nbsp;&nbsp;&nbsp;<span class="close" style=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg></span>`
+                price_div.innerHTML = `Rs ${parseInt(item.price)}&nbsp;&nbsp;&nbsp;<span id=${item.product_id} class="close" style=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg></span>`
 
                 row.append(img_div);
                 row.appendChild(product_div);
@@ -196,8 +196,20 @@
             let button = removeCartItemButtons[i];
             button.addEventListener('click', function(event){
                 let buttonClicker = event.target;
-                buttonClicker.parentElement.parentElement.parentElement.parentElement.remove();
+                let product_id = Number(buttonClicker.parentElement.getAttribute('id'));
+                let cart = retrieve_cart();
+
+                for (let k in cart){
+                    let item = JSON.parse(cart[k]);
+                    if (item.product_id === product_id){
+                        cart[k] = null;
+                        console.log(cart);
+                        break;
+                    }
+                }
+                save_cart(cart)
                 update_cart();
+                buttonClicker.parentElement.parentElement.parentElement.parentElement.remove();
             })
             }
         }
@@ -221,11 +233,13 @@
             document.getElementsByClassName('cart-total')[0].innerHTML = 'Rs ' + total.toLocaleString();
         }
 
-        function update_cart(){
+        function update_cart(cart=null){
             let product_serials = document.getElementsByClassName('product-serial');
             let product_qty = document.getElementsByClassName('quantity');
 
-            let cart = retrieve_cart();
+            if (cart === null){
+                cart = retrieve_cart();
+            }
 
             // Update product with new qty
             for (let i in product_serials){
@@ -255,8 +269,7 @@
                 }
             }
 
-            console.log(cart);
-            sessionStorage.setItem("cart", JSON.stringify(cart));
+            save_cart(cart);
             updateTotal();
         }
 
@@ -292,6 +305,13 @@
             cart = cart.filter((n) => n);
 
             return cart;
+        }
+
+        function save_cart(cart){
+            // Remove null or empty elements
+            cart = cart.filter((n) => n);
+            console.log(cart);
+            sessionStorage.setItem("cart", JSON.stringify(cart));
         }
 
         display_products();
