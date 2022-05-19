@@ -37,7 +37,7 @@ app.get('/', function(req, res){
 
 app.get('/orders', function(req, res){
     db
-    .select().from('calender')
+    .select().from('calender').where({'date': '2022-05-21'})
     .then(function(data) {
         console.log(data);
         res.render('checkout',  {PORT: PORT, title: 'Add to Cart', CalenderItems: data});
@@ -222,8 +222,8 @@ async function send_email(user) {
     console.log(user);
 
     let order_summary = ``;
-    const no_reply_email = 'dradhoa74@gmail.com';
-    const no_reply_pass = 'yaj051201?';
+    const no_reply_email = 'order.nadimielchamarel@gmail.com';
+    const no_reply_pass = '$g0s@jg1m';
 
     let cart_arr = JSON.parse(user.cart);
     let cart_total = 0;
