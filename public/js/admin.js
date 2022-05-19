@@ -52,7 +52,7 @@ let email = document.getElementById('email_customer');
 let phone = document.getElementById('phone_customer');
 let address = document.getElementById('address_customer');
 
-// ADD NEW DATA TO CALENDER
+// ADD NEW DATA TO CALENDAR
 let time_slot = document.getElementById('time_slot');
 let delivery_location = document.getElementById('location');
 let date = document.getElementById('date');
@@ -194,8 +194,8 @@ function convert_picture_link(link){
     return link
 }
  
-// Add To Calender
-function add_to_calender() {
+// Add To Calendar
+function add_to_calendar() {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', `${domain}/add-calendar`, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');

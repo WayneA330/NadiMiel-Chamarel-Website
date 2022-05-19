@@ -287,7 +287,7 @@
                 </div>
             </div>
         </div>
-        <!-- Calender -->
+        <!-- Calendar -->
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingSeven">
               <button class="accordion-button collapsed orange fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
@@ -313,7 +313,6 @@
                                     <option>Curepipe</option>
                                 </select>
                               </div>
-
                               <div class="form-group form_spacing input_name_desc">
                                   <label for="time_slot">Time Slot:</label>
                                   <select class="form-control" id="time_slot" name="time_slot" required>
@@ -325,7 +324,7 @@
 
                               <div class="btn_add">
                                   <button type="reset">Reset</button>
-                                  <button type="submit" id="push_calender" style="width: 160px;">Add to Calendar</button>
+                                  <button type="submit" id="push_calendar" style="width: 160px;">Add to Calendar</button>
                               </div>
                           </form>
                       </div>
@@ -339,11 +338,11 @@
         const server_port = '<%= PORT %>';
         sessionStorage.setItem('server_port', server_port);
 
-        let push_calender = document.getElementById('push_calender');
-        push_calender.addEventListener('click', function(ev) {
+        let push_calendar = document.getElementById('push_calendar');
+        push_calendar.addEventListener('click', function(ev) {
             ev.preventDefault();
 
-            add_to_calender();
+            add_to_calendar();
         })
     </script>
     <script src="js/admin.js"></script>

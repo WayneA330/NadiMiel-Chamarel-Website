@@ -48,10 +48,10 @@
                 <div>
                     <h5><b>Livraison:</b></h5>
                 </div>
-
-                <select id="payment_delivery"  style="margin-top: 15px;">
-                    <%  if (CalenderItems.length !== 0) { %>
-                        <% CalenderItems.forEach((items, index) => { %>
+                <p class="p-0 m-0" style="color: rgba(0, 0, 0, 0.15)">  yyyy-mm-dd</p>
+                <select id="payment_delivery"  style="margin-top: 5px;">
+                    <%  if (CalendarItems.length !== 0) { %>
+                        <% CalendarItems.forEach((items, index) => { %>
                             <option>
                                 <%= items.date %> - <%=items.location%> - <%=items.time_slot%>
                             </option>

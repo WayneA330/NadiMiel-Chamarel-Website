@@ -36,11 +36,13 @@ app.get('/', function(req, res){
 
 
 app.get('/orders', function(req, res){
+    let today = new Date().toISOString().slice(0, 10);
+    // console.log(today);
     db
-    .select().from('calender').where({'date': '2022-05-21'})
+    .select().from('calendar').where('date', '>=', today)
     .then(function(data) {
         console.log(data);
-        res.render('checkout',  {PORT: PORT, title: 'Add to Cart', CalenderItems: data});
+        res.render('checkout',  {PORT: PORT, title: 'Add to Cart', CalendarItems: data});
     })
     
 })
@@ -188,7 +190,7 @@ app.post('/add-calendar', function(req, res) {
     let data = JSON.parse(JSON.stringify(req.body));
     console.log(data);
 
-    db('calender')
+    db('calendar')
         .insert({ time_slot: data.time_slot, location: data.location, date: data.date })
         .then(res.send('Product inserted in database'))
         .catch(err => {
