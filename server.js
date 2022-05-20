@@ -218,17 +218,18 @@ app.post('/confirm-order', function(req, res) {
         console.log(`${item.product_name_fr} has ${new_stock} left.`)
 
         // Update item stock in database
-        db('product')
-            .where('product_id', item.product_id)
-            .update({unit_in_stock : new_stock}, ['*'])
-            .then(res.send('Product qty updated in database'))
-            .catch(err => {
-                console.log('Request Failed:', err);
-            });
+        // db('product')
+        //     .where('product_id', item.product_id)
+        //     .update({unit_in_stock : new_stock}, ['*'])
+        //     .then(res.send('Product qty updated in database'))
+        //     .catch(err => {
+        //         console.log('Request Failed:', err);
+        //     });
     }
 
-    send_email(data);
-
+    send_email(data)
+        .then(() => console.log('Email successful'))
+        .catch((e) => console.log(`An error occured: ${e}`))
     // db('orders')
     //     .insert({ first_name : data.first_name, last_name : data.last_name, email : data.email, phone : data.phone, address : data.address}, ['*'])
     //     .then(res.send('Order added in database'))
