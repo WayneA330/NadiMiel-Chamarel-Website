@@ -33,9 +33,10 @@
             <% if (productMenu[0].unit_in_stock > 0){ %>
                 <label for="quantity">Quantité:</label>
                 <input type="number" id="quantity" name="quantity" style="width: 60px" min="1"
-                       max="<%= productMenu[0].unit_in_stock < 2? 1: productMenu[0].unit_in_stock %>" value="1"> <br>
+                       max="<%= productMenu[0].unit_in_stock < 2? 1: productMenu[0].unit_in_stock %>" value="1">
+                <br>
                 <button class="buttons mt-3 attToCart grow" onclick="add_to_cart('<%=JSON.stringify(productMenu[0])%>')"
-                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter"> %>Ajouter au panier</button>
+                        data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Ajouter au panier</button>
             <%} %>
         </div>
     </div>

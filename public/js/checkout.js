@@ -87,7 +87,7 @@ function checkout(){
     confirm_order();
     add_customer();
 
-    setTimeout(() => {
-        reset_cart()
-    }, 5000);
+    // setTimeout(() => {
+    //     reset_cart()
+    // }, 5000);
 }
