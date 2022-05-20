@@ -142,10 +142,18 @@
 
         function display_products(){
             let cartItemContainer = document.getElementsByClassName('outerContainer')[0];
-
             let products = JSON.parse(sessionStorage.getItem("cart"));
+            // console.log(products)
+            if (products === null || undefined){
+                let h4 = document.createElement('h4');
+                h4.className = "row main align-items-center";
+                h4.innerText = "Votre panier est vide.";
+                cartItemContainer.appendChild(h4);
 
-            // ToDo check if products are not null or undefined
+                return;
+            }
+
+            cartItemContainer.innerText = "";
             for (let item of products){
                 item = JSON.parse(item);
 
@@ -166,7 +174,7 @@
 
                 let product_name = document.createElement('div');
                 product_name.className = "row";
-                
+
                 product_name.innerText = item.product_name_fr;
                 let product_id = document.createElement('div');
                 product_id.className = "row text-muted product-serial";
@@ -218,6 +226,11 @@
             let total = 0;
             let cart = sessionStorage.getItem('cart');
             cart = JSON.parse(cart);
+
+            console.log(cart);
+            if (cart === null || undefined){
+                return;
+            }
 
             // Calculate total
             for (let item of cart) {
