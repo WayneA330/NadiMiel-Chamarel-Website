@@ -79,7 +79,12 @@ function capitalise_name(name){
     return name.replace(name.charAt(0), name.charAt(0).toUpperCase());
 }
 
+function reset_cart(){
+    sessionStorage.removeItem('cart');
+}
+
 function checkout(){
     confirm_order();
     add_customer();
+    reset_cart();
 }

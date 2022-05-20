@@ -209,7 +209,23 @@ app.post('/confirm-order', function(req, res) {
     console.log('Order request has been received');
 
     let data = JSON.parse(JSON.stringify(req.body));
-    console.log(data);
+    let cart_arr = JSON.parse(data.cart);
+
+    for (let product of cart_arr){
+        let item = JSON.parse(product);
+        console.log(item);
+        const new_stock = Number(item.unit_in_stock) - Number(item.qty);
+        console.log(`${item.product_name_fr} has ${new_stock} left.`)
+
+        // Update item stock in database
+        db('product')
+            .where('product_id', item.product_id)
+            .update({unit_in_stock : new_stock}, ['*'])
+            .then(res.send('Product qty updated in database'))
+            .catch(err => {
+                console.log('Request Failed:', err);
+            });
+    }
 
     send_email(data);
 
@@ -410,8 +426,8 @@ async function send_email(user) {
         let info = await transporter.sendMail({
             from: `"Nadi'Miel Chamarel Order" <${no_reply_email}>`,
             to: user.email,
-            cc: ['damien@developers.institute'], //nadimielchamarel@gmail.com
-            // bcc: ['waynecelestin.a3@gmail.com'],
+            //cc: ['nadimielchamarel@gmail.com'],
+            bcc: ['damien@developers.institute'],
             replyTo: 'nadimielchamarel@gmail.com',
             subject: `Order #${order_id} received [Testing]`, 
             text: "",
