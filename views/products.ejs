@@ -59,7 +59,7 @@
                             <div class="card-body">
                               <h5 class="card-title"><%=product.product_name_fr%></h5>
                               <h6>(<%= product.unit %>)</h6>
-                              <p class="card-text">Rs<%=product.price%></p>
+                              <p class="card-text">Rs<%=Number(product.price).toLocaleString()%></p>
                               <% if (product.unit_in_stock === 0) { %>
                                 <p class="card-text" style="color: red;">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
