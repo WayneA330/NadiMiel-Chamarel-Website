@@ -33,7 +33,7 @@
 <!--                    <p>Options</p>-->
                     <select id="payment_option">
 <!--                        <option disabled selected value> &#45;&#45; Options de paiement &#45;&#45; </option>-->
-                        <option class="text-muted">Payer cash sur livraison</option>
+                        <option class="text-muted">Payer cash à la livraison</option>
                         <option class="text-muted">Payer avec JUICE sur livraison</option>
                     </select>
                 </form>
@@ -56,7 +56,38 @@
                                 <%= items.date %> - <%=items.location%> - <%=items.time_slot%>
                             </option>
                         <% }) %>
-                    <% } %>
+                    <% } else {%>
+                        <%
+                            date_today = new Date()
+                            let location;
+                            let time_slot = "Après-midi";
+                        %>
+                        <%  for (let i=0; i<14; i++){
+                                let del_date = date_today.toISOString().split('T')[0];
+                                switch(date_today.getDay()){
+                                    case 1:
+                                        location = "Rivière Noire";%>
+                                        <option>
+                                            <%= `${del_date} - ${location} - ${time_slot}` %>
+                                        </option>
+                                      <% break;
+                                    case 3:
+                                        location = "Cascavelle"; %>
+                                        <option>
+                                            <%= `${del_date} - ${location} - ${time_slot}` %>
+                                        </option>
+                                      <% break;
+                                    case 6:
+                                        location = "Cascavelle / Rivière Noire";%>
+                                        <option>
+                                            <%= `${del_date} - ${location} - ${time_slot}` %>
+                                        </option>
+                                      <% break;
+                                }
+                                // Increment day
+                                date_today.setDate(date_today.getDate() + 1);
+                        } %>
+                    <%}%>
                 </select>
             </div>
             <div class="customer_form">
@@ -330,7 +361,11 @@
         display_products();
         updateTotal();
     </script>
-
+    <script>
+        function generate_delivery_days(){
+            console.log("No date found");
+        }
+    </script>
 
     <%- include('partials/footer.ejs'); %>
 
