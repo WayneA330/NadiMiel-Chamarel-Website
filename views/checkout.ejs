@@ -235,7 +235,7 @@
             // Calculate total
             for (let item of cart) {
                 item = JSON.parse(item);
-                if (item !== null || item !== undefined) {
+                if (item !== null && item !== undefined) {
                     // console.log(item.unit_price, item.qty);
                     if (item.qty > 0) {
                         total += (Number(item.price) * Number(item.qty));

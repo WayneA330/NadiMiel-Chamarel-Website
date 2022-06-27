@@ -78,7 +78,7 @@
             if (obj_product.qty > obj_product.unit_in_stock) {
                 qty.value = obj_product.unit_in_stock;
                 obj_product.qty = obj_product.unit_in_stock;
-            } else if (obj_product.qty < 0) {
+            } else if (obj_product.qty < 1) {
                 qty.value =  0;
                 return;
             } else {
